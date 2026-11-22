@@ -2,6 +2,8 @@
 businessName: Door to Door Co
 logo: /brand/logo.png
 tagline: Solid wood doors, shipped to your door
+# Categories not shown on the site. Exterior has only 2 doors left without glass.
+hiddenCategories: [exterior]
 contact:
   email: info@doortodoorco.com      # quote requests are sent here
   phone: "(770) 686-8446"

@@ -218,6 +218,8 @@ export const storeConfig = z.object({
     phone: z.string().optional(),
   }),
   shipping,
+  /** Categories hidden from the site (their products aren't shown or sold). */
+  hiddenCategories: z.array(category).default([]),
 });
 
 /** Where an add-on comes from: an unlisted product, optionally with some options fixed. */

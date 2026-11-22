@@ -1,23 +1,13 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { AddonOffer } from "@/cart";
 import type { DoorProduct } from "@/schema";
 import { formatInches, parseInches, quoteDoor, usd } from "@/pricing";
 import { QuoteForm } from "./QuoteForm";
 import { Description } from "./Description";
-import {
-  AddToCart,
-  AddonsStep,
-  DoneRow,
-  Progress,
-  StepNav,
-  StepPanel,
-  TodoRow,
-  resolveAddons,
-  type AddonState,
-} from "./steps";
+import { AddToCart, AddonsStep, DoneRow, Progress, StepPanel, TodoRow, resolveAddons, type AddonState } from "./steps";
 
 interface Props {
   product: DoorProduct;
@@ -26,20 +16,19 @@ interface Props {
   shippingNote?: string;
 }
 
-type StepKey = "type" | "style" | "wood" | "size" | "addons" | "review";
-const LABELS: Record<StepKey, string> = {
-  type: "Door type",
-  style: "Style",
-  wood: "Wood",
-  size: "Opening size",
-  addons: "Add-ons",
-  review: "Review",
-};
+type StepKey = "type" | "style" | "build";
+const STEPS: StepKey[] = ["type", "style", "build"];
+const LABELS: Record<StepKey, string> = { type: "Door type", style: "Style", build: "Wood, size & add-ons" };
 
 const signed = (n: number) => (n > 0 ? `+${usd(n)}` : n < 0 ? `−${usd(-n)}` : "Included");
 
-/** The custom door, built to the customer's opening, chosen one step at a time. */
+/**
+ * The custom door. Door type and style are picked one at a time; after that,
+ * wood, opening size, add-ons and quantity are all on one screen.
+ */
 export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Props) {
+  const [current, setCurrent] = useState<StepKey>("type");
+  const [furthest, setFurthest] = useState(0);
   const [configuration, setConfiguration] = useState(product.configurations[0]!.code);
   const [style, setStyle] = useState(product.styles[0]!.code);
   const [grade, setGrade] = useState(product.grades[0]!.code);
@@ -50,15 +39,7 @@ export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Pr
   const [showQuote, setShowQuote] = useState(false);
 
   const offers = addonsByConfiguration[configuration] ?? [];
-  const steps: StepKey[] = ["type", "style", "wood", "size", ...(offers.length ? (["addons"] as const) : []), "review"];
-  const [current, setCurrent] = useState<StepKey>("type");
-  const [furthestKey, setFurthestKey] = useState<StepKey>("type");
-  const order: StepKey[] = ["type", "style", "wood", "size", "addons", "review"];
-  const rank = (k: StepKey) => order.indexOf(k);
-  const step = steps.indexOf(current);
-  // The furthest step reached, mapped onto this configuration's steps (add-ons may come and go).
-  const furthest = Math.max(...steps.map((k, i) => (rank(k) <= rank(furthestKey) ? i : 0)));
-
+  const step = STEPS.indexOf(current);
   const config = product.configurations.find((c) => c.code === configuration)!;
   const styleOpt = product.styles.find((s) => s.code === style)!;
   const gradeOpt = product.grades.find((g) => g.code === grade)!;
@@ -94,91 +75,77 @@ export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Pr
 
   function go(next: StepKey) {
     setCurrent(next);
-    setFurthestKey((f) => (rank(next) > rank(f) ? next : f));
+    setFurthest((f) => Math.max(f, STEPS.indexOf(next)));
     setShowQuote(false);
   }
-  /** After a pick, move on: to the next step, or back to where the customer was if they came to change something. */
-  function advance(from: StepKey, nextSteps: StepKey[] = steps) {
-    const after = nextSteps[nextSteps.indexOf(from) + 1]!;
-    const back = nextSteps.filter((k) => rank(k) <= rank(furthestKey)).pop()!;
-    go(rank(back) > rank(after) ? back : after);
-  }
+  /** After picking type or style: the next step, or straight back to the last screen if they'd been there. */
+  const advance = (from: StepKey) => go(furthest >= 2 ? "build" : STEPS[STEPS.indexOf(from) + 1]!);
 
   const quoteDetails = () =>
     `${config.name}, ${gradeOpt.name}, ${styleOpt.name}${
       widthText || heightText ? `, opening ${widthText || "?"} × ${heightText || "?"} in` : ""
     }, qty ${quantity}`;
 
-  const answers: Partial<Record<StepKey, string>> = {
-    type: config.name,
-    style: styleOpt.name,
-    wood: gradeOpt.name,
-    size: sizeEntered ? `${formatInches(widthIn!)} wide × ${formatInches(heightIn!)} tall` : "",
-    addons: resolved.chosen.map((a) => a.label).join(", ") || "None",
-  };
+  const runningPrice = quote.ok ? quote.unitPrice + resolved.chosen.reduce((a, x) => a + x.price, 0) : undefined;
 
-  let panel: ReactNode;
-  switch (current) {
-    case "type":
-      panel = (
-        <div className="options">
-          {product.configurations.map((c) => (
-            <OptionCard key={c.code} image={c.image} selected={rank(furthestKey) > 0 && configuration === c.code}
-              title={c.name} detail={`from ${usd(c.basePrice)}`} note={c.leaves > 1 ? `${c.leaves} doors` : undefined}
+  let panel = null;
+  if (current === "type") {
+    panel = (
+      <div className="options">
+        {product.configurations.map((c) => (
+          <OptionCard key={c.code} image={c.image} selected={furthest > 0 && configuration === c.code}
+            title={c.name} detail={`from ${usd(c.basePrice)}`} note={c.leaves > 1 ? `${c.leaves} doors` : undefined}
+            onClick={() => {
+              if (c.code !== configuration) setAddonState({}); // single and double add-ons differ
+              setConfiguration(c.code);
+              if (isExcluded(c.code, style, grade)) {
+                const ok = product.styles.find((s) => !isExcluded(c.code, s.code, grade));
+                if (ok) setStyle(ok.code);
+              }
+              advance("type");
+            }} />
+        ))}
+      </div>
+    );
+  } else if (current === "style") {
+    panel = (
+      <div className="options">
+        {product.styles.map((s) => {
+          const disabled = isExcluded(configuration, s.code, grade);
+          return (
+            <OptionCard key={s.code} image={s.image} selected={furthest > 1 && style === s.code} disabled={disabled}
+              title={s.name} detail={disabled ? `Not available as a ${config.name.toLowerCase()}` : signed(s.adder * config.leaves)}
               onClick={() => {
-                if (c.code !== configuration) setAddonState({}); // single and pair add-ons differ
-                setConfiguration(c.code);
-                if (isExcluded(c.code, style, grade)) {
-                  const ok = product.styles.find((s) => !isExcluded(c.code, s.code, grade));
-                  if (ok) setStyle(ok.code);
-                }
-                const nextOffers = addonsByConfiguration[c.code] ?? [];
-                advance("type", ["type", "style", "wood", "size", ...(nextOffers.length ? (["addons"] as const) : []), "review"]);
+                setStyle(s.code);
+                advance("style");
               }} />
-          ))}
-        </div>
-      );
-      break;
-    case "style":
-      panel = (
-        <div className="options">
-          {product.styles.map((s) => {
-            const disabled = isExcluded(configuration, s.code, grade);
-            return (
-              <OptionCard key={s.code} image={s.image} selected={rank(furthestKey) > 1 && style === s.code} disabled={disabled}
-                title={s.name} detail={disabled ? `Not available as a ${config.name.toLowerCase()}` : signed(s.adder * config.leaves)}
-                onClick={() => {
-                  setStyle(s.code);
-                  advance("style");
-                }} />
-            );
-          })}
-        </div>
-      );
-      break;
-    case "wood":
-      panel = (
-        <div className="options">
-          {product.grades.map((g) => (
-            <OptionCard key={g.code} image={g.image} selected={rank(furthestKey) > 2 && grade === g.code}
-              disabled={isExcluded(configuration, style, g.code)} title={g.name} detail={signed(g.adder * config.leaves)}
-              note={g.note}
-              onClick={() => {
-                setGrade(g.code);
-                advance("wood");
-              }} />
-          ))}
-        </div>
-      );
-      break;
-    case "size": {
-      const next = steps[steps.indexOf("size") + 1]!;
-      panel = (
-        <>
-          <p className="muted">
-            Measure inside the door frame.{" "}
-            {pair ? "Enter the full width; we split it between the two doors. " : ""}
-            <Link href="/measure" target="_blank">How to measure</Link>
+          );
+        })}
+      </div>
+    );
+  } else {
+    panel = (
+      <>
+        <fieldset className="opt-group">
+          <legend>Wood: <span className="opt-current">{gradeOpt.name}</span></legend>
+          <div className="swatches">
+            {product.grades.map((g) => (
+              <button key={g.code} type="button" className="swatch" aria-pressed={grade === g.code}
+                disabled={isExcluded(configuration, style, g.code)} onClick={() => setGrade(g.code)}>
+                {g.image && <img src={g.image} alt="" loading="lazy" />}
+                <span className="swatch-name">{g.name}</span>
+                <span className="swatch-price">{signed(g.adder * config.leaves)}</span>
+              </button>
+            ))}
+          </div>
+        </fieldset>
+
+        <fieldset className="opt-group">
+          <legend>
+            Opening size <Link href="/measure" target="_blank" className="legend-link">How to measure</Link>
+          </legend>
+          <p className="muted" style={{ margin: "0 0 10px", fontSize: "0.92rem" }}>
+            Measure inside the door frame.{pair ? " Enter the full width; we split it between the two doors." : ""}
           </p>
           <div className="fields">
             <label className={`field${widthText && widthIn === undefined ? " error" : ""}`}>
@@ -189,8 +156,7 @@ export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Pr
             <label className={`field${heightText && heightIn === undefined ? " error" : ""}`}>
               Height (inches)
               <input inputMode="decimal" autoComplete="off" placeholder="e.g. 80"
-                value={heightText} onChange={(e) => setHeightText(e.target.value)}
-                onKeyDown={(e) => e.key === "Enter" && quote.ok && sizeEntered && go(next)} />
+                value={heightText} onChange={(e) => setHeightText(e.target.value)} />
             </label>
           </div>
           {badSize && <p className="notice error">Use inches, like 32, 32.5 or 32 1/2.</p>}
@@ -209,32 +175,18 @@ export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Pr
             </p>
           )}
           {sizeEntered && !quote.ok && <p className="notice">{quote.message}</p>}
-          {needsQuote ? (
-            <QuoteForm productTitle={product.title} details={quoteDetails()} />
-          ) : (
-            <StepNav onBack={() => go("wood")} onNext={() => go(next)} nextDisabled={!sizeEntered || badSize || !quote.ok} />
-          )}
-        </>
-      );
-      break;
-    }
-    case "addons":
-      panel = (
-        <>
-          <p className="muted">Optional. Skip this step if you don&apos;t need any.</p>
-          <AddonsStep offers={offers} state={addonState} onChange={setAddonState} />
-          <div className="step-nav">
-            <button type="button" className="btn secondary" onClick={() => go("size")}>Back</button>
-            <button type="button" className="btn" disabled={!resolved.complete} onClick={() => go("review")}>
-              {resolved.chosen.length ? "Continue" : "No add-ons, continue"}
-            </button>
-          </div>
-        </>
-      );
-      break;
-    case "review":
-      panel =
-        quote.ok && sizeEntered ? (
+        </fieldset>
+
+        {offers.length > 0 && (
+          <fieldset className="opt-group">
+            <legend>Add-ons <span className="opt-current">(optional)</span></legend>
+            <AddonsStep offers={offers} state={addonState} onChange={setAddonState} />
+          </fieldset>
+        )}
+
+        {needsQuote ? (
+          <QuoteForm productTitle={product.title} details={quoteDetails()} />
+        ) : quote.ok && sizeEntered && resolved.complete ? (
           <>
             <AddToCart
               lines={quote.lines}
@@ -260,15 +212,17 @@ export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Pr
             {showQuote && <QuoteForm productTitle={product.title} details={quoteDetails()} />}
           </>
         ) : (
-          <>
-            <p className="notice">{sizeEntered && !quote.ok ? quote.message : "Enter your opening size first."}</p>
-            <StepNav onNext={() => go("size")} nextLabel="Fix the size" />
-          </>
-        );
-      break;
+          <div className="summary">
+            <button type="button" className="btn block" disabled>
+              {!sizeEntered || badSize ? "Enter your opening size" : !resolved.complete ? "Finish your add-on choices" : "Add to cart"}
+            </button>
+          </div>
+        )}
+      </>
+    );
   }
 
-  const runningPrice = quote.ok ? quote.unitPrice + resolved.chosen.reduce((a, x) => a + x.price, 0) : undefined;
+  const answers: Record<StepKey, string> = { type: config.name, style: styleOpt.name, build: "" };
 
   return (
     <div className="builder">
@@ -289,23 +243,22 @@ export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Pr
         <p className="eyebrow">Built to order</p>
         <h1 className="product-title">{product.title}</h1>
 
-        <Progress steps={steps.map((k) => LABELS[k])} current={step} furthest={furthest} />
+        <Progress steps={STEPS.map((k) => LABELS[k])} current={step} furthest={furthest} />
 
-        {steps.map((key, i) => {
-          const label = LABELS[key];
+        {STEPS.map((key, i) => {
           if (key === current) {
             return (
-              <StepPanel key={key} index={i} total={steps.length}
-                heading={key === "review" ? "Review and add to cart" : key === "addons" ? "Add-ons" : `Choose your ${label.toLowerCase()}`}
-                onBack={i > 0 && ["style", "wood", "review"].includes(key) ? () => go(steps[i - 1]!) : undefined}>
+              <StepPanel key={key} index={i} total={STEPS.length}
+                heading={key === "build" ? "Wood, size & add-ons" : `Choose your ${LABELS[key].toLowerCase()}`}
+                onBack={key === "style" ? () => go("type") : undefined}>
                 {panel}
               </StepPanel>
             );
           }
-          if (i <= furthest && key !== "review" && answers[key]) {
-            return <DoneRow key={key} label={label} value={answers[key]!} onChange={() => go(key)} />;
+          if (i <= furthest && answers[key]) {
+            return <DoneRow key={key} label={LABELS[key]} value={answers[key]} onChange={() => go(key)} />;
           }
-          return <TodoRow key={key} label={label} />;
+          return <TodoRow key={key} label={LABELS[key]} />;
         })}
 
         <details className="about">

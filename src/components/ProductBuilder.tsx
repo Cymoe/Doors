@@ -4,17 +4,7 @@ import { useState } from "react";
 import type { AddonOffer } from "@/cart";
 import type { StandardProduct } from "@/schema";
 import { usd } from "@/pricing";
-import {
-  AddToCart,
-  AddonsStep,
-  DoneRow,
-  Gallery,
-  Progress,
-  StepPanel,
-  TodoRow,
-  resolveAddons,
-  type AddonState,
-} from "./steps";
+import { AddToCart, AddonsStep, Gallery, resolveAddons, type AddonState } from "./steps";
 import { Description } from "./Description";
 
 interface Props {
@@ -28,121 +18,56 @@ type Variant = StandardProduct["variants"][number];
 const matches = (v: Variant, picks: Record<string, string>) =>
   Object.entries(picks).every(([name, value]) => v.options[name] === value);
 
-/** A product with set options (size, handing, finish...), chosen one at a time, then added to the cart. */
+/**
+ * A catalog product: every option on one screen (like a size chart), with a
+ * size already picked so the price shows right away. Values that don't exist
+ * with the other picks are crossed out; choosing one moves the other picks to
+ * the closest combination that does exist.
+ */
 export function ProductBuilder({ product, addons, shippingNote }: Props) {
-  const optionSteps = product.optionNames;
-  const hasAddons = addons.length > 0;
-  const steps = [...optionSteps, ...(hasAddons ? ["Add-ons"] : []), "Review"];
-  const addonStep = hasAddons ? optionSteps.length : -1;
-  const reviewStep = steps.length - 1;
-
-  const [step, setStep] = useState(0);
-  const [furthest, setFurthest] = useState(0);
-  const [picks, setPicks] = useState<Record<string, string>>({});
+  const names = product.optionNames;
+  const firstAvailable = product.variants.find((v) => v.available) ?? product.variants[0]!;
+  const [picks, setPicks] = useState<Record<string, string>>(() => ({ ...firstAvailable.options }));
   const [addonState, setAddonState] = useState<AddonState>({});
   const [quantity, setQuantity] = useState(1);
 
-  const go = (n: number) => {
-    setStep(n);
-    setFurthest((f) => Math.max(f, n));
-  };
-
-  const complete = optionSteps.every((n) => picks[n] !== undefined);
-  const variant = complete ? product.variants.find((v) => matches(v, picks)) : undefined;
-  const candidates = product.variants.filter((v) => matches(v, picks));
-  const minPrice = Math.min(...(candidates.length ? candidates : product.variants).map((v) => v.price));
+  const variant = product.variants.find((v) => matches(v, picks));
   const resolved = resolveAddons(addons, addonState);
 
-  /** Choices for option k given the picks before it: value, price range, and whether any is in stock. */
-  function choicesFor(k: number) {
-    const before = Object.fromEntries(optionSteps.slice(0, k).filter((n) => picks[n] !== undefined).map((n) => [n, picks[n]!]));
-    const pool = product.variants.filter((v) => matches(v, before));
-    const out = new Map<string, { min: number; max: number; available: boolean; compareAt?: number }>();
-    for (const v of pool) {
-      const val = v.options[optionSteps[k]!]!;
-      const c = out.get(val) ?? { min: Infinity, max: 0, available: false };
-      c.min = Math.min(c.min, v.price);
-      c.max = Math.max(c.max, v.price);
-      c.available ||= v.available;
-      if (v.compareAtPrice && v.price === c.min) c.compareAt = v.compareAtPrice;
-      out.set(val, c);
+  /** Values of an option, in catalog order, with whether they work with the other current picks. */
+  function valuesFor(name: string) {
+    const others = Object.fromEntries(Object.entries(picks).filter(([n]) => n !== name));
+    const seen = new Map<string, { possible: boolean; price?: number }>();
+    for (const v of product.variants) {
+      const val = v.options[name]!;
+      const entry = seen.get(val) ?? { possible: false };
+      if (v.available && matches(v, others)) {
+        entry.possible = true;
+        entry.price = Math.min(entry.price ?? Infinity, v.price);
+      }
+      seen.set(val, entry);
     }
-    return [...out.entries()];
+    return [...seen.entries()];
   }
 
-  function pick(k: number, value: string) {
-    const name = optionSteps[k]!;
-    // Keep later picks only if they still make a real combination.
-    const next: Record<string, string> = {};
-    for (const n of optionSteps.slice(0, k)) if (picks[n] !== undefined) next[n] = picks[n]!;
-    next[name] = value;
-    for (const n of optionSteps.slice(k + 1)) {
-      if (picks[n] !== undefined && product.variants.some((v) => matches(v, { ...next, [n]: picks[n]! }))) next[n] = picks[n]!;
+  function pick(name: string, value: string) {
+    const next = { ...picks, [name]: value };
+    if (!product.variants.some((v) => v.available && matches(v, next))) {
+      // Keep as many of the other picks as possible: the in-stock variant with this value that matches the most.
+      const pool = product.variants.filter((v) => v.available && v.options[name] === value);
+      const best = pool.sort((a, b) => score(b) - score(a))[0];
+      if (best) Object.assign(next, best.options);
     }
     setPicks(next);
-    // Go to the first step still needing an answer, or back to where the customer was.
-    const firstMissing = optionSteps.findIndex((n) => next[n] === undefined);
-    go(firstMissing === -1 ? Math.max(optionSteps.length, furthest) : firstMissing);
+    function score(v: Variant) {
+      return names.filter((n) => v.options[n] === picks[n]).length;
+    }
   }
 
-  let panel = null;
-  if (step < optionSteps.length) {
-    const name = optionSteps[step]!;
-    const choices = choicesFor(step);
-    const allSamePrice = choices.every(([, c]) => c.min === choices[0]![1].min && c.max === c.min);
-    panel = (
-      <div className="chips">
-        {choices.map(([value, c]) => (
-          <button key={value} type="button" className="chip" aria-pressed={picks[name] === value}
-            disabled={!c.available} onClick={() => pick(step, value)}>
-            <span className="chip-title">{value}</span>
-            {!c.available ? (
-              <span className="chip-detail">Sold out</span>
-            ) : !allSamePrice || step === optionSteps.length - 1 ? (
-              <span className="chip-detail">
-                {c.min === c.max ? usd(c.min) : `from ${usd(c.min)}`}
-                {c.compareAt && c.compareAt > c.min && <s className="was"> {usd(c.compareAt)}</s>}
-              </span>
-            ) : null}
-          </button>
-        ))}
-      </div>
-    );
-  } else if (step === addonStep) {
-    panel = (
-      <>
-        <p className="muted">Optional. Skip this step if you don&apos;t need any.</p>
-        <AddonsStep offers={addons} state={addonState} onChange={setAddonState} />
-        <div className="step-nav">
-          <button type="button" className="btn secondary" onClick={() => go(step - 1)}>Back</button>
-          <button type="button" className="btn" disabled={!resolved.complete} onClick={() => go(reviewStep)}>
-            {resolved.chosen.length ? "Continue" : "No add-ons, continue"}
-          </button>
-        </div>
-      </>
-    );
-  } else if (variant) {
-    panel = (
-      <AddToCart
-        lines={[{ label: optionSteps.length ? optionSteps.map((n) => picks[n]).join(" · ") : product.title, amount: variant.price }]}
-        addons={resolved.chosen}
-        quantity={quantity}
-        onQuantity={setQuantity}
-        unit={["", ""]}
-        shippingNote={shippingNote}
-        item={{ handle: product.handle, sku: variant.sku, addons: resolved.chosen.map((a) => ({ key: a.key, sku: a.sku })) }}
-      />
-    );
-  } else {
-    panel = <p className="notice">That combination isn&apos;t available. Go back and change a choice.</p>;
-  }
-
-  const answers = (i: number) =>
-    i < optionSteps.length
-      ? picks[optionSteps[i]!] ?? ""
-      : i === addonStep
-        ? resolved.chosen.map((a) => a.label).join(", ") || "None"
-        : "";
+  const priceDiffers = (name: string) => {
+    const prices = new Set(valuesFor(name).filter(([, x]) => x.possible).map(([, x]) => x.price));
+    return prices.size > 1;
+  };
 
   return (
     <div className="builder">
@@ -153,27 +78,58 @@ export function ProductBuilder({ product, addons, shippingNote }: Props) {
       <div>
         <h1 className="product-title">{product.title}</h1>
         <p className="product-price">
-          {variant ? usd(variant.price) : `From ${usd(minPrice)}`}
+          {variant ? usd(variant.price) : "Not available"}
           {variant?.compareAtPrice && <s className="was">{usd(variant.compareAtPrice)}</s>}
+          {variant?.compareAtPrice && (
+            <span className="save">Save {usd(variant.compareAtPrice - variant.price)}</span>
+          )}
         </p>
 
-        <Progress steps={steps} current={step} furthest={furthest} />
-
-        {steps.map((name, i) => {
-          if (i === step) {
-            return (
-              <StepPanel key={name} index={i} total={steps.length}
-                heading={i === reviewStep ? "Review and add to cart" : i === addonStep ? "Add-ons" : `Choose ${name.toLowerCase()}`}
-                onBack={i > 0 && i < optionSteps.length ? () => go(i - 1) : i === reviewStep && i > 0 ? () => go(i - 1) : undefined}>
-                {panel}
-              </StepPanel>
-            );
-          }
-          if (i <= furthest && i < reviewStep && answers(i)) {
-            return <DoneRow key={name} label={name} value={answers(i)} onChange={() => go(i)} />;
-          }
-          return <TodoRow key={name} label={name} />;
+        {names.map((name) => {
+          const showPrices = priceDiffers(name);
+          return (
+            <fieldset key={name} className="opt-group">
+              <legend>
+                {name}: <span className="opt-current">{picks[name]}</span>
+              </legend>
+              <div className="sizes">
+                {valuesFor(name).map(([value, x]) => (
+                  <button key={value} type="button" className="size" aria-pressed={picks[name] === value}
+                    data-unavailable={!x.possible || undefined} onClick={() => pick(name, value)}
+                    aria-label={x.possible ? value : `${value} (not available with your other choices)`}>
+                    <span>{value}</span>
+                    {showPrices && x.possible && <span className="size-price">{usd(x.price!)}</span>}
+                  </button>
+                ))}
+              </div>
+            </fieldset>
+          );
         })}
+
+        {addons.length > 0 && (
+          <fieldset className="opt-group">
+            <legend>Add-ons <span className="opt-current">(optional)</span></legend>
+            <AddonsStep offers={addons} state={addonState} onChange={setAddonState} />
+          </fieldset>
+        )}
+
+        {variant ? (
+          resolved.complete ? (
+            <AddToCart
+              lines={[{ label: names.length ? names.map((n) => picks[n]).join(" · ") : product.title, amount: variant.price }]}
+              addons={resolved.chosen}
+              quantity={quantity}
+              onQuantity={setQuantity}
+              unit={["", ""]}
+              shippingNote={shippingNote}
+              item={{ handle: product.handle, sku: variant.sku, addons: resolved.chosen.map((a) => ({ key: a.key, sku: a.sku })) }}
+            />
+          ) : (
+            <p className="notice">Finish choosing your add-on options, or untick the add-on.</p>
+          )
+        ) : (
+          <p className="notice">That combination isn&apos;t available. Choose a different option.</p>
+        )}
 
         <details className="about" open>
           <summary>Details</summary>

@@ -34,10 +34,12 @@ cp .env.example .env.local   # then fill in the keys
 ## How it works
 
 - **Catalog** (`/`, `/c/<category>`): a grid of product photos with "From" prices and sale badges.
-- **Product pages** (`/products/<handle>`): pick each option one step at a time (size, handing, finish...),
-  then optional add-ons, then review and **Add to cart**.
-- **Custom door builder** (`/products/solid-pine-interior-door`): door type, style, wood (all with photos),
-  the opening size (`32`, `32.5` and `32 1/2` all work), add-ons, then add to cart.
+- **Product pages** (`/products/<handle>`): every option on one screen as a size chart, with the first
+  in-stock size already picked. Sizes that don't exist with the other picks are crossed out; tapping one
+  moves the other picks to the closest size that does. Then optional add-ons and **Add to cart**.
+- **Custom door builder** (`/products/solid-pine-interior-door`): door type, then style (photo cards, one
+  at a time), then one screen with wood swatches, the opening size (`32`, `32.5` and `32 1/2` all work),
+  add-ons and add to cart.
 - **Add-ons** (`catalog/addons.yaml`): jamb kit and knob bore, offered on interior doors
   and on the custom single and double door. A double door automatically gets the double version.
 - **Cart** (`/cart`): kept in the customer's browser. It holds choices only; `/api/cart` prices it.
@@ -60,7 +62,7 @@ Everything a non-developer should need to change is in `catalog/`:
 
 ```
 catalog/
-  store.yaml                     business name, logo, contact, shipping rates
+  store.yaml                     business name, logo, contact, shipping rates, hidden categories
   addons.yaml                    which add-ons are offered on which doors
   products/doors/*.yaml          the custom door: prices, styles, size rules, photos per option
   products/<category>/*.yaml     catalog products (imported from Shopify): options, variants, prices

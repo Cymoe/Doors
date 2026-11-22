@@ -12,6 +12,7 @@ export const store: StoreConfig = catalog.store;
 export const addons: AddonGroup[] = catalog.addons;
 
 function isLive(p: Product) {
+  if (p.listed && store.hiddenCategories.includes(productCategory(p))) return false;
   const showDrafts = process.env.NODE_ENV !== "production" || process.env.SHOW_DRAFTS === "true";
   return p.status === "active" || (showDrafts && p.status === "draft");
 }
