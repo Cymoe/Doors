@@ -155,7 +155,7 @@ export function DoorBuilder({ product, store }: Props) {
       panel = (
         <OptionGrid>
           {product.configurations.map((c) => (
-            <OptionCard key={c.code} selected={furthest > 0 && configuration === c.code}
+            <OptionCard key={c.code} image={c.image} selected={furthest > 0 && configuration === c.code}
               title={c.name} detail={`from ${usd(c.basePrice)}`} note={c.leaves > 1 ? `${c.leaves} doors` : undefined}
               onClick={() => pickConfiguration(c.code)}>
               <DoorPreview style={style} grade={grade} configuration={c.code} leaves={c.leaves} label={c.name} />
@@ -170,7 +170,7 @@ export function DoorBuilder({ product, store }: Props) {
           {product.styles.map((s) => {
             const disabled = isExcluded(configuration, s.code, grade);
             return (
-              <OptionCard key={s.code} selected={furthest > 1 && style === s.code} disabled={disabled}
+              <OptionCard key={s.code} image={s.image} selected={furthest > 1 && style === s.code} disabled={disabled}
                 title={s.name} detail={disabled ? `Not available as a ${config.name.toLowerCase()}` : signed(s.adder * config.leaves)}
                 onClick={() => {
                   setStyle(s.code);
@@ -187,7 +187,7 @@ export function DoorBuilder({ product, store }: Props) {
       panel = (
         <OptionGrid>
           {product.grades.map((g) => (
-            <OptionCard key={g.code} selected={furthest > 2 && grade === g.code}
+            <OptionCard key={g.code} image={g.image} selected={furthest > 2 && grade === g.code}
               disabled={isExcluded(configuration, style, g.code)}
               title={g.name} detail={signed(g.adder * config.leaves)} note={g.note}
               onClick={() => {
@@ -361,7 +361,19 @@ export function DoorBuilder({ product, store }: Props) {
   return (
     <div className="builder">
       <div className="preview">
-        {preview}
+        {styleOpt.image ? (
+          <>
+            <img className="preview-photo" src={styleOpt.image} alt={`${styleOpt.name} door`} />
+            {sizeEntered && (
+              <div className="to-scale">
+                <span>Your {config.leaves > 1 ? "doors" : "door"}, to scale</span>
+                {preview}
+              </div>
+            )}
+          </>
+        ) : (
+          preview
+        )}
         <div className="caption">
           <strong>{config.name} · {styleOpt.name} · {gradeOpt.name}</strong>
           {runningPrice !== undefined && (
@@ -452,6 +464,7 @@ function OptionGrid({ children }: { children: ReactNode }) {
 }
 
 function OptionCard(props: {
+  image?: string;
   title: string;
   detail: string;
   note?: string;
@@ -462,7 +475,9 @@ function OptionCard(props: {
 }) {
   return (
     <button type="button" className="option" aria-pressed={props.selected} disabled={props.disabled} onClick={props.onClick}>
-      <span className="option-art" aria-hidden="true">{props.children}</span>
+      <span className={`option-art${props.image ? " photo" : ""}`} aria-hidden="true">
+        {props.image ? <img src={props.image} alt="" loading="lazy" /> : props.children}
+      </span>
       <span className="option-title">{props.title}</span>
       <span className="option-detail">{props.detail}</span>
       {props.note && <span className="option-note">{props.note}</span>}

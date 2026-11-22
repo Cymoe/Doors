@@ -5,6 +5,10 @@ import { DoorPreview } from "@/components/DoorPreview";
 
 export default function Home() {
   const doors = liveProducts().filter((p) => p.type === "door");
+  // Three style photos for the hero, if the first door has them.
+  const heroPhotos = (doors[0]?.styles ?? [])
+    .filter((s) => ["2PSQ", "SHK", "GLS"].includes(s.code) && s.image)
+    .map((s) => s.image!);
 
   return (
     <>
@@ -24,9 +28,15 @@ export default function Home() {
             )}
           </div>
           <div className="art" aria-hidden="true">
-            <DoorPreview style="2PSQ" grade="CLR" configuration="SGL" leaves={1} />
-            <DoorPreview style="SHK" grade="KNT" configuration="SGL" leaves={1} />
-            <DoorPreview style="GLS" grade="CLR" configuration="SGL" leaves={1} />
+            {heroPhotos.length === 3 ? (
+              heroPhotos.map((src) => <img key={src} src={src} alt="" />)
+            ) : (
+              <>
+                <DoorPreview style="2PSQ" grade="CLR" configuration="SGL" leaves={1} />
+                <DoorPreview style="SHK" grade="KNT" configuration="SGL" leaves={1} />
+                <DoorPreview style="GLS" grade="CLR" configuration="SGL" leaves={1} />
+              </>
+            )}
           </div>
         </section>
 
@@ -37,6 +47,7 @@ export default function Home() {
               const from = Math.min(...d.configurations.map((c) => c.basePrice));
               return (
                 <Link key={d.handle} href={`/doors/${d.handle}`} className="card">
+                  {d.images[0] && <img className="card-photo" src={d.images[0].src} alt={d.images[0].alt} />}
                   <h3>{d.title}</h3>
                   <p className="muted" style={{ margin: 0 }}>
                     {d.configurations.map((c) => c.name).join(" · ")}

@@ -1,12 +1,13 @@
 :root {
-  --bg: #f7f3ec;
+  --bg: #f6f5f2;
   --surface: #fffdf9;
   --ink: #2b2420;
   --muted: #6c6158;
-  --line: #e4dacb;
-  --accent: #9a5b22;
+  --line: #e2e0da;
+  --accent: #00244d;
   --accent-ink: #fff;
-  --accent-soft: #f3e6d6;
+  --accent-soft: #e8edf4;
+  --brand-red: #b22b32;
   --danger: #a3342b;
   --ok: #2f6b3a;
   --radius: 10px;
@@ -58,12 +59,12 @@ img, svg { max-width: 100%; }
 .hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 34em; }
 .hero .art { display: flex; justify-content: center; gap: 16px; }
 .hero .art svg { width: 30%; height: auto; filter: drop-shadow(0 10px 18px rgba(60, 40, 20, 0.12)); }
-.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.78rem; color: var(--brand-red); font-weight: 600; margin-bottom: 12px; }
 .section { padding: 40px 0; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 8px; }
 a.card:hover { border-color: var(--accent); }
-.card .price { color: var(--accent); font-weight: 600; }
+.card .price { color: var(--brand-red); font-weight: 600; }
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: step; }
 .steps li { list-style: none; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
 .steps li::before { counter-increment: step; content: counter(step); display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-weight: 700; margin-bottom: 10px; }
@@ -133,7 +134,7 @@ a.card:hover { border-color: var(--accent); }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .progress { display: flex; gap: 6px; list-style: none; padding: 0; margin: 4px 0 20px; }
 .progress li { flex: 1; height: 5px; border-radius: 3px; background: var(--line); }
-.progress li.reached { background: #d9b58c; }
+.progress li.reached { background: #9fb0c6; }
 .progress li.current { background: var(--accent); }
 .done-row, .todo-row {
   display: flex; align-items: baseline; gap: 12px; padding: 14px 0; border-top: 1px solid var(--line);
@@ -144,7 +145,7 @@ a.card:hover { border-color: var(--accent); }
 .link { background: none; border: 0; padding: 4px 0; color: var(--accent); font: 600 0.95rem var(--sans); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .step-panel { border-top: 1px solid var(--line); padding: 20px 0 24px; position: relative; outline: none; }
 .step-panel h2 { font-size: 1.45rem; margin-bottom: 14px; padding-right: 64px; }
-.step-num { display: block; font: 600 0.78rem var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.step-num { display: block; font: 600 0.78rem var(--sans); letter-spacing: 0.1em; text-transform: uppercase; color: var(--brand-red); margin-bottom: 6px; }
 .step-panel .back { position: absolute; top: 22px; right: 0; }
 .options { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
 .option {
@@ -159,7 +160,7 @@ a.card:hover { border-color: var(--accent); }
 .option-art { display: block; width: 100%; height: 130px; margin-bottom: 8px; }
 .option-art svg { width: 100%; height: 100%; }
 .option-title { font-weight: 600; font-size: 0.95rem; line-height: 1.25; }
-.option-detail { font-size: 0.85rem; color: var(--accent); font-weight: 600; }
+.option-detail { font-size: 0.85rem; color: var(--brand-red); font-weight: 600; }
 .option-note { font-size: 0.8rem; color: var(--muted); }
 .step-nav { display: flex; gap: 12px; margin-top: 20px; }
 .step-nav .btn { flex: 1; }
@@ -178,4 +179,23 @@ a.card:hover { border-color: var(--accent); }
 @media (max-width: 520px) {
   .options { grid-template-columns: 1fr 1fr; }
   .option-art { height: 110px; }
+}
+
+/* Photos */
+.brand img { display: block; height: 36px; width: auto; }
+.hero .art img { width: 30%; height: auto; aspect-ratio: 4 / 5; object-fit: contain; mix-blend-mode: multiply; }
+.card-photo { width: 100%; height: 240px; object-fit: contain; mix-blend-mode: multiply; margin-bottom: 8px; }
+.option-art.photo { background: #fff; border-radius: 6px; }
+.option-art.photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.option[aria-pressed="true"] .option-art.photo { box-shadow: 0 0 0 1px var(--line); }
+.preview-photo { width: 100%; height: 420px; object-fit: contain; background: #fff; }
+.to-scale { width: 100%; border-top: 1px solid var(--line); padding-top: 12px; text-align: center; font-size: 0.85rem; color: var(--muted); }
+.to-scale svg { height: 180px !important; width: 100%; }
+.option-art { height: 170px; }
+@media (max-width: 860px) {
+  .preview-photo { width: 72px; height: 96px; flex: none; }
+  .to-scale { display: none; }
+}
+@media (max-width: 520px) {
+  .option-art { height: 150px; }
 }

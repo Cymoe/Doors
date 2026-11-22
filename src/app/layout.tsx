@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: store.tagline,
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#f7f3ec" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#ffffff" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +16,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <header className="site-header">
           <div className="wrap">
-            <Link href="/" className="brand">{store.businessName}</Link>
+            <Link href="/" className="brand" aria-label={`${store.businessName} home`}>
+              {store.logo ? <img src={store.logo} alt={store.businessName} height={36} /> : store.businessName}
+            </Link>
             <nav className="nav" aria-label="Main">
               <Link href="/#doors">Doors</Link>
               <Link href="/measure">How to measure</Link>

@@ -42,7 +42,9 @@ const baseProduct = z.object({
     .optional(),
 });
 
-const namedAdder = z.object({ name: z.string().min(1), code, adder, note: z.string().optional() });
+/** A photo for an option card: a path under public/, e.g. /images/doors/style-shaker.jpg */
+const optionImage = z.string().regex(/^(https?:\/\/|\/)/).optional();
+const namedAdder = z.object({ name: z.string().min(1), code, adder, note: z.string().optional(), image: optionImage });
 const dims = z.object({ width: z.number().positive(), height: z.number().positive() });
 
 /**
@@ -62,6 +64,7 @@ export const doorProduct = baseProduct.extend({
         /** Number of door slabs; grade, style and oversize adders are charged per slab. */
         leaves: z.number().int().positive().default(1),
         note: z.string().optional(),
+        image: optionImage,
       }),
     )
     .min(1),
@@ -140,6 +143,8 @@ export const product = z
 
 export const storeConfig = z.object({
   businessName: z.string().min(1),
+  /** Logo image under public/, shown in the header. Falls back to the business name. */
+  logo: z.string().optional(),
   tagline: z.string().default(""),
   contact: z.object({
     /** Where quote requests are sent. */

@@ -179,12 +179,9 @@ function Leaf({ x, y, w, h, style, wood, knob, uid, knotty, seed }: LeafProps) {
       );
       break;
     }
-    case "SHK": {
-      const gapR = rail * 0.8;
-      const ph = (innerH - 2 * gapR) / 3;
-      panels = [0, 1, 2].map((i) => flat(ix, top + i * (ph + gapR), iw, ph, i));
+    case "SHK": // single flat panel
+      panels = flat(ix, top, iw, innerH, "a");
       break;
-    }
     case "4P": {
       const colW = (iw - stile * 0.8) / 2;
       const upper = lockY - top;

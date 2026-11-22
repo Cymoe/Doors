@@ -1,9 +1,10 @@
 # Shop-wide settings for the website and checkout.
-businessName: "Your Door Company"   # TODO: your business name
+businessName: Door to Door Co
+logo: /brand/logo.png
 tagline: Solid wood doors, built to your opening in Midland, Texas
 contact:
-  email: orders@example.com         # TODO: quote requests are sent here
-  # phone: "(432) 555-0100"         # TODO: shown in the header
+  email: info@doortodoorco.com      # quote requests are sent here
+  phone: "(770) 686-8446"
 
 # Percent charged at checkout; the rest is due at pickup or delivery.
 # Set to 100 to take full payment up front.
