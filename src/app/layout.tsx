@@ -5,6 +5,8 @@ import { CartLink } from "@/components/CartLink";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  // Full URLs for social previews (product photos); set SITE_URL in production.
+  metadataBase: new URL(process.env.SITE_URL || "http://localhost:3000"),
   title: { default: `${store.businessName}: Solid Wood Doors`, template: `%s | ${store.businessName}` },
   description: store.tagline,
 };
