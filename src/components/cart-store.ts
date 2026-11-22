@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { cartBody, type CartItem } from "@/cart-schema";
+import { MAX_CART_LINES, cartItem, type CartItem } from "@/cart-schema";
 import { MAX_QUANTITY } from "@/pricing";
 
 /**
@@ -24,8 +24,14 @@ function read(): CartItem[] {
   if (raw === cache.raw) return cache.items;
   let items = EMPTY;
   try {
-    const parsed = cartBody.safeParse({ items: raw ? JSON.parse(raw) : [] });
-    if (parsed.success) items = parsed.data.items;
+    const list: unknown = raw ? JSON.parse(raw) : [];
+    // Keep every valid line; one bad line (e.g. from an older version of the site) doesn't empty the cart.
+    if (Array.isArray(list)) {
+      items = list.flatMap((x) => {
+        const r = cartItem.safeParse(x);
+        return r.success ? [r.data] : [];
+      }).slice(0, MAX_CART_LINES);
+    }
   } catch {
     items = EMPTY;
   }
@@ -60,8 +66,11 @@ export function useCart(): CartItem[] {
 const newId = () =>
   typeof crypto !== "undefined" && "randomUUID" in crypto ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`;
 
+/** What happened when adding: added in full, added but capped at the per-line limit, or refused. */
+export type AddResult = { status: "added" } | { status: "capped"; quantity: number } | { status: "full" };
+
 export const cart = {
-  add(item: Omit<CartItem, "id">) {
+  add(item: Omit<CartItem, "id">): AddResult {
     const items = read();
     // Same product, same choices: bump the quantity instead of adding a second line.
     const same = items.find(
@@ -72,10 +81,13 @@ export const cart = {
         JSON.stringify(x.addons) === JSON.stringify(item.addons),
     );
     if (same) {
-      write(items.map((x) => (x === same ? { ...x, quantity: Math.min(MAX_QUANTITY, x.quantity + item.quantity) } : x)));
-    } else {
-      write([...items, { ...item, id: newId() }]);
+      const quantity = Math.min(MAX_QUANTITY, same.quantity + item.quantity);
+      write(items.map((x) => (x === same ? { ...x, quantity } : x)));
+      return quantity < same.quantity + item.quantity ? { status: "capped", quantity } : { status: "added" };
     }
+    if (items.length >= MAX_CART_LINES) return { status: "full" };
+    write([...items, { ...item, id: newId() }]);
+    return { status: "added" };
   },
   setQuantity(id: string, quantity: number) {
     write(read().map((x) => (x.id === id ? { ...x, quantity: Math.max(1, Math.min(MAX_QUANTITY, quantity)) } : x)));

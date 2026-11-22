@@ -12,8 +12,12 @@ async function loadSession(id: string | undefined) {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!id || !key || !/^cs_[A-Za-z0-9_]+$/.test(id)) return undefined;
   try {
-    const s = await new Stripe(key).checkout.sessions.retrieve(id, { expand: ["line_items"] });
-    return s.payment_status === "paid" ? s : undefined;
+    const stripe = new Stripe(key);
+    const s = await stripe.checkout.sessions.retrieve(id);
+    if (s.payment_status !== "paid") return undefined;
+    // Expanding line_items only returns the first 10; list them all (a cart holds up to 50 lines).
+    const items = await stripe.checkout.sessions.listLineItems(id, { limit: 100 });
+    return { ...s, lineItems: items.data };
   } catch {
     return undefined;
   }
@@ -24,7 +28,8 @@ export default async function Success({ searchParams }: { searchParams: Promise<
 
   return (
     <div className="wrap prose" style={{ padding: "48px 16px" }}>
-      <ClearCart />
+      {/* Only a paid order empties the cart; visiting this page otherwise leaves it alone. */}
+      {session && <ClearCart />}
       <p className="eyebrow">Thank you</p>
       <h1>Your order is in.</h1>
       {session ? (
@@ -36,7 +41,7 @@ export default async function Success({ searchParams }: { searchParams: Promise<
           <div className="summary">
             <table>
               <tbody>
-                {session.line_items?.data.map((li) => (
+                {session.lineItems.map((li) => (
                   <tr key={li.id}>
                     <td>
                       {li.quantity} × {li.description}

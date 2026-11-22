@@ -26,7 +26,7 @@ describe("inches", () => {
     ["3/4", 0.75],
   ])("parses %s", (s, n) => expect(parseInches(s)).toBe(n));
 
-  it.each(["", "abc", "32 1/0", "-5"])("rejects %j", (s) => expect(parseInches(s)).toBeUndefined());
+  it.each(["", "abc", "32 1/0", "-5", "32 3/2"])("rejects %j", (s) => expect(parseInches(s)).toBeUndefined());
 
   it("formats", () => {
     expect(formatInches(32)).toBe('32"');

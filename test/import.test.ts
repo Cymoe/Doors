@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { categorize, htmlToText, toCatalogProduct } from "../src/import-shopify";
+import { categorize, htmlToText, isGlassOrLouver, toCatalogProduct } from "../src/import-shopify";
 import { product } from "../src/schema";
 
 describe("categorize", () => {
@@ -94,4 +94,12 @@ describe("no primed products", () => {
       }
     }
   });
+});
+
+describe("isGlassOrLouver", () => {
+  it.each(["15-lite-french-door", "Single Lite Exterior Door", "5 Lite Sidelite", "louver-over-raised-panel-door", "Mirrored Bypass Door"])(
+    "skips %s",
+    (s) => expect(isGlassOrLouver(s)).toBe(true),
+  );
+  it.each(["Elite Leverset", "satellite-hinge", "2 Panel Shaker Style Door"])("keeps %s", (s) => expect(isGlassOrLouver(s)).toBe(false));
 });

@@ -57,7 +57,8 @@ export function parseInches(input: string): number | undefined {
   let m = s.match(/^(\d+(?:\.\d+)?)$/);
   if (m) return Number(m[1]);
   m = s.match(/^(\d+)[\s-]+(\d+)\/(\d+)$/);
-  if (m && Number(m[3]) > 0) return Number(m[1]) + Number(m[2]) / Number(m[3]);
+  // A mixed number's fraction must be less than 1 ("32 1/2", not "32 3/2").
+  if (m && Number(m[3]) > 0 && Number(m[2]) < Number(m[3])) return Number(m[1]) + Number(m[2]) / Number(m[3]);
   m = s.match(/^(\d+)\/(\d+)$/);
   if (m && Number(m[2]) > 0) return Number(m[1]) / Number(m[2]);
   return undefined;

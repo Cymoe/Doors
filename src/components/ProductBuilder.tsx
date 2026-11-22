@@ -32,6 +32,7 @@ export function ProductBuilder({ product, addons, shippingNote }: Props) {
   const [quantity, setQuantity] = useState(1);
 
   const variant = product.variants.find((v) => matches(v, picks));
+  const allSoldOut = !product.variants.some((v) => v.available);
   const resolved = resolveAddons(addons, addonState);
 
   /** Values of an option, in catalog order, with whether they work with the other current picks. */
@@ -78,7 +79,8 @@ export function ProductBuilder({ product, addons, shippingNote }: Props) {
       <div>
         <h1 className="product-title">{product.title}</h1>
         <p className="product-price">
-          {variant ? usd(variant.price) : "Not available"}
+          {!variant ? "Not available" : usd(variant.price)}
+          {variant && !variant.available && <span className="save"> Sold out</span>}
           {variant?.compareAtPrice && <s className="was">{usd(variant.compareAtPrice)}</s>}
           {variant?.compareAtPrice && (
             <span className="save">Save {usd(variant.compareAtPrice - variant.price)}</span>
@@ -113,7 +115,11 @@ export function ProductBuilder({ product, addons, shippingNote }: Props) {
           </fieldset>
         )}
 
-        {variant ? (
+        {variant && !variant.available ? (
+          <p className="notice">
+            {allSoldOut ? "This product is sold out." : "That option is sold out. Choose another size or option."}
+          </p>
+        ) : variant ? (
           resolved.complete ? (
             <AddToCart
               lines={[{ label: names.length ? names.map((n) => picks[n]).join(" · ") : product.title, amount: variant.price }]}

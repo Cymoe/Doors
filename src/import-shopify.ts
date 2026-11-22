@@ -55,7 +55,8 @@ const HIDDEN_HANDLES = /^(test|bold-test|custom-item|add-ons|adders|processing-f
 export const isPrimed = (s: string) => /primed/i.test(s);
 
 /** We don't sell glass, mirrored or louvered doors (French doors, lites, sidelites, louvers). */
-export const isGlassOrLouver = (s: string) => /lite|glass|french|mirror|frosted|louver/i.test(s);
+// "lite" only as a word (5-lite, single lite), so names like "Elite" aren't caught.
+export const isGlassOrLouver = (s: string) => /(^|[^a-z])lites?([^a-z]|$)|glass|french|mirror|frosted|louver/i.test(s);
 
 /** Which section of the store a product belongs in, from its type and handle. Undefined = don't import. */
 export function categorize(p: Pick<ShopifyProduct, "handle" | "product_type">): Category | undefined {

@@ -105,6 +105,19 @@ describe("POST /api/checkout", () => {
     expect(create).not.toHaveBeenCalled();
   });
 
+  it("marks prices as before-tax when Stripe Tax is on", async () => {
+    process.env.STRIPE_AUTOMATIC_TAX = "true";
+    try {
+      await POST(req({ items: [doubleDoor] }));
+      const params = create.mock.calls[0]![0] as any;
+      expect(params.automatic_tax).toEqual({ enabled: true });
+      expect(params.line_items[0].price_data.tax_behavior).toBe("exclusive");
+      expect(params.shipping_options[0].shipping_rate_data.tax_behavior).toBe("exclusive");
+    } finally {
+      delete process.env.STRIPE_AUTOMATIC_TAX;
+    }
+  });
+
   it("says checkout isn't set up when there's no Stripe key", async () => {
     delete process.env.STRIPE_SECRET_KEY;
     expect((await POST(req({ items: [latchItem] }))).status).toBe(503);

@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import type { AddonOffer } from "@/cart";
-import type { CartItem } from "@/cart-schema";
+import { MAX_CART_LINES, type CartItem } from "@/cart-schema";
 import { MAX_QUANTITY, usd, type PriceLine } from "@/pricing";
-import { cart } from "./cart-store";
+import { cart, type AddResult } from "./cart-store";
 
 /** Shared pieces of the one-step-at-a-time product flow. */
 
@@ -42,21 +42,22 @@ export function TodoRow({ label }: { label: string }) {
   );
 }
 
-/** The open step. Takes focus when the customer moves to it, so keyboard users land on it. */
+/**
+ * The open step. When the customer moves to it (`takeFocus`), it gets focus so
+ * keyboard and screen-reader users land on it, including when going back to
+ * step 1. On page load (`takeFocus` false) it leaves focus alone.
+ */
 export function StepPanel(props: {
   index: number;
   total: number;
   heading: string;
+  takeFocus: boolean;
   onBack?: () => void;
   children: ReactNode;
 }) {
   const ref = useRef<HTMLElement>(null);
-  const mounted = useRef(false);
   useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-      if (props.index === 0) return; // don't steal focus on page load
-    }
+    if (!props.takeFocus) return;
     const el = ref.current;
     if (!el) return;
     el.focus({ preventScroll: true });
@@ -166,12 +167,14 @@ export function AddonsStep({ offers, state, onChange }: {
                 const before = { ...o.fixed, ...Object.fromEntries(free.slice(0, k).filter((n) => s.picks[n]).map((n) => [n, s.picks[n]!])) };
                 const pool = o.product.variants.filter((v) => Object.entries(before).every(([kk, x]) => v.options[kk] === x));
                 const values = [...new Set(pool.map((v) => v.options[name]!))];
+                const inStock = (val: string) => pool.some((v) => v.options[name] === val && v.available);
                 return (
                   <div key={name} className="addon-opt">
                     <span className="addon-opt-name">{name}</span>
                     <div className="chips small">
                       {values.map((val) => (
                         <button key={val} type="button" className="chip" aria-pressed={s.picks[name] === val}
+                          disabled={!inStock(val)} title={inStock(val) ? undefined : "Sold out"}
                           onClick={() => {
                             // Clear later picks when an earlier one changes.
                             const picks: Record<string, string> = {};
@@ -205,11 +208,11 @@ export function AddToCart(props: {
   shippingNote?: string;
   item: Omit<CartItem, "id" | "quantity">;
 }) {
-  const [added, setAdded] = useState(false);
+  const [added, setAdded] = useState<AddResult | null>(null);
   const each = props.lines.reduce((a, l) => a + l.amount, 0) + props.addons.reduce((a, x) => a + x.price, 0);
   // A new choice means it hasn't been added yet. (Compare by value: `item` is a new object every render.)
   const itemKey = JSON.stringify(props.item);
-  useEffect(() => setAdded(false), [itemKey, props.quantity]);
+  useEffect(() => setAdded(null), [itemKey, props.quantity]);
 
   return (
     <div className="summary" aria-live="polite">
@@ -238,9 +241,19 @@ export function AddToCart(props: {
         <strong className="line-total">{usd(each * props.quantity)}</strong>
       </div>
       {props.note && <p className="muted small-print">{props.note}</p>}
-      {added ? (
+      {added?.status === "full" ? (
+        <p className="notice error">
+          Your cart is full ({MAX_CART_LINES} items). Check out or remove something first. <Link href="/cart">View cart</Link>
+        </p>
+      ) : added ? (
         <div className="added">
-          <p className="notice ok">Added to your cart.</p>
+          {added.status === "capped" ? (
+            <p className="notice">
+              You can order up to {MAX_QUANTITY} of one item online; your cart now has {added.quantity}. For more, request a quote.
+            </p>
+          ) : (
+            <p className="notice ok">Added to your cart.</p>
+          )}
           <div className="step-nav">
             <Link className="btn secondary" href="/">Keep shopping</Link>
             <Link className="btn" href="/cart">View cart &amp; check out</Link>
@@ -248,8 +261,7 @@ export function AddToCart(props: {
         </div>
       ) : (
         <button type="button" className="btn block" onClick={() => {
-          cart.add({ ...props.item, quantity: props.quantity });
-          setAdded(true);
+          setAdded(cart.add({ ...props.item, quantity: props.quantity }));
         }}>
           Add to cart
         </button>

@@ -37,6 +37,8 @@ export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Pr
   const [addonState, setAddonState] = useState<AddonState>({});
   const [quantity, setQuantity] = useState(1);
   const [showQuote, setShowQuote] = useState(false);
+  /** Set once the customer moves between steps; until then a step doesn't grab focus (page load). */
+  const [moved, setMoved] = useState(false);
 
   const offers = addonsByConfiguration[configuration] ?? [];
   const step = STEPS.indexOf(current);
@@ -75,6 +77,7 @@ export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Pr
 
   function go(next: StepKey) {
     setCurrent(next);
+    setMoved(true);
     setFurthest((f) => Math.max(f, STEPS.indexOf(next)));
     setShowQuote(false);
   }
@@ -248,7 +251,7 @@ export function DoorBuilder({ product, addonsByConfiguration, shippingNote }: Pr
         {STEPS.map((key, i) => {
           if (key === current) {
             return (
-              <StepPanel key={key} index={i} total={STEPS.length}
+              <StepPanel key={key} index={i} total={STEPS.length} takeFocus={moved}
                 heading={key === "build" ? "Wood, size & add-ons" : `Choose your ${LABELS[key].toLowerCase()}`}
                 onBack={key === "style" ? () => go("type") : undefined}>
                 {panel}

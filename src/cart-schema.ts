@@ -27,6 +27,9 @@ export const cartItem = z.object({
   addons: z.array(z.object({ key: z.string().max(40), sku: z.string().max(100) })).max(10).default([]),
 });
 
-export const cartBody = z.object({ items: z.array(cartItem).max(50) });
+/** Most separate lines a cart can hold (Stripe allows 100 line items per checkout). */
+export const MAX_CART_LINES = 50;
+
+export const cartBody = z.object({ items: z.array(cartItem).max(MAX_CART_LINES) });
 
 export type CartItem = z.infer<typeof cartItem>;

@@ -26,6 +26,10 @@ export async function POST(req: Request) {
   const stripe = new Stripe(key);
   const origin = process.env.SITE_URL?.replace(/\/$/, "") || new URL(req.url).origin;
 
+  // With Stripe Tax on, prices are before tax (tax is added on top); Stripe needs this said explicitly.
+  const autoTax = process.env.STRIPE_AUTOMATIC_TAX === "true";
+  const taxBehavior = autoTax ? { tax_behavior: "exclusive" as const } : {};
+
   const summary = priced.lines
     .map((l) => `${l.quantity}x ${l.sku}${l.addons.length ? ` +${l.addons.map((a) => a.key).join("+")}` : ""}`)
     .join(", ");
@@ -38,6 +42,7 @@ export async function POST(req: Request) {
         price_data: {
           currency: "usd",
           unit_amount: cents(l.unitPrice),
+          ...taxBehavior,
           product_data: {
             name: l.title.slice(0, 250),
             description: [...l.details, ...l.addons.map((a) => `+ ${a.label}${a.details ? ` (${a.details})` : ""}`), `SKU ${l.sku}`]
@@ -52,6 +57,7 @@ export async function POST(req: Request) {
           shipping_rate_data: {
             type: "fixed_amount",
             fixed_amount: { amount: cents(priced.shipping.fee), currency: "usd" },
+            ...taxBehavior,
             display_name:
               priced.shipping.method === "free"
                 ? "Free shipping"
@@ -63,7 +69,7 @@ export async function POST(req: Request) {
       ],
       phone_number_collection: { enabled: true },
       customer_creation: "always",
-      ...(process.env.STRIPE_AUTOMATIC_TAX === "true" ? { automatic_tax: { enabled: true } } : {}),
+      ...(autoTax ? { automatic_tax: { enabled: true } } : {}),
       custom_text: {
         shipping_address: { message: `We ship to ${store.shipping.area}. For Alaska or Hawaii, contact us for a quote.` },
       },
