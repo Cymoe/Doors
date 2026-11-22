@@ -46,14 +46,21 @@ const namedAdder = z.object({ name: z.string().min(1), code: z.string().regex(/^
 /**
  * Made-to-order doors. Variants are generated from every combination of
  * configuration × wood grade × style, priced as
- * configuration base price + grade adder + style adder.
+ * configuration base price + leaves × (grade adder + style adder),
+ * where `leaves` is how many door slabs the configuration has (a French pair is 2).
  * Exact opening size is captured at checkout / in the quote, not as a variant.
  */
 export const doorProduct = baseProduct.extend({
   type: z.literal("door"),
   skuPrefix: z.string().regex(/^[A-Z0-9]+$/),
   configurations: z
-    .array(z.object({ name: z.string().min(1), code: z.string().regex(/^[A-Z0-9]+$/), basePrice: money }))
+    .array(z.object({
+        name: z.string().min(1),
+        code: z.string().regex(/^[A-Z0-9]+$/),
+        basePrice: money,
+        /** Number of door slabs; grade and style adders are charged per slab. */
+        leaves: z.number().int().positive().default(1),
+      }))
     .min(1),
   grades: z.array(namedAdder).min(1),
   styles: z.array(namedAdder).min(1),

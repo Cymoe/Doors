@@ -40,7 +40,7 @@ function buildDoorVariants(p: DoorProduct): BuiltProduct {
             ["Wood", g.name],
             ["Style", s.name],
           ],
-          price: round2(c.basePrice + g.adder + s.adder),
+          price: round2(c.basePrice + c.leaves * (g.adder + s.adder)),
           meta: {},
         });
       }

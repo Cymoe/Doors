@@ -1,6 +1,9 @@
 # Custom solid pine interior door, built to the customer's opening.
-# Variants = configuration x wood x style; price = basePrice + wood adder + style adder.
-# Prices marked TODO are placeholders. Keep status: draft until they're confirmed.
+# Variants = configuration x wood x style.
+# price = basePrice + leaves x (wood adder + style adder)
+#   leaves = number of door slabs, so a French pair pays style/wood extras twice.
+# Single ($495) and French Pair ($995) come from the listing; the rest are
+# estimated from them (see comments).
 type: door
 handle: solid-pine-interior-door
 title: Solid Pine Interior Door, Custom Built
@@ -31,24 +34,25 @@ seo:
   description: Solid pine interior doors built to your exact opening. Singles from $495, French pairs from $995. Sold unfinished, ready to stain or paint.
 
 configurations:
-  - { name: Single,      code: SGL,    basePrice: 495 }
-  - { name: French Pair, code: FRP,    basePrice: 995 }
-  - { name: Bifold,      code: BIF,    basePrice: 495 }  # TODO price
-  - { name: Barn Door,   code: BARN,   basePrice: 495 }  # TODO price
-  - { name: Pocket Door, code: POCKET, basePrice: 495 }  # TODO price
+  - { name: Single,      code: SGL,    leaves: 1, basePrice: 495 }  # from listing
+  - { name: French Pair, code: FRP,    leaves: 2, basePrice: 995 }  # from listing
+  - { name: Bifold,      code: BIF,    leaves: 2, basePrice: 795 }  # 2 narrow slabs + hinging; between single and pair
+  - { name: Barn Door,   code: BARN,   leaves: 1, basePrice: 595 }  # oversized slab to overlap the opening; hardware not included
+  - { name: Pocket Door, code: POCKET, leaves: 1, basePrice: 545 }  # single slab, extra fitting for the pocket frame; frame not included
 
+# Adders are per slab.
 grades:
   - { name: Clear Pine,  code: CLR, adder: 0 }
-  - { name: Knotty Pine, code: KNT, adder: 0 }  # TODO price difference, if any
+  - { name: Knotty Pine, code: KNT, adder: 0 }    # same price as clear, so "singles from $495" holds
 
 styles:
-  - { name: 2-Panel Square Top, code: 2PSQ, adder: 0 }
-  - { name: 2-Panel Arch Top,   code: 2PAR, adder: 0 }  # TODO
-  - { name: Shaker,             code: SHK,  adder: 0 }  # TODO
-  - { name: 4-Panel,            code: 4P,   adder: 0 }  # TODO
-  - { name: Louvered,           code: LOUV, adder: 0 }  # TODO
-  - { name: French Glass,       code: GLS,  adder: 0 }  # TODO
-  - { name: Mirrored,           code: MIR,  adder: 0 }  # TODO
+  - { name: 2-Panel Square Top, code: 2PSQ, adder: 0 }    # the base door
+  - { name: Shaker,             code: SHK,  adder: 0 }    # same build as square top, flat panels
+  - { name: 4-Panel,            code: 4P,   adder: 50 }   # extra rails and panels
+  - { name: 2-Panel Arch Top,   code: 2PAR, adder: 125 }  # curved top rail and panel
+  - { name: Mirrored,           code: MIR,  adder: 125 }  # mirror panel
+  - { name: French Glass,       code: GLS,  adder: 150 }  # tempered glass and muntins
+  - { name: Louvered,           code: LOUV, adder: 175 }  # most labor: dozens of slats
 
 # Combinations you don't build. Any field left out matches everything.
 exclude: []

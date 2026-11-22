@@ -44,6 +44,14 @@ describe("door variants", () => {
     expect(v.find((x) => x.sku === "PINE-POCKET-KNT-MIR")).toBeUndefined();
     expect(v).toHaveLength(5 * 2 - 1);
   });
+
+  it("charges grade and style adders per slab", async () => {
+    const door = (await parseProductFile("catalog/products/doors/solid-pine-interior-door.yaml")) as DoorProduct;
+    const price = (sku: string) => buildVariants(door).variants.find((x) => x.sku === sku)!.price;
+    expect(price("PINE-SGL-CLR-LOUV")).toBe(495 + 175);
+    expect(price("PINE-FRP-CLR-LOUV")).toBe(995 + 2 * 175);
+    expect(price("PINE-FRP-KNT-GLS")).toBe(995 + 2 * 150);
+  });
 });
 
 describe("Shopify mapping", () => {

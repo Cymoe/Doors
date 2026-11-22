@@ -40,7 +40,8 @@ src/
 Barn, Pocket) with a base price, wood grades and styles with price adders, and every
 combination becomes a Shopify variant:
 
-`price = configuration basePrice + grade adder + style adder`, SKU `PINE-SGL-CLR-SHK`.
+`price = configuration basePrice + leaves × (grade adder + style adder)`, SKU `PINE-SGL-CLR-SHK`.
+`leaves` is the number of door slabs (French pair and bifold = 2), so extras cost twice on a pair.
 
 Use `exclude` for combinations you don't build. Door variants never sell out
 (`inventoryPolicy: CONTINUE`, not tracked). The exact opening size isn't a variant;
@@ -80,8 +81,9 @@ API version defaults to `2025-10` (`SHOPIFY_API_VERSION` to change it).
 
 ## Still to do
 
-- **Confirm prices.** Bifold, barn and pocket door prices, knotty-pine and style adders are
-  placeholders (marked `TODO` in the door file). The door stays `status: draft` until then.
+- **Review estimated prices.** Only Single $495 and French Pair $995 came from the listing;
+  the other configurations and style adders are estimates (reasons are in the
+  door file's comments). The door stays `status: draft` until you switch it to `active`.
 - **Opening size at checkout.** Add width/height fields on the product page (line item
   properties in the theme, or a product-options app) so each order carries its size.
   Decide whether oversized openings cost more.
