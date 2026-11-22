@@ -38,7 +38,7 @@ cp .env.example .env.local   # then fill in the keys
   then optional add-ons, then review and **Add to cart**.
 - **Custom door builder** (`/products/solid-pine-interior-door`): door type, style, wood (all with photos),
   the opening size (`32`, `32.5` and `32 1/2` all work), add-ons, then add to cart.
-- **Add-ons** (`catalog/addons.yaml`): jamb kit, knob bore and casing, offered on interior and French doors
+- **Add-ons** (`catalog/addons.yaml`): jamb kit and knob bore, offered on interior and French doors
   and on the custom single and French pair. A pair automatically gets the double-door version.
 - **Cart** (`/cart`): kept in the customer's browser. It holds choices only; `/api/cart` prices it.
 - **Checkout**: Stripe Checkout, paid in full. Each cart line is a Stripe line item whose description
@@ -64,7 +64,7 @@ catalog/
   addons.yaml                    which add-ons are offered on which doors
   products/doors/*.yaml          the custom door: prices, styles, size rules, photos per option
   products/<category>/*.yaml     catalog products (imported from Shopify): options, variants, prices
-  products/addons/*.yaml         add-on products (jamb kits, bore, casing); not listed on their own
+  products/addons/*.yaml         add-on products (jamb kits, bore); not listed on their own
   _templates/flooring.yaml       copy into products/flooring/ to start selling flooring
   _templates/tile.yaml           same for tile
 ```
@@ -79,7 +79,7 @@ npm run import:shopify                     # re-import from www.doortodoorco.com
 ```
 
 Reads the store's public product feed, sorts products into categories, skips internal items
-(fees, hidden options, tests) and products without photos, imports the add-on products as unlisted, and saves
+(fees, hidden options, tests), anything primed, and products without photos, imports the add-on products as unlisted, and saves
 up to 4 photos per product as JPEGs. Imported files start with an "Imported from Shopify" line;
 delete that line from a file you've edited and future imports leave it alone.
 

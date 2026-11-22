@@ -46,12 +46,13 @@ export const ADDON_HANDLES = new Set([
   "jamb-kit-single-door",
   "jamb-kit-double-door",
   "slab-door-bore-hole-single-2-3-8-backset",
-  "interior-door-casing-single-door",
-  "interior-primed-square-casing-double-door",
 ]);
 
 const HIDDEN_TYPES = new Set(["OPTIONS_HIDDEN_PRODUCT", "mw_product_option", "mws_fee_generated", "Gift Card"]);
 const HIDDEN_HANDLES = /^(test|bold-test|custom-item|add-ons|adders|processing-fee|shipping-handling-fee|expedited-fee|hinge|hinge-finishes|primed|pre-hanging|door-configuration|keying-option|custom-options-for-)/;
+
+/** We don't sell primed doors or parts: skip primed products, and primed choices within a product. */
+export const isPrimed = (s: string) => /primed/i.test(s);
 
 /** Which section of the store a product belongs in, from its type and handle. Undefined = don't import. */
 export function categorize(p: Pick<ShopifyProduct, "handle" | "product_type">): Category | undefined {
@@ -101,7 +102,9 @@ export function toCatalogProduct(p: ShopifyProduct, category: Category, images: 
   const singleVariant = p.options.length === 1 && p.options[0]!.name === "Title" && p.variants.length === 1;
   const optionNames = singleVariant ? [] : p.options.map((o) => cleanOptionName(o.name));
   const seen = new Set<string>();
-  const variants = p.variants.map((v) => {
+  const variants = p.variants
+    .filter((v) => ![v.option1, v.option2, v.option3].some((o) => o && isPrimed(o)))
+    .map((v) => {
     let sku = (v.sku ?? "").trim();
     if (!sku || seen.has(sku)) sku = `DTD-${v.id}`;
     seen.add(sku);
@@ -182,9 +185,10 @@ async function main() {
   }
   console.log(`${all.length} products in the store`);
 
-  let written = 0, skippedHidden = 0, skippedNoPhoto = 0, keptEdited = 0;
+  let written = 0, skippedPrimed = 0, skippedHidden = 0, skippedNoPhoto = 0, keptEdited = 0;
   const problems: string[] = [];
   await pool(all, 6, async (p) => {
+    if (isPrimed(p.handle) || isPrimed(p.title)) return void skippedPrimed++;
     const addon = ADDON_HANDLES.has(p.handle);
     const category = addon ? "hardware" : categorize(p);
     if (!category) return void skippedHidden++;
@@ -214,7 +218,7 @@ async function main() {
   });
 
   console.log(
-    `wrote ${written}; skipped ${skippedHidden} internal/add-on items, ${skippedNoPhoto} without photos, ` +
+    `wrote ${written}; skipped ${skippedPrimed} primed, ${skippedHidden} internal/add-on items, ${skippedNoPhoto} without photos, ` +
       `${keptEdited} hand-edited files`,
   );
   if (problems.length) {

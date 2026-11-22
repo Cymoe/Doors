@@ -44,7 +44,7 @@ describe("priceCart", () => {
   it("adds a double jamb kit and bore to a French pair, and refuses mismatched add-ons", () => {
     const door = getProduct("solid-pine-interior-door")!;
     const offers = addonsFor(door, "FRP");
-    expect(offers.map((o) => o.key)).toEqual(["jamb", "bore", "casing"]);
+    expect(offers.map((o) => o.key)).toEqual(["jamb", "bore"]);
     const jamb = offers.find((o) => o.key === "jamb")!;
     expect(jamb.product.handle).toBe("jamb-kit-double-door");
     const bore = offers.find((o) => o.key === "bore")!;

@@ -18,11 +18,3 @@ addons:
     double: { product: slab-door-bore-hole-single-2-3-8-backset, options: { Door Configuration: Double Door } }
     categories: [interior, french]
     customConfigurations: [SGL, FRP]
-
-  - key: casing
-    label: Door casing
-    description: Primed square casing, 11/16" x 2-1/4".
-    single: { product: interior-door-casing-single-door }
-    double: { product: interior-primed-square-casing-double-door }
-    categories: [interior, french]
-    customConfigurations: [SGL, FRP]

@@ -32,18 +32,6 @@ variants:
       Finish: Clear
       Height: 8' (96")
     price: 145
-  - sku: DTD-4251650949131
-    options:
-      Jamb Size: 4-5/8"
-      Finish: Primed
-      Height: 6' 8" (80")
-    price: 158
-  - sku: DTD-46216547336362
-    options:
-      Jamb Size: 4-5/8"
-      Finish: Primed
-      Height: 8' (96")
-    price: 173
   - sku: DTD-31199338856532
     options:
       Jamb Size: 4-5/8"
@@ -68,18 +56,6 @@ variants:
       Finish: Clear
       Height: 8' (96")
     price: 179
-  - sku: DTD-4251650981899
-    options:
-      Jamb Size: 6-5/8"
-      Finish: Primed
-      Height: 6' 8" (80")
-    price: 179
-  - sku: DTD-46216547532970
-    options:
-      Jamb Size: 6-5/8"
-      Finish: Primed
-      Height: 8' (96")
-    price: 177
   - sku: DTD-44060821749930
     options:
       Jamb Size: 6-5/8"
@@ -104,18 +80,6 @@ variants:
       Finish: Clear
       Height: 8' (96")
     price: 145
-  - sku: DTD-4251653898251
-    options:
-      Jamb Size: 6-1/2"
-      Finish: Primed
-      Height: 6' 8" (80")
-    price: 208
-  - sku: DTD-46216547631274
-    options:
-      Jamb Size: 6-1/2"
-      Finish: Primed
-      Height: 8' (96")
-    price: 145
   - sku: DTD-4251654520843
     options:
       Jamb Size: 6-1/4"
@@ -126,18 +90,6 @@ variants:
     options:
       Jamb Size: 6-1/4"
       Finish: Clear
-      Height: 8' (96")
-    price: 145
-  - sku: DTD-4251654553611
-    options:
-      Jamb Size: 6-1/4"
-      Finish: Primed
-      Height: 6' 8" (80")
-    price: 208
-  - sku: DTD-46216547696810
-    options:
-      Jamb Size: 6-1/4"
-      Finish: Primed
       Height: 8' (96")
     price: 145
 listed: false

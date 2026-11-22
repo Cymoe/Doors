@@ -61,3 +61,37 @@ describe("toCatalogProduct", () => {
     expect(product.safeParse(out).success).toBe(true);
   });
 });
+
+describe("no primed products", () => {
+  it("drops primed choices from a product's variants", () => {
+    const out = toCatalogProduct(
+      {
+        handle: "jamb",
+        title: "Jamb",
+        body_html: "",
+        product_type: "",
+        tags: [],
+        options: [{ name: "Finish", position: 1, values: ["Clear", "Primed"] }],
+        variants: [
+          { id: 1, sku: "C", price: "100", compare_at_price: null, option1: "Clear", option2: null, option3: null },
+          { id: 2, sku: "P", price: "90", compare_at_price: null, option1: "Primed", option2: null, option3: null },
+        ],
+        images: [],
+      },
+      "hardware",
+      [],
+    );
+    expect(out.variants.map((v) => v.sku)).toEqual(["C"]);
+  });
+
+  it("has nothing primed in the catalog", async () => {
+    const { loadCatalog } = await import("../src/load");
+    const { products } = await loadCatalog();
+    for (const { product: p } of products) {
+      expect(p.title).not.toMatch(/primed/i);
+      if (p.type === "standard") {
+        for (const v of p.variants) expect(Object.values(v.options).join(" ")).not.toMatch(/primed/i);
+      }
+    }
+  });
+});
