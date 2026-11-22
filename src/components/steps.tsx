@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import type { StoreConfig } from "@/schema";
-import { MAX_QUANTITY, usd, type Fulfillment, type OrderTotals, type PriceLine } from "@/pricing";
+import Link from "next/link";
+import type { AddonOffer } from "@/cart";
+import type { CartItem } from "@/cart-schema";
+import { MAX_QUANTITY, usd, type PriceLine } from "@/pricing";
+import { cart } from "./cart-store";
 
 /** Shared pieces of the one-step-at-a-time product flow. */
 
@@ -39,7 +42,7 @@ export function TodoRow({ label }: { label: string }) {
   );
 }
 
-/** The open step. Takes focus when it opens (after the first render) so keyboard users land on it. */
+/** The open step. Takes focus when the customer moves to it, so keyboard users land on it. */
 export function StepPanel(props: {
   index: number;
   total: number;
@@ -50,10 +53,9 @@ export function StepPanel(props: {
   const ref = useRef<HTMLElement>(null);
   const mounted = useRef(false);
   useEffect(() => {
-    // Don't steal focus or scroll on page load; only when the customer moves between steps.
     if (!mounted.current) {
       mounted.current = true;
-      if (props.index === 0) return;
+      if (props.index === 0) return; // don't steal focus on page load
     }
     const el = ref.current;
     if (!el) return;
@@ -96,116 +98,163 @@ export function QuantityPicker({ value, onChange, unit }: { value: number; onCha
       <button type="button" aria-label="One fewer" onClick={() => onChange(Math.max(1, value - 1))}>−</button>
       <output aria-live="polite">{value}</output>
       <button type="button" aria-label="One more" onClick={() => onChange(Math.min(MAX_QUANTITY, value + 1))}>+</button>
-      <span className="muted" style={{ marginLeft: 8 }}>{value === 1 ? unit[0] : unit[1]}</span>
+      {unit[0] && <span className="muted" style={{ marginLeft: 8 }}>{value === 1 ? unit[0] : unit[1]}</span>}
     </div>
   );
 }
 
-export function FulfillmentPicker({ store, value, onChange }: {
-  store: StoreConfig;
-  value: Fulfillment;
-  onChange: (f: Fulfillment) => void;
+/* ---------- Add-ons ---------- */
+
+/** Per add-on: whether it's wanted, and the options picked so far. */
+export type AddonState = Record<string, { on: boolean; picks: Record<string, string> }>;
+
+export interface ResolvedAddon {
+  key: string;
+  label: string;
+  sku: string;
+  details: string;
+  price: number;
+}
+
+/** Turns the add-on step's state into chosen SKUs. `complete` is false while a wanted add-on is missing a pick. */
+export function resolveAddons(offers: AddonOffer[], state: AddonState): { complete: boolean; chosen: ResolvedAddon[] } {
+  const chosen: ResolvedAddon[] = [];
+  let complete = true;
+  for (const o of offers) {
+    const s = state[o.key];
+    if (!s?.on) continue;
+    const want = { ...s.picks, ...o.fixed };
+    const v = o.product.variants.find((x) => o.product.optionNames.every((n) => x.options[n] === want[n]));
+    if (!v || !v.available) {
+      complete = false;
+      continue;
+    }
+    const details = o.product.optionNames.filter((n) => !(n in o.fixed)).map((n) => v.options[n]).join(", ");
+    chosen.push({ key: o.key, label: o.label, sku: v.sku, details, price: v.price });
+  }
+  return { complete, chosen };
+}
+
+const minPrice = (o: AddonOffer) =>
+  Math.min(...o.product.variants.filter((v) => Object.entries(o.fixed).every(([k, x]) => v.options[k] === x)).map((v) => v.price));
+
+export function AddonsStep({ offers, state, onChange }: {
+  offers: AddonOffer[];
+  state: AddonState;
+  onChange: (s: AddonState) => void;
 }) {
   return (
-    <div className="choices" style={{ marginTop: 16 }} role="radiogroup" aria-label="Pickup or delivery">
-      {store.pickup.enabled && (
-        <div className="choice">
-          <input type="radio" id="ful-pickup" name="fulfillment" checked={value === "pickup"} onChange={() => onChange("pickup")} />
-          <label htmlFor="ful-pickup">Pickup<span>{store.pickup.location} · free</span></label>
-        </div>
-      )}
-      {store.localDelivery.enabled && (
-        <div className="choice">
-          <input type="radio" id="ful-delivery" name="fulfillment" checked={value === "delivery"} onChange={() => onChange("delivery")} />
-          <label htmlFor="ful-delivery">
-            Local delivery<span>{store.localDelivery.area} · {usd(store.localDelivery.fee)}</span>
-          </label>
-        </div>
-      )}
+    <div className="addons">
+      {offers.map((o) => {
+        const s = state[o.key] ?? { on: false, picks: {} };
+        const free = o.product.optionNames.filter((n) => !(n in o.fixed));
+        const set = (next: Partial<typeof s>) => onChange({ ...state, [o.key]: { ...s, ...next } });
+        return (
+          <div key={o.key} className={`addon${s.on ? " on" : ""}`}>
+            <label className="addon-head">
+              <input type="checkbox" checked={s.on} onChange={(e) => set({ on: e.target.checked })} />
+              <span>
+                <strong>{o.label}</strong>
+                <span className="addon-price"> from {usd(minPrice(o))}</span>
+                {o.description && <span className="addon-desc">{o.description}</span>}
+                {o.note && <span className="addon-note">{o.note}</span>}
+              </span>
+            </label>
+            {s.on &&
+              free.map((name, k) => {
+                // Values still possible given the fixed options and the picks before this one.
+                const before = { ...o.fixed, ...Object.fromEntries(free.slice(0, k).filter((n) => s.picks[n]).map((n) => [n, s.picks[n]!])) };
+                const pool = o.product.variants.filter((v) => Object.entries(before).every(([kk, x]) => v.options[kk] === x));
+                const values = [...new Set(pool.map((v) => v.options[name]!))];
+                return (
+                  <div key={name} className="addon-opt">
+                    <span className="addon-opt-name">{name}</span>
+                    <div className="chips small">
+                      {values.map((val) => (
+                        <button key={val} type="button" className="chip" aria-pressed={s.picks[name] === val}
+                          onClick={() => {
+                            // Clear later picks when an earlier one changes.
+                            const picks: Record<string, string> = {};
+                            for (const n of free.slice(0, k)) if (s.picks[n]) picks[n] = s.picks[n]!;
+                            picks[name] = val;
+                            set({ picks });
+                          }}>
+                          <span className="chip-title">{val}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-export const defaultFulfillment = (store: StoreConfig): Fulfillment => (store.pickup.enabled ? "pickup" : "delivery");
+/* ---------- Review & add to cart ---------- */
 
-/** Order summary with the pay button. `body` is what /api/checkout needs for this product. */
-export function OrderSummary(props: {
+export function AddToCart(props: {
   lines: PriceLine[];
+  addons: ResolvedAddon[];
   quantity: number;
-  totals: OrderTotals;
-  depositPercent: number;
-  fulfillment: Fulfillment;
+  onQuantity: (n: number) => void;
+  unit: [string, string];
   note?: string;
-  checkoutBody: Record<string, unknown>;
+  shippingNote?: string;
+  item: Omit<CartItem, "id" | "quantity">;
 }) {
-  const { lines, quantity, totals, depositPercent, fulfillment } = props;
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const deposit = depositPercent < 100;
-
-  async function checkout() {
-    setSubmitting(true);
-    setError(null);
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...props.checkoutBody, fulfillment }),
-      });
-      const body = (await res.json()) as { url?: string; error?: string };
-      if (!res.ok || !body.url) throw new Error(body.error ?? "Checkout failed. Please try again.");
-      window.location.href = body.url;
-    } catch (e) {
-      setError((e as Error).message);
-      setSubmitting(false);
-    }
-  }
+  const [added, setAdded] = useState(false);
+  const each = props.lines.reduce((a, l) => a + l.amount, 0) + props.addons.reduce((a, x) => a + x.price, 0);
+  // A new choice means it hasn't been added yet. (Compare by value: `item` is a new object every render.)
+  const itemKey = JSON.stringify(props.item);
+  useEffect(() => setAdded(false), [itemKey, props.quantity]);
 
   return (
     <div className="summary" aria-live="polite">
       <table>
         <tbody>
-          {lines.map((l) => (
+          {props.lines.map((l) => (
             <tr key={l.label}>
               <td>{l.label}</td>
               <td>{l.amount < 0 ? `−${usd(-l.amount)}` : usd(l.amount)}</td>
             </tr>
           ))}
-          {quantity > 1 && (
-            <tr>
-              <td>× {quantity}</td>
-              <td>{usd(totals.subtotal)}</td>
+          {props.addons.map((a) => (
+            <tr key={a.key}>
+              <td>{a.label}{a.details ? ` (${a.details})` : ""}</td>
+              <td>{usd(a.price)}</td>
             </tr>
-          )}
-          {totals.delivery > 0 && (
-            <tr>
-              <td>Local delivery</td>
-              <td>{usd(totals.delivery)}</td>
-            </tr>
-          )}
+          ))}
           <tr className="total">
-            <td>Total</td>
-            <td>{usd(totals.total)}</td>
+            <td>Each</td>
+            <td>{usd(each)}</td>
           </tr>
-          {deposit && (
-            <>
-              <tr className="due">
-                <td>Due today ({depositPercent}% deposit)</td>
-                <td>{usd(totals.dueNow)}</td>
-              </tr>
-              <tr>
-                <td className="muted">Due at {fulfillment}</td>
-                <td className="muted">{usd(totals.balance)}</td>
-              </tr>
-            </>
-          )}
         </tbody>
       </table>
-      {props.note && <p className="muted" style={{ fontSize: "0.85rem", margin: "10px 0 14px" }}>{props.note}</p>}
-      <button type="button" className="btn block" style={{ marginTop: props.note ? 0 : 14 }} disabled={submitting} onClick={checkout}>
-        {submitting ? "Opening secure checkout…" : deposit ? `Pay ${usd(totals.dueNow)} deposit` : `Pay ${usd(totals.total)}`}
-      </button>
-      {error && <p className="notice error">{error}</p>}
+      <div className="add-row">
+        <QuantityPicker value={props.quantity} onChange={props.onQuantity} unit={props.unit} />
+        <strong className="line-total">{usd(each * props.quantity)}</strong>
+      </div>
+      {props.note && <p className="muted small-print">{props.note}</p>}
+      {added ? (
+        <div className="added">
+          <p className="notice ok">Added to your cart.</p>
+          <div className="step-nav">
+            <Link className="btn secondary" href="/">Keep shopping</Link>
+            <Link className="btn" href="/cart">View cart &amp; check out</Link>
+          </div>
+        </div>
+      ) : (
+        <button type="button" className="btn block" onClick={() => {
+          cart.add({ ...props.item, quantity: props.quantity });
+          setAdded(true);
+        }}>
+          Add to cart
+        </button>
+      )}
+      {props.shippingNote && <p className="muted small-print">{props.shippingNote}</p>}
     </div>
   );
 }

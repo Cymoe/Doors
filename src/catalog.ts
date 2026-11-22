@@ -1,23 +1,29 @@
 import data from "./generated/catalog.json";
-import { CATEGORIES, productCategory, type Category, type Product, type StoreConfig } from "./schema";
+import { CATEGORIES, productCategory, type AddonGroup, type Category, type Product, type StoreConfig } from "./schema";
 
 /**
  * The catalog as the site sees it. src/generated/catalog.json is written by
  * `npm run catalog` (run automatically before dev, build and test) from the
  * validated YAML in catalog/, so it's already checked and has defaults filled in.
  */
-const catalog = data as unknown as { store: StoreConfig; products: Product[] };
+const catalog = data as unknown as { store: StoreConfig; addons: AddonGroup[]; products: Product[] };
 
 export const store: StoreConfig = catalog.store;
+export const addons: AddonGroup[] = catalog.addons;
 
-/** Products shown on the site. Drafts are shown too in development, so you can preview them. */
-export function liveProducts(): Product[] {
+function isLive(p: Product) {
   const showDrafts = process.env.NODE_ENV !== "production" || process.env.SHOW_DRAFTS === "true";
-  return catalog.products.filter((p) => p.status === "active" || (showDrafts && p.status === "draft"));
+  return p.status === "active" || (showDrafts && p.status === "draft");
 }
 
-export function getProduct(handle: string): Product | undefined {
-  return liveProducts().find((p) => p.handle === handle);
+/** Products shown in the catalog. Drafts are shown too in development, so you can preview them. */
+export function liveProducts(): Product[] {
+  return catalog.products.filter((p) => isLive(p) && p.listed);
+}
+
+/** A live product by handle. Unlisted products (add-ons) only with includeUnlisted. */
+export function getProduct(handle: string, opts: { includeUnlisted?: boolean } = {}): Product | undefined {
+  return catalog.products.find((p) => p.handle === handle && isLive(p) && (p.listed || opts.includeUnlisted));
 }
 
 /** Categories that have at least one live product, in display order. */

@@ -1,17 +1,19 @@
 import { describe, expect, it } from "vitest";
 import { parseProductFile } from "../src/load";
-import { formatInches, orderTotals, parseInches, quoteDoor, type DoorSelection } from "../src/pricing";
+import { formatInches, parseInches, quoteDoor, shippingFee, type DoorSelection } from "../src/pricing";
 import type { DoorProduct, StoreConfig } from "../src/schema";
 
 const door = (await parseProductFile("catalog/products/doors/solid-pine-interior-door.yaml")) as DoorProduct;
 const base: DoorSelection = { configuration: "SGL", grade: "CLR", style: "2PSQ", widthIn: 32, heightIn: 80, quantity: 1 };
-const store: StoreConfig = {
-  businessName: "Test",
-  tagline: "",
-  contact: { email: "a@example.com" },
-  depositPercent: 50,
-  pickup: { enabled: true, location: "Shop" },
-  localDelivery: { enabled: true, fee: 75, area: "Town" },
+const shipping: StoreConfig["shipping"] = {
+  area: "the lower 48",
+  freeOver: 2000,
+  freight: [
+    { under: 500, fee: 175 },
+    { under: 1000, fee: 150 },
+    { under: 2000, fee: 100 },
+  ],
+  parcel: { fee: 15, categories: ["hardware"] },
 };
 
 describe("inches", () => {
@@ -67,15 +69,20 @@ describe("quoteDoor", () => {
   });
 });
 
-describe("orderTotals", () => {
-  it("splits deposit and balance, including delivery", () => {
-    expect(orderTotals(495, 2, "delivery", store)).toEqual({
-      subtotal: 990,
-      delivery: 75,
-      total: 1065,
-      dueNow: 532.5,
-      balance: 532.5,
-    });
-    expect(orderTotals(495, 1, "pickup", { ...store, depositPercent: 100 })).toMatchObject({ dueNow: 495, balance: 0 });
+describe("shippingFee", () => {
+  it("uses the freight tier for the subtotal", () => {
+    expect(shippingFee(495, ["interior"], shipping)).toEqual({ fee: 175, method: "freight" });
+    expect(shippingFee(500, ["interior"], shipping)).toEqual({ fee: 150, method: "freight" });
+    expect(shippingFee(1999.99, ["interior"], shipping)).toEqual({ fee: 100, method: "freight" });
+  });
+
+  it("is free at the threshold, and for an empty cart", () => {
+    expect(shippingFee(2000, ["interior"], shipping)).toEqual({ fee: 0, method: "free" });
+    expect(shippingFee(0, [], shipping)).toEqual({ fee: 0, method: "free" });
+  });
+
+  it("ships hardware-only orders by parcel, but not mixed orders", () => {
+    expect(shippingFee(60, ["hardware", "hardware"], shipping)).toEqual({ fee: 15, method: "parcel" });
+    expect(shippingFee(560, ["hardware", "interior"], shipping)).toEqual({ fee: 150, method: "freight" });
   });
 });

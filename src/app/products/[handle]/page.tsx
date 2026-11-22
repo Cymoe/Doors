@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProduct, liveProducts, store } from "@/catalog";
+import { addonsFor } from "@/cart";
 import { CATEGORIES, productCategory } from "@/schema";
 import { DoorBuilder } from "@/components/DoorBuilder";
 import { ProductBuilder } from "@/components/ProductBuilder";
@@ -31,13 +32,22 @@ export default async function ProductPage({ params }: { params: Promise<{ handle
   const p = getProduct((await params).handle);
   if (!p || !hasPage(p.type)) notFound();
   const category = productCategory(p);
+  const shippingNote = `Free shipping on orders over $${store.shipping.freeOver.toLocaleString("en-US")}.`;
   return (
     <div className="wrap">
       <nav className="crumbs" aria-label="Breadcrumb">
         <Link href="/">Shop</Link> <span aria-hidden="true">/</span>{" "}
         <Link href={`/c/${category}`}>{CATEGORIES[category]}</Link>
       </nav>
-      {p.type === "door" ? <DoorBuilder product={p} store={store} /> : p.type === "standard" ? <ProductBuilder product={p} store={store} /> : null}
+      {p.type === "door" ? (
+        <DoorBuilder
+          product={p}
+          addonsByConfiguration={Object.fromEntries(p.configurations.map((c) => [c.code, addonsFor(p, c.code)]))}
+          shippingNote={shippingNote}
+        />
+      ) : p.type === "standard" ? (
+        <ProductBuilder product={p} addons={addonsFor(p)} shippingNote={shippingNote} />
+      ) : null}
     </div>
   );
 }

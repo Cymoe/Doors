@@ -46,6 +46,8 @@ const baseProduct = z.object({
   status: z.enum(["active", "draft", "archived"]).default("draft"),
   /** Store section. Defaults by type: doors → interior, flooring → flooring, tile → tile. */
   category: category.optional(),
+  /** false = not shown in the catalog or given a page (e.g. add-ons like jamb kits). */
+  listed: z.boolean().default(true),
   /** Short line under the title on catalog cards, e.g. "Built to your opening". */
   cardNote: z.string().optional(),
   /** Paragraphs separated by blank lines. Plain text. */
@@ -184,6 +186,28 @@ export const product = z
     });
   });
 
+/** Shipping fee by order subtotal: the first tier whose `under` is above the subtotal applies. */
+const shipping = z
+  .object({
+    /** Where you ship, shown in the cart. */
+    area: z.string(),
+    freeOver: money,
+    freight: z.array(z.object({ under: money, fee: money })).min(1),
+    /** Orders made up only of these categories (small items) ship by parcel for this fee. */
+    parcel: z.object({ fee: money, categories: z.array(category) }).optional(),
+    /** Shown in the cart and on product pages, e.g. processing times. */
+    note: z.string().optional(),
+  })
+  .superRefine((s, ctx) => {
+    const unders = s.freight.map((t) => t.under);
+    if (unders.some((u, i) => i > 0 && u <= unders[i - 1]!)) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["freight"], message: "tiers must go up by `under`" });
+    }
+    if (unders[unders.length - 1]! < s.freeOver) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["freight"], message: "the last tier's `under` must reach freeOver" });
+    }
+  });
+
 export const storeConfig = z.object({
   businessName: z.string().min(1),
   /** Logo image under public/, shown in the header. Falls back to the business name. */
@@ -194,11 +218,33 @@ export const storeConfig = z.object({
     email: z.string().email(),
     phone: z.string().optional(),
   }),
-  /** Percent of the order total charged at checkout; the rest is due at pickup/delivery. 100 = pay in full. */
-  depositPercent: z.number().int().min(1).max(100),
-  pickup: z.object({ enabled: z.boolean(), location: z.string() }),
-  localDelivery: z.object({ enabled: z.boolean(), fee: money, area: z.string() }),
+  shipping,
 });
+
+/** Where an add-on comes from: an unlisted product, optionally with some options fixed. */
+const addonSource = z.object({
+  product: z.string(),
+  /** Option values chosen for the customer, e.g. { "Door Configuration": "Double Door" }. */
+  options: z.record(z.string(), z.string()).default({}),
+});
+
+/** Optional extras offered on door pages (jamb kit, bore hole, casing...). See catalog/addons.yaml. */
+export const addonGroup = z.object({
+  key: z.string().regex(/^[a-z0-9-]+$/),
+  label: z.string().min(1),
+  description: z.string().optional(),
+  /** Shown with the add-on, e.g. extra processing time. */
+  note: z.string().optional(),
+  /** The product for a single door and for a pair (French/double). Leave one out if not offered. */
+  single: addonSource.optional(),
+  double: addonSource.optional(),
+  /** Catalog categories whose products offer it (they're single doors). */
+  categories: z.array(category).default([]),
+  /** Custom door configuration codes that offer it (single or double by the configuration's door count). */
+  customConfigurations: z.array(z.string()).default([]),
+});
+export const addonsFile = z.object({ addons: z.array(addonGroup) });
+export type AddonGroup = z.infer<typeof addonGroup>;
 
 export type DoorProduct = z.infer<typeof doorProduct>;
 export type FlooringProduct = z.infer<typeof flooringProduct>;

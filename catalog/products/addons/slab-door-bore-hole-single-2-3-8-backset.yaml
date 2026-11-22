@@ -1,0 +1,29 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/slab-door-bore-hole-single-2-3-8-backset
+type: standard
+handle: slab-door-bore-hole-single-2-3-8-backset
+title: Slab Door Bore Hole (2-3/8" Backset)
+status: active
+category: hardware
+description: Slab Door Bore Hole (2-3/8" Backset)
+tags:
+  - Doors
+  - jambkit
+  - OPTIONS_HIDDEN_PRODUCT
+images:
+  - src: /images/products/slab-door-bore-hole-single-2-3-8-backset/1.jpg
+    alt: Slab Door Bore Hole (2-3/8" Backset)
+  - src: /images/products/slab-door-bore-hole-single-2-3-8-backset/2.jpg
+    alt: Slab Door Bore Hole (2-3/8" Backset)
+optionNames:
+  - Door Configuration
+variants:
+  - sku: Backset-238
+    options:
+      Door Configuration: Single Door
+    price: 55
+  - sku: DTD-47375127576746
+    options:
+      Door Configuration: Double Door
+    price: 110
+listed: false

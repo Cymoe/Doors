@@ -35,19 +35,23 @@ cp .env.example .env.local   # then fill in the keys
 
 - **Catalog** (`/`, `/c/<category>`): a grid of product photos with "From" prices and sale badges.
 - **Product pages** (`/products/<handle>`): pick each option one step at a time (size, handing, finish...),
-  then quantity, pickup or delivery, review and pay. Catalog products are paid in full.
-- **Custom door builder** (`/products/solid-pine-interior-door`): the customer picks the door type, style and wood, and enters the
-  opening size (`32`, `32.5` and `32 1/2` all work). The drawing and the price update as they go.
-- **Pricing** (`src/pricing.ts`): `base price + doors × (wood + style + oversize)`. The checkout API
-  recomputes the price on the server, so a price sent from the browser is never trusted.
+  then optional add-ons, then review and **Add to cart**.
+- **Custom door builder** (`/products/solid-pine-interior-door`): door type, style, wood (all with photos),
+  the opening size (`32`, `32.5` and `32 1/2` all work), add-ons, then add to cart.
+- **Add-ons** (`catalog/addons.yaml`): jamb kit, knob bore and casing, offered on interior and French doors
+  and on the custom single and French pair. A pair automatically gets the double-door version.
+- **Cart** (`/cart`): kept in the customer's browser. It holds choices only; `/api/cart` prices it.
+- **Checkout**: Stripe Checkout, paid in full. Each cart line is a Stripe line item whose description
+  carries the options, opening size, add-ons and SKU. Shipping is added as a fixed rate.
+  Stripe emails the receipt; turn on "Successful payments" emails in Stripe to hear about each order.
+- **Shipping** (`shipping` in `catalog/store.yaml`): a freight fee by order subtotal, free over
+  `freeOver`, and a parcel fee for hardware-only orders. US addresses only; the cart says Alaska and
+  Hawaii need a quote.
+- **Pricing**: every price is worked out on the server from the catalog (`src/cart.ts`), never taken from the
+  browser. Custom doors: `base price + doors × (wood + style + oversize)`.
 - **Sizes** are opening sizes per door; a French pair or bifold splits the width between its two doors.
   Up to `standard` is the listed price. Up to `oversize` adds a set amount per door. Anything else
   goes to "request a quote".
-- **Checkout**: for custom doors, Stripe Checkout charges `depositPercent` of the total (doors + delivery);
-  catalog products are charged in full. The order
-  details are stored on the payment in the Stripe dashboard: door, SKU, opening size, quantity,
-  pickup/delivery, total and balance due. Stripe emails the receipt. Turn on "Successful payments"
-  emails in your Stripe notification settings to hear about each order.
 - **Quote requests** are emailed to you with the customer's selection already filled in.
 
 ## Editing the catalog
@@ -56,9 +60,11 @@ Everything a non-developer should need to change is in `catalog/`:
 
 ```
 catalog/
-  store.yaml                     business name, logo, contact, deposit %, pickup, delivery fee
+  store.yaml                     business name, logo, contact, shipping rates
+  addons.yaml                    which add-ons are offered on which doors
   products/doors/*.yaml          the custom door: prices, styles, size rules, photos per option
   products/<category>/*.yaml     catalog products (imported from Shopify): options, variants, prices
+  products/addons/*.yaml         add-on products (jamb kits, bore, casing); not listed on their own
   _templates/flooring.yaml       copy into products/flooring/ to start selling flooring
   _templates/tile.yaml           same for tile
 ```
@@ -73,7 +79,7 @@ npm run import:shopify                     # re-import from www.doortodoorco.com
 ```
 
 Reads the store's public product feed, sorts products into categories, skips internal items
-(fees, add-on options, jamb kits sold as add-ons, tests) and products without photos, and saves
+(fees, hidden options, tests) and products without photos, imports the add-on products as unlisted, and saves
 up to 4 photos per product as JPEGs. Imported files start with an "Imported from Shopify" line;
 delete that line from a file you've edited and future imports leave it alone.
 
@@ -82,18 +88,21 @@ delete that line from a file you've edited and future imports leave it alone.
 ```
 src/
   schema.ts                  what a valid catalog file looks like
-  pricing.ts                 door prices, sizes, deposit/balance, inch parsing
+  pricing.ts                 door prices, sizes, shipping fee, inch parsing
+  cart.ts, cart-schema.ts    cart format, add-ons per product, pricing a cart
   import-shopify.ts          one-off importer from a Shopify store
   variants.ts                every combination with SKU and price (used by `npm run list`)
   catalog.ts                 the catalog as the site sees it
   app/                       pages and API routes (Next.js)
     page.tsx, c/[category]/  catalog grid
     products/[handle]/       product page (custom door builder or step-by-step options)
-    api/checkout/            creates the Stripe Checkout session
+    cart/                    cart page
+    api/cart/                prices a cart
+    api/checkout/            creates the Stripe Checkout session from the cart
     api/quote/               emails a quote request
-    order/success|cancelled  after checkout
+    order/success/           order confirmation (empties the cart)
     measure/                 how-to-measure guide
-  components/                CatalogGrid, DoorBuilder, ProductBuilder, steps (shared step UI), QuoteForm
+  components/                CatalogGrid, DoorBuilder, ProductBuilder, CartView, cart-store, steps (shared step UI), QuoteForm
 ```
 
 ## Deploying
@@ -103,10 +112,11 @@ above, and set `SITE_URL` to the real domain.
 
 ## Still to do
 
-- Confirm pickup/delivery: the site says Midland, TX, but the phone number is a (770) number.
-- A cart, so customers can buy a door and its hardware in one checkout.
-- Review the estimated prices (only Single $495 and French Pair $995 came from the listing),
-  the $100 oversize charge, the $75 delivery fee and the 50% deposit.
+- **Shipping rates**: the freight tiers ($175 / $150 / $100) and $15 parcel fee are estimates.
+  Put your real rates in `catalog/store.yaml`.
+- Review the custom door's estimated prices (only Single $495 and French Pair $995 came from the
+  listing) and the $100 oversize charge.
+- Alaska and Hawaii: Stripe can only limit checkout to the US, so the cart asks those customers to
+  contact you. Watch for those orders until address checks are added.
 - Lead time for the custom door (`leadTimeWeeks`).
-- Jamb kits, bore holes and other add-ons that Shopify attached to doors aren't offered yet.
-- Talk to your accountant about sales tax on deposits before turning on Stripe Tax.
+- Turn on Stripe Tax if you need to collect sales tax (`STRIPE_AUTOMATIC_TAX=true`).

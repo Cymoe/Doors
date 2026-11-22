@@ -38,6 +38,18 @@ interface ShopifyProduct {
   images: { src: string; alt?: string | null }[];
 }
 
+/**
+ * Hidden Shopify products that are offered as add-ons on door pages (see
+ * catalog/addons.yaml). Imported unlisted, into catalog/products/addons/.
+ */
+export const ADDON_HANDLES = new Set([
+  "jamb-kit-single-door",
+  "jamb-kit-double-door",
+  "slab-door-bore-hole-single-2-3-8-backset",
+  "interior-door-casing-single-door",
+  "interior-primed-square-casing-double-door",
+]);
+
 const HIDDEN_TYPES = new Set(["OPTIONS_HIDDEN_PRODUCT", "mw_product_option", "mws_fee_generated", "Gift Card"]);
 const HIDDEN_HANDLES = /^(test|bold-test|custom-item|add-ons|adders|processing-fee|shipping-handling-fee|expedited-fee|hinge|hinge-finishes|primed|pre-hanging|door-configuration|keying-option|custom-options-for-)/;
 
@@ -173,11 +185,12 @@ async function main() {
   let written = 0, skippedHidden = 0, skippedNoPhoto = 0, keptEdited = 0;
   const problems: string[] = [];
   await pool(all, 6, async (p) => {
-    const category = categorize(p);
+    const addon = ADDON_HANDLES.has(p.handle);
+    const category = addon ? "hardware" : categorize(p);
     if (!category) return void skippedHidden++;
-    if (!p.images.length) return void skippedNoPhoto++;
+    if (!p.images.length && !addon) return void skippedNoPhoto++;
 
-    const file = path.join("catalog", "products", category, `${p.handle}.yaml`);
+    const file = path.join("catalog", "products", addon ? "addons" : category, `${p.handle}.yaml`);
     if ((await exists(file)) && !(await readFile(file, "utf8")).startsWith(IMPORT_MARKER)) return void keptEdited++;
 
     const dir = path.join("public", "images", "products", p.handle);
@@ -189,7 +202,7 @@ async function main() {
         images.push({ src: `/images/products/${p.handle}/${name}`, alt: (img.alt ?? "").trim() || p.title });
       }
     }
-    const item = toCatalogProduct(p, category, images);
+    const item = { ...toCatalogProduct(p, category, images), ...(addon ? { listed: false } : {}) };
     const check = productSchema.safeParse(item);
     if (!check.success) {
       problems.push(`${p.handle}: ${check.error.issues.map((x) => `${x.path.join(".")}: ${x.message}`).join("; ")}`);

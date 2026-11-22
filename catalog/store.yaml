@@ -1,19 +1,22 @@
 # Shop-wide settings for the website and checkout.
 businessName: Door to Door Co
 logo: /brand/logo.png
-tagline: Solid wood doors, built to your opening in Midland, Texas
+tagline: Solid wood doors, shipped to your door
 contact:
   email: info@doortodoorco.com      # quote requests are sent here
   phone: "(770) 686-8446"
 
-# Percent charged at checkout; the rest is due at pickup or delivery.
-# Set to 100 to take full payment up front.
-depositPercent: 50
-
-pickup:
-  enabled: true
-  location: Our shop in Midland, TX
-localDelivery:
-  enabled: true
-  fee: 75
-  area: Midland and Odessa
+# Everything ships; checkout charges in full.
+shipping:
+  area: the 48 contiguous states and DC
+  freeOver: 2000
+  # Freight fee by order subtotal. TODO: these amounts are estimates; replace with your real rates.
+  freight:
+    - { under: 500,  fee: 175 }
+    - { under: 1000, fee: 150 }
+    - { under: 2000, fee: 100 }
+  # Hardware-only orders go by parcel instead of freight. TODO: confirm the fee.
+  parcel: { fee: 15, categories: [hardware] }
+  note: >-
+    Doors ship by freight to the end of your driveway; someone 18+ must be there to sign.
+    Orders process in 12 to 15 business days, plus up to 3 weeks with jamb kits.

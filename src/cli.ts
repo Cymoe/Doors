@@ -12,7 +12,7 @@ async function main() {
   const [cmd, ...args] = process.argv.slice(2);
   const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : undefined;
 
-  const { store, products, errors } = await loadCatalog();
+  const { store, products, addons, errors } = await loadCatalog();
   for (const { file, product } of products) {
     for (const problem of checkVariants(product, buildVariants(product))) errors.push(`${file}: ${problem}`);
   }
@@ -45,7 +45,7 @@ async function main() {
     case "export": {
       const out = path.join("src", "generated", "catalog.json");
       await mkdir(path.dirname(out), { recursive: true });
-      await writeFile(out, JSON.stringify({ store, products: products.map((p) => p.product) }, null, 2) + "\n");
+      await writeFile(out, JSON.stringify({ store, addons, products: products.map((p) => p.product) }, null, 2) + "\n");
       console.log(`catalog: ${products.length} product(s) → ${out}`);
       break;
     }

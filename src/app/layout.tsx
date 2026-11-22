@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { liveProducts, store } from "@/catalog";
+import { CartLink } from "@/components/CartLink";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <nav className="nav" aria-label="Main">
               <Link href="/">Shop</Link>
-              {customDoor && <Link href={`/products/${customDoor.handle}`}>Custom doors</Link>}
+              {customDoor && <Link href={`/products/${customDoor.handle}`} className="hide-sm">Custom doors</Link>}
               <Link href="/measure" className="hide-sm">How to measure</Link>
               {store.contact.phone ? (
                 <a href={`tel:${store.contact.phone.replace(/[^\d+]/g, "")}`}>
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               ) : (
                 <a href={`mailto:${store.contact.email}`}>Contact</a>
               )}
+              <CartLink />
             </nav>
           </div>
         </header>

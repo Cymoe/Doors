@@ -1,25 +1,26 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import type { StandardProduct, StoreConfig } from "@/schema";
-import { orderTotals, usd, type Fulfillment } from "@/pricing";
+import { useState } from "react";
+import type { AddonOffer } from "@/cart";
+import type { StandardProduct } from "@/schema";
+import { usd } from "@/pricing";
 import {
+  AddToCart,
+  AddonsStep,
   DoneRow,
-  FulfillmentPicker,
   Gallery,
-  OrderSummary,
   Progress,
-  QuantityPicker,
-  StepNav,
   StepPanel,
   TodoRow,
-  defaultFulfillment,
+  resolveAddons,
+  type AddonState,
 } from "./steps";
 import { Description } from "./Description";
 
 interface Props {
   product: StandardProduct;
-  store: StoreConfig;
+  addons: AddonOffer[];
+  shippingNote?: string;
 }
 
 type Variant = StandardProduct["variants"][number];
@@ -27,18 +28,19 @@ type Variant = StandardProduct["variants"][number];
 const matches = (v: Variant, picks: Record<string, string>) =>
   Object.entries(picks).every(([name, value]) => v.options[name] === value);
 
-/** A product with set options (size, handing, finish...), chosen one at a time. Paid in full at checkout. */
-export function ProductBuilder({ product, store }: Props) {
+/** A product with set options (size, handing, finish...), chosen one at a time, then added to the cart. */
+export function ProductBuilder({ product, addons, shippingNote }: Props) {
   const optionSteps = product.optionNames;
-  const steps = [...optionSteps, "Quantity & pickup", "Review"];
-  const qtyStep = optionSteps.length;
-  const reviewStep = qtyStep + 1;
+  const hasAddons = addons.length > 0;
+  const steps = [...optionSteps, ...(hasAddons ? ["Add-ons"] : []), "Review"];
+  const addonStep = hasAddons ? optionSteps.length : -1;
+  const reviewStep = steps.length - 1;
 
   const [step, setStep] = useState(0);
   const [furthest, setFurthest] = useState(0);
   const [picks, setPicks] = useState<Record<string, string>>({});
+  const [addonState, setAddonState] = useState<AddonState>({});
   const [quantity, setQuantity] = useState(1);
-  const [fulfillment, setFulfillment] = useState<Fulfillment>(defaultFulfillment(store));
 
   const go = (n: number) => {
     setStep(n);
@@ -49,8 +51,9 @@ export function ProductBuilder({ product, store }: Props) {
   const variant = complete ? product.variants.find((v) => matches(v, picks)) : undefined;
   const candidates = product.variants.filter((v) => matches(v, picks));
   const minPrice = Math.min(...(candidates.length ? candidates : product.variants).map((v) => v.price));
+  const resolved = resolveAddons(addons, addonState);
 
-  /** Choices for option k given the picks before it: value, lowest price, and whether any is in stock. */
+  /** Choices for option k given the picks before it: value, price range, and whether any is in stock. */
   function choicesFor(k: number) {
     const before = Object.fromEntries(optionSteps.slice(0, k).filter((n) => picks[n] !== undefined).map((n) => [n, picks[n]!]));
     const pool = product.variants.filter((v) => matches(v, before));
@@ -77,18 +80,13 @@ export function ProductBuilder({ product, store }: Props) {
       if (picks[n] !== undefined && product.variants.some((v) => matches(v, { ...next, [n]: picks[n]! }))) next[n] = picks[n]!;
     }
     setPicks(next);
-    // Jump ahead to the first step that still needs an answer.
+    // Go to the first step still needing an answer, or back to where the customer was.
     const firstMissing = optionSteps.findIndex((n) => next[n] === undefined);
-    go(firstMissing === -1 ? Math.max(qtyStep, Math.min(furthest, reviewStep)) : firstMissing);
+    go(firstMissing === -1 ? Math.max(optionSteps.length, furthest) : firstMissing);
   }
 
-  const totals = useMemo(
-    () => (variant ? orderTotals(variant.price, quantity, fulfillment, { ...store, depositPercent: 100 }) : null),
-    [variant, quantity, fulfillment, store],
-  );
-
   let panel = null;
-  if (step < qtyStep) {
+  if (step < optionSteps.length) {
     const name = optionSteps[step]!;
     const choices = choicesFor(step);
     const allSamePrice = choices.every(([, c]) => c.min === choices[0]![1].min && c.max === c.min);
@@ -110,24 +108,29 @@ export function ProductBuilder({ product, store }: Props) {
         ))}
       </div>
     );
-  } else if (step === qtyStep) {
+  } else if (step === addonStep) {
     panel = (
       <>
-        <QuantityPicker value={quantity} onChange={setQuantity} unit={["item", "items"]} />
-        <FulfillmentPicker store={store} value={fulfillment} onChange={setFulfillment} />
-        <StepNav onBack={optionSteps.length ? () => go(qtyStep - 1) : undefined} onNext={() => go(reviewStep)}
-          nextDisabled={!variant} nextLabel="Review order" />
+        <p className="muted">Optional. Skip this step if you don&apos;t need any.</p>
+        <AddonsStep offers={addons} state={addonState} onChange={setAddonState} />
+        <div className="step-nav">
+          <button type="button" className="btn secondary" onClick={() => go(step - 1)}>Back</button>
+          <button type="button" className="btn" disabled={!resolved.complete} onClick={() => go(reviewStep)}>
+            {resolved.chosen.length ? "Continue" : "No add-ons, continue"}
+          </button>
+        </div>
       </>
     );
-  } else if (variant && totals) {
+  } else if (variant) {
     panel = (
-      <OrderSummary
+      <AddToCart
         lines={[{ label: optionSteps.length ? optionSteps.map((n) => picks[n]).join(" · ") : product.title, amount: variant.price }]}
+        addons={resolved.chosen}
         quantity={quantity}
-        totals={totals}
-        depositPercent={100}
-        fulfillment={fulfillment}
-        checkoutBody={{ handle: product.handle, sku: variant.sku, quantity }}
+        onQuantity={setQuantity}
+        unit={["", ""]}
+        shippingNote={shippingNote}
+        item={{ handle: product.handle, sku: variant.sku, addons: resolved.chosen.map((a) => ({ key: a.key, sku: a.sku })) }}
       />
     );
   } else {
@@ -135,9 +138,11 @@ export function ProductBuilder({ product, store }: Props) {
   }
 
   const answers = (i: number) =>
-    i < qtyStep
+    i < optionSteps.length
       ? picks[optionSteps[i]!] ?? ""
-      : `${quantity} · ${fulfillment === "pickup" ? "Pickup" : "Local delivery"}`;
+      : i === addonStep
+        ? resolved.chosen.map((a) => a.label).join(", ") || "None"
+        : "";
 
   return (
     <div className="builder">
@@ -158,8 +163,8 @@ export function ProductBuilder({ product, store }: Props) {
           if (i === step) {
             return (
               <StepPanel key={name} index={i} total={steps.length}
-                heading={i === reviewStep ? "Review your order" : i === qtyStep ? "Quantity & pickup" : `Choose ${name.toLowerCase()}`}
-                onBack={i > 0 && i < qtyStep ? () => go(i - 1) : undefined}>
+                heading={i === reviewStep ? "Review and add to cart" : i === addonStep ? "Add-ons" : `Choose ${name.toLowerCase()}`}
+                onBack={i > 0 && i < optionSteps.length ? () => go(i - 1) : i === reviewStep && i > 0 ? () => go(i - 1) : undefined}>
                 {panel}
               </StepPanel>
             );

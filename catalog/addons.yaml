@@ -1,0 +1,28 @@
+# Optional extras offered on door pages, after the door's own options.
+# Each points at an unlisted product in catalog/products/addons/ (imported from Shopify).
+# `single` is used for one door, `double` for a pair; leave one out if it isn't offered.
+addons:
+  - key: jamb
+    label: Jamb kit
+    description: Jamb to hang the door in your opening. Choose the jamb width, finish and height.
+    note: Adds up to 3 weeks to processing.
+    single: { product: jamb-kit-single-door }
+    double: { product: jamb-kit-double-door }
+    categories: [interior, french]
+    customConfigurations: [SGL, FRP]
+
+  - key: bore
+    label: Bore for a door knob
+    description: Bored for a knob or lever with a 2-3/8" backset.
+    single: { product: slab-door-bore-hole-single-2-3-8-backset, options: { Door Configuration: Single Door } }
+    double: { product: slab-door-bore-hole-single-2-3-8-backset, options: { Door Configuration: Double Door } }
+    categories: [interior, french]
+    customConfigurations: [SGL, FRP]
+
+  - key: casing
+    label: Door casing
+    description: Primed square casing, 11/16" x 2-1/4".
+    single: { product: interior-door-casing-single-door }
+    double: { product: interior-primed-square-casing-double-door }
+    categories: [interior, french]
+    customConfigurations: [SGL, FRP]

@@ -121,22 +121,25 @@ export function quoteDoor(p: DoorProduct, sel: DoorSelection): DoorQuote {
   };
 }
 
-export type Fulfillment = "pickup" | "delivery";
+export type ShippingMethod = "free" | "freight" | "parcel";
 
-export interface OrderTotals {
-  subtotal: number;
-  delivery: number;
-  total: number;
-  dueNow: number;
-  balance: number;
-}
-
-export function orderTotals(unitPrice: number, quantity: number, fulfillment: Fulfillment, store: StoreConfig): OrderTotals {
-  const subtotal = round2(unitPrice * quantity);
-  const delivery = fulfillment === "delivery" ? store.localDelivery.fee : 0;
-  const total = round2(subtotal + delivery);
-  const dueNow = round2((total * store.depositPercent) / 100);
-  return { subtotal, delivery, total, dueNow, balance: round2(total - dueNow) };
+/**
+ * Shipping for an order: free at or over `freeOver`; parcel rate when every
+ * item is in a parcel category (e.g. hardware only); otherwise the freight
+ * tier for the subtotal.
+ */
+export function shippingFee(
+  subtotal: number,
+  categories: string[],
+  shipping: StoreConfig["shipping"],
+): { fee: number; method: ShippingMethod } {
+  if (subtotal <= 0) return { fee: 0, method: "free" };
+  if (subtotal >= shipping.freeOver) return { fee: 0, method: "free" };
+  if (shipping.parcel && categories.length && categories.every((c) => shipping.parcel!.categories.includes(c as never))) {
+    return { fee: shipping.parcel.fee, method: "parcel" };
+  }
+  const tier = shipping.freight.find((t) => subtotal < t.under) ?? shipping.freight[shipping.freight.length - 1]!;
+  return { fee: tier.fee, method: "freight" };
 }
 
 export const usd = (n: number) =>

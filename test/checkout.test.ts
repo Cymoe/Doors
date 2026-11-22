@@ -8,15 +8,72 @@ vi.mock("stripe", () => ({
 }));
 
 const { POST } = await import("../src/app/api/checkout/route");
+const { priceCart, addonsFor } = await import("../src/cart");
+const { getProduct } = await import("../src/catalog");
 
 const req = (body: unknown) =>
   new Request("http://localhost:3000/api/checkout", { method: "POST", body: JSON.stringify(body) });
 
-const order = {
+const frenchPair = {
+  id: "a",
   handle: "solid-pine-interior-door",
-  selection: { configuration: "FRP", grade: "CLR", style: "GLS", widthIn: 60, heightIn: 80, quantity: 1 },
-  fulfillment: "delivery",
+  quantity: 1,
+  door: { configuration: "FRP", grade: "CLR", style: "GLS", widthIn: 60, heightIn: 80 },
+  addons: [],
 };
+const latch = getProduct("privacy-latch");
+if (latch?.type !== "standard") throw new Error("expected the imported privacy latch");
+const latchItem = { id: "b", handle: "privacy-latch", sku: latch.variants[0]!.sku, quantity: 2, addons: [] };
+
+describe("priceCart", () => {
+  it("prices custom doors and catalog products, and adds freight", () => {
+    const c = priceCart([frenchPair, latchItem]);
+    expect(c.errors).toEqual([]);
+    // French pair with glass: 995 + 2×150
+    expect(c.lines[0]).toMatchObject({ unitPrice: 1295, lineTotal: 1295, sku: "PINE-FRP-CLR-GLS" });
+    expect(c.lines[1]).toMatchObject({ unitPrice: latch.variants[0]!.price, quantity: 2 });
+    expect(c.subtotal).toBe(1295 + latch.variants[0]!.price * 2);
+    expect(c.shipping.method).toBe("freight");
+    expect(c.total).toBe(c.subtotal + c.shipping.fee);
+  });
+
+  it("ships a hardware-only cart by parcel", () => {
+    expect(priceCart([latchItem]).shipping.method).toBe("parcel");
+  });
+
+  it("adds a double jamb kit and bore to a French pair, and refuses mismatched add-ons", () => {
+    const door = getProduct("solid-pine-interior-door")!;
+    const offers = addonsFor(door, "FRP");
+    expect(offers.map((o) => o.key)).toEqual(["jamb", "bore", "casing"]);
+    const jamb = offers.find((o) => o.key === "jamb")!;
+    expect(jamb.product.handle).toBe("jamb-kit-double-door");
+    const bore = offers.find((o) => o.key === "bore")!;
+    const doubleBore = bore.product.variants.find((v) => v.options["Door Configuration"] === "Double Door")!;
+    const singleBore = bore.product.variants.find((v) => v.options["Door Configuration"] === "Single Door")!;
+    const jambV = jamb.product.variants[0]!;
+
+    const ok = priceCart([{ ...frenchPair, addons: [{ key: "jamb", sku: jambV.sku }, { key: "bore", sku: doubleBore.sku }] }]);
+    expect(ok.errors).toEqual([]);
+    expect(ok.lines[0]!.unitPrice).toBe(1295 + jambV.price + doubleBore.price);
+
+    // A single-door bore on a pair isn't allowed.
+    expect(priceCart([{ ...frenchPair, addons: [{ key: "bore", sku: singleBore.sku }] }]).errors).toHaveLength(1);
+    // Barn doors offer no add-ons.
+    expect(addonsFor(door, "BARN")).toEqual([]);
+    const barn = { ...frenchPair, door: { ...frenchPair.door, configuration: "BARN", widthIn: 36 } };
+    expect(priceCart([{ ...barn, addons: [{ key: "jamb", sku: jambV.sku }] }]).errors).toHaveLength(1);
+  });
+
+  it("reports items it can't price instead of guessing", () => {
+    const c = priceCart([
+      { ...latchItem, sku: "NOPE" },
+      { ...frenchPair, door: { ...frenchPair.door, widthIn: 200 } },
+      { ...latchItem, id: "z", handle: "not-a-product" },
+    ]);
+    expect(c.lines).toEqual([]);
+    expect(c.errors.map((e) => e.id)).toEqual(["b", "a", "z"]);
+  });
+});
 
 describe("POST /api/checkout", () => {
   beforeEach(() => {
@@ -27,71 +84,29 @@ describe("POST /api/checkout", () => {
     delete process.env.STRIPE_SECRET_KEY;
   });
 
-  it("charges the deposit computed on the server", async () => {
-    const res = await POST(req(order));
+  it("sends one Stripe line per cart line, priced on the server, plus shipping", async () => {
+    const res = await POST(req({ items: [{ ...frenchPair, price: 1 }, latchItem] }));
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual({ url: "https://checkout.stripe.com/c/test" });
     const params = create.mock.calls[0]![0] as any;
-    // French pair with glass: 995 + 2×150 = 1295, + $75 delivery = 1370; 50% = 685
-    expect(params.line_items[0].price_data.unit_amount).toBe(68500);
-    expect(params.metadata).toMatchObject({
-      sku: "PINE-FRP-CLR-GLS",
-      opening_size: '60" x 80"',
-      order_total: "1370.00",
-      balance_due: "685.00",
-      fulfillment: "delivery",
-    });
+    expect(params.line_items).toHaveLength(2);
+    expect(params.line_items[0]).toMatchObject({ quantity: 1, price_data: { unit_amount: 129500 } });
+    expect(params.line_items[0].price_data.product_data.description).toContain('Opening 60" × 80"');
+    expect(params.line_items[1]).toMatchObject({ quantity: 2, price_data: { unit_amount: Math.round(latch.variants[0]!.price * 100) } });
+    const expected = priceCart([frenchPair, latchItem]);
+    expect(params.shipping_options[0].shipping_rate_data.fixed_amount.amount).toBe(Math.round(expected.shipping.fee * 100));
     expect(params.shipping_address_collection).toEqual({ allowed_countries: ["US"] });
   });
 
-  it("ignores any price sent by the browser", async () => {
-    await POST(req({ ...order, price: 1, unitPrice: 1 }));
-    expect((create.mock.calls[0]![0] as any).line_items[0].price_data.unit_amount).toBe(68500);
-  });
-
-  it("refuses sizes that need a quote", async () => {
-    const res = await POST(req({ ...order, selection: { ...order.selection, widthIn: 100 } }));
-    expect(res.status).toBe(400);
+  it("refuses an empty cart, a bad body, and carts with problems", async () => {
+    expect((await POST(req({ items: [] }))).status).toBe(400);
+    expect((await POST(req({ nope: true }))).status).toBe(400);
+    expect((await POST(req({ items: [{ ...latchItem, sku: "NOPE" }] }))).status).toBe(400);
     expect(create).not.toHaveBeenCalled();
-  });
-
-  it("refuses unknown products and bad bodies", async () => {
-    expect((await POST(req({ ...order, handle: "nope" }))).status).toBe(404);
-    expect((await POST(req({ nope: true }))).status).toBe(404);
-    expect((await POST(req({ handle: order.handle, nope: true }))).status).toBe(400);
   });
 
   it("says checkout isn't set up when there's no Stripe key", async () => {
     delete process.env.STRIPE_SECRET_KEY;
-    expect((await POST(req(order))).status).toBe(503);
-  });
-});
-
-describe("POST /api/checkout (catalog products)", () => {
-  beforeEach(() => {
-    create.mockClear();
-    process.env.STRIPE_SECRET_KEY = "sk_test_dummy";
-  });
-  afterEach(() => {
-    delete process.env.STRIPE_SECRET_KEY;
-  });
-
-  it("charges the full catalog price for the chosen variant", async () => {
-    const { getProduct } = await import("../src/catalog");
-    const p = getProduct("privacy-latch");
-    if (p?.type !== "standard") throw new Error("expected the imported privacy latch");
-    const v = p.variants[0]!;
-    const res = await POST(req({ handle: p.handle, sku: v.sku, quantity: 2, fulfillment: "pickup", price: 1 }));
-    expect(res.status).toBe(200);
-    const params = create.mock.calls[0]![0] as any;
-    expect(params.line_items[0].price_data.unit_amount).toBe(Math.round(v.price * 2 * 100));
-    expect(params.metadata).toMatchObject({ sku: v.sku, quantity: "2", balance_due: "0.00" });
-    expect(params.custom_text).toBeUndefined();
-  });
-
-  it("refuses unknown SKUs and bad quantities", async () => {
-    expect((await POST(req({ handle: "privacy-latch", sku: "NOPE", quantity: 1, fulfillment: "pickup" }))).status).toBe(400);
-    expect((await POST(req({ handle: "privacy-latch", sku: "x", quantity: 0, fulfillment: "pickup" }))).status).toBe(400);
-    expect(create).not.toHaveBeenCalled();
+    expect((await POST(req({ items: [latchItem] }))).status).toBe(503);
   });
 });

@@ -1,0 +1,144 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/jamb-kit-double-door
+type: standard
+handle: jamb-kit-double-door
+title: Interior Jamb Kit - Double Door
+status: active
+category: hardware
+description: Interior Jamb Kit - Double Door
+tags:
+  - Doors
+  - jambkit
+  - OPTIONS_HIDDEN_PRODUCT
+  - retail
+images:
+  - src: /images/products/jamb-kit-double-door/1.jpg
+    alt: Interior Jamb Kit - Double Door
+  - src: /images/products/jamb-kit-double-door/2.jpg
+    alt: Interior Jamb Kit - Double Door
+optionNames:
+  - Jamb Size
+  - Finish
+  - Height
+variants:
+  - sku: DTD-4251685519371
+    options:
+      Jamb Size: 4-5/8"
+      Finish: Clear
+      Height: 6'8" (80")
+    price: 212
+  - sku: DTD-46684071657642
+    options:
+      Jamb Size: 4-5/8"
+      Finish: Clear
+      Height: 8' (96")
+    price: 212
+  - sku: DTD-4251685552139
+    options:
+      Jamb Size: 4-5/8"
+      Finish: Primed
+      Height: 6'8" (80")
+    price: 239
+  - sku: DTD-46684071690410
+    options:
+      Jamb Size: 4-5/8"
+      Finish: Primed
+      Height: 8' (96")
+    price: 254
+  - sku: DTD-31199344361556
+    options:
+      Jamb Size: 4-5/8"
+      Finish: Stain-Grade
+      Height: 6'8" (80")
+    price: 242
+  - sku: DTD-46684071723178
+    options:
+      Jamb Size: 4-5/8"
+      Finish: Stain-Grade
+      Height: 8' (96")
+    price: 282
+  - sku: DTD-4251685584907
+    options:
+      Jamb Size: 6-5/8"
+      Finish: Clear
+      Height: 6'8" (80")
+    price: 250
+  - sku: DTD-46684071755946
+    options:
+      Jamb Size: 6-5/8"
+      Finish: Clear
+      Height: 8' (96")
+    price: 212
+  - sku: DTD-4251685617675
+    options:
+      Jamb Size: 6-5/8"
+      Finish: Primed
+      Height: 6'8" (80")
+    price: 250
+  - sku: DTD-46684071788714
+    options:
+      Jamb Size: 6-5/8"
+      Finish: Primed
+      Height: 8' (96")
+    price: 265
+  - sku: DTD-44060818538666
+    options:
+      Jamb Size: 6-5/8"
+      Finish: Stain-Grade
+      Height: 6'8" (80")
+    price: 273
+  - sku: DTD-46684071821482
+    options:
+      Jamb Size: 6-5/8"
+      Finish: Stain-Grade
+      Height: 8' (96")
+    price: 288
+  - sku: DTD-4251685650443
+    options:
+      Jamb Size: 6-1/2"
+      Finish: Clear
+      Height: 6'8" (80")
+    price: 221
+  - sku: DTD-46684071854250
+    options:
+      Jamb Size: 6-1/2"
+      Finish: Clear
+      Height: 8' (96")
+    price: 212
+  - sku: DTD-4251685715979
+    options:
+      Jamb Size: 6-1/2"
+      Finish: Primed
+      Height: 6'8" (80")
+    price: 250
+  - sku: DTD-46684071887018
+    options:
+      Jamb Size: 6-1/2"
+      Finish: Primed
+      Height: 8' (96")
+    price: 212
+  - sku: DTD-4251685683211
+    options:
+      Jamb Size: 6-1/4
+      Finish: Clear
+      Height: 6'8" (80")
+    price: 221
+  - sku: DTD-46684071919786
+    options:
+      Jamb Size: 6-1/4
+      Finish: Clear
+      Height: 8' (96")
+    price: 212
+  - sku: DTD-4251685748747
+    options:
+      Jamb Size: 6-1/4
+      Finish: Primed
+      Height: 6'8" (80")
+    price: 250
+  - sku: DTD-46684071952554
+    options:
+      Jamb Size: 6-1/4
+      Finish: Primed
+      Height: 8' (96")
+    price: 212
+listed: false

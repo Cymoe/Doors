@@ -1,0 +1,34 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/interior-door-casing-single-door
+type: standard
+handle: interior-door-casing-single-door
+title: Interior Primed Square Casing - Single Door
+status: active
+category: hardware
+description: Interior Primed Square Casing - Single Door
+tags:
+  - Doors
+  - jambkit
+  - OPTIONS_HIDDEN_PRODUCT
+  - retail
+images:
+  - src: /images/products/interior-door-casing-single-door/1.jpg
+    alt: Interior Primed Square Casing - Single Door
+optionNames:
+  - Size
+  - Finish
+  - Height
+variants:
+  - sku: 356 Trim PRM 6/8
+    options:
+      Size: 11/16" x 2-1/4"
+      Finish: Primed
+      Height: 6' 8" (80")
+    price: 33
+  - sku: Add 356 Trim PRM SNGL Kit 80
+    options:
+      Size: 11/16" x 2-1/4"
+      Finish: Primed
+      Height: 7' (84") - 8' (96")
+    price: 39
+listed: false
