@@ -1,0 +1,175 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/saturn-knobset
+type: standard
+handle: saturn-knobset
+title: Saturn Knobset
+status: active
+category: hardware
+description: |-
+  Lifetime mechanical warranty | Five years finish warranty
+
+  General Specifications ﻿(for full product specs download the forms below)
+
+  • ANSI/BHMA A156.39 Grade 3
+
+  • Door Prep.: 2-⅛” Cross Bore; 1” Edge
+
+  • 5-pin KW keyway; solid brass cylinder
+
+  • Latch: 1” face, ¼” radius corner, 2-⅜” backset
+
+  • Strike: 2-¼” x 1-¾” full-lip, ¼” radius corner
+
+  All locks include an adjustable latch for 2-3/8" and 2-3/4" backsets.
+
+  Download Specification Sheet | Download Installation Sheet
+tags:
+  - Doors
+  - Finish_Antique Brass
+  - Finish_Antique Nickel
+  - Finish_Lifetime Polished Brass
+  - Finish_Oil Rubbed Bronze
+  - Finish_Polished Brass
+  - Finish_Polished Chrome
+  - Finish_Satin Nickel
+  - Finish_Satin Stainless Steel
+  - Knobset
+  - pamex
+images:
+  - src: /images/products/saturn-knobset/1.jpg
+    alt: Saturn Knobset
+  - src: /images/products/saturn-knobset/2.jpg
+    alt: Saturn Knobset
+  - src: /images/products/saturn-knobset/3.jpg
+    alt: Saturn Knobset
+  - src: /images/products/saturn-knobset/4.jpg
+    alt: Saturn Knobset
+optionNames:
+  - Finish
+  - Lock Style
+variants:
+  - sku: F109 (FT300)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry
+    price: 61.36
+  - sku: F76 (FT310)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy
+    price: 48.88
+  - sku: F75 (FT330)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Passage
+    price: 48.88
+  - sku: (FT340)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Half Dummy
+    price: 40.56
+  - sku: F109 (FT300)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Entry
+    price: 64.48
+  - sku: F76 (FT310)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Privacy
+    price: 54.08
+  - sku: F75 (FT330)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Passage
+    price: 48.88
+  - sku: (FT340)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Half Dummy
+    price: 40.56
+  - sku: F109 (FT300)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Entry
+    price: 61.36
+  - sku: F76 (FT310)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Privacy
+    price: 48.88
+  - sku: F75 (FT330)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Passage
+    price: 48.88
+  - sku: (FT340)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Half Dummy
+    price: 40.56
+  - sku: F109 (FT300)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Entry
+    price: 61.36
+  - sku: F76 (FT310)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Privacy
+    price: 48.88
+  - sku: F75 (FT330)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Passage
+    price: 48.88
+  - sku: (FT340)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Half Dummy
+    price: 40.56
+  - sku: F109 (FT300)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Entry
+    price: 58.24
+  - sku: F76 (FT310)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Privacy
+    price: 48.88
+  - sku: F75 (FT330)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Passage
+    price: 45.76
+  - sku: (FT340)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Half Dummy
+    price: 34.32
+  - sku: F109 (FT300)-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Entry
+    price: 61.36
+  - sku: F76 (FT310)-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Privacy
+    price: 48.88
+  - sku: F75 (FT330)-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Passage
+    price: 48.88
+  - sku: (FT340)-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Half Dummy
+    price: 40.56
+  - sku: F109 (FT300)-USL03-505
+    options:
+      Finish: Lifetime Polished Brass
+      Lock Style: Entry
+    price: 64.48

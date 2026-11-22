@@ -1,0 +1,457 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/prehung-5-frosted-glass-panel-shaker-style-interior-door-primed
+type: standard
+handle: prehung-5-frosted-glass-panel-shaker-style-interior-door-primed
+title: Prehung 5 Frosted Glass Panel Shaker Style Interior Door (Primed)
+status: active
+category: prehung
+description: |-
+  Shaker style is known for its impeccable craftsmanship, careful attention to detail and simplicity of design. The minimalism characteristic of this style is evident in our line of Shaker doors. These Shaker doors are ideal for anyone looking to add traditional or craftsman style to their home.
+
+  This door features a 5-panel design on 1 3/8" thick pine. The panels are stacked in a traditional Shaker style. The door comes in a variety of heights and widths to suit most any space in your home. The primed door is ready for paint finish!
+
+  Door stiles (sides) and rails (horizontal portion) are made of engineered solid core pine. The inlaid portion of this Shaker style door is made with single pane, non-insulated, tempered glass. The frosted glass is made using hydrochloric acid to prevent chipping and preserve a velvety texture on the material.
+tags:
+  - Doors
+images:
+  - src: /images/products/prehung-5-frosted-glass-panel-shaker-style-interior-door-primed/1.jpg
+    alt: Prehung 5 Frosted Glass Panel Shaker Style Interior Door (Primed)
+  - src: /images/products/prehung-5-frosted-glass-panel-shaker-style-interior-door-primed/2.jpg
+    alt: Prehung 5 Frosted Glass Panel Shaker Style Interior Door (Primed)
+optionNames:
+  - Door Size
+  - Handing & Swing
+  - Hinge Finish
+variants:
+  - sku: DTD-47433659056298
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 519
+  - sku: DTD-47505736499370
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 519
+  - sku: DTD-47505736564906
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 519
+  - sku: DTD-47505736597674
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 519
+  - sku: DTD-47433659121834
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 519
+  - sku: DTD-47505736630442
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 519
+  - sku: DTD-47505736663210
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 519
+  - sku: DTD-47505736695978
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 519
+  - sku: DTD-47433659154602
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Matte Black
+    price: 519
+  - sku: DTD-47505736728746
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Matte Black
+    price: 519
+  - sku: DTD-47505736761514
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Matte Black
+    price: 519
+  - sku: DTD-47505736794282
+    options:
+      Door Size: 18" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Matte Black
+    price: 519
+  - sku: DTD-47433659220138
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 528
+  - sku: DTD-47505736827050
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 528
+  - sku: DTD-47505736859818
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 528
+  - sku: DTD-47505736892586
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 528
+  - sku: DTD-47433659285674
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 528
+  - sku: DTD-47505736925354
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 528
+  - sku: DTD-47505736958122
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 528
+  - sku: DTD-47505736990890
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 528
+  - sku: DTD-47433659318442
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Matte Black
+    price: 528
+  - sku: DTD-47505737023658
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Matte Black
+    price: 528
+  - sku: DTD-47505737056426
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Matte Black
+    price: 528
+  - sku: DTD-47505737089194
+    options:
+      Door Size: 24" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Matte Black
+    price: 528
+  - sku: DTD-47433659383978
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 625
+  - sku: DTD-47505737121962
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 625
+  - sku: DTD-47505737154730
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 625
+  - sku: DTD-47505737187498
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 625
+  - sku: DTD-47433659449514
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 625
+  - sku: DTD-47505737220266
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 625
+  - sku: DTD-47505737253034
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 625
+  - sku: DTD-47505737285802
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 625
+  - sku: DTD-47433659482282
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Matte Black
+    price: 625
+  - sku: DTD-47505737318570
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Matte Black
+    price: 625
+  - sku: DTD-47505737351338
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Matte Black
+    price: 625
+  - sku: DTD-47505737384106
+    options:
+      Door Size: 28" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Matte Black
+    price: 625
+  - sku: DTD-47433659547818
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 567
+  - sku: DTD-47505737416874
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 567
+  - sku: DTD-47505737449642
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 567
+  - sku: DTD-47505737482410
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 567
+  - sku: DTD-47433659613354
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 567
+  - sku: DTD-47505737515178
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 567
+  - sku: DTD-47505737547946
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 567
+  - sku: DTD-47505737580714
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 567
+  - sku: DTD-47433659646122
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Matte Black
+    price: 567
+  - sku: DTD-47505737613482
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Matte Black
+    price: 567
+  - sku: DTD-47505737646250
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Matte Black
+    price: 567
+  - sku: DTD-47505737679018
+    options:
+      Door Size: 30" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Matte Black
+    price: 567
+  - sku: DTD-47433659711658
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 586
+  - sku: DTD-47505737711786
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 586
+  - sku: DTD-47505737744554
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 586
+  - sku: DTD-47505737777322
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 586
+  - sku: DTD-47433659777194
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 586
+  - sku: DTD-47505737810090
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 586
+  - sku: DTD-47505737842858
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 586
+  - sku: DTD-47505737875626
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 586
+  - sku: DTD-47433659809962
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Matte Black
+    price: 586
+  - sku: DTD-47505737908394
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Matte Black
+    price: 586
+  - sku: DTD-47505737941162
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Matte Black
+    price: 586
+  - sku: DTD-47505737973930
+    options:
+      Door Size: 32" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Matte Black
+    price: 586
+  - sku: DTD-47433659875498
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 597
+  - sku: DTD-47505738006698
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Polished Brass
+    price: 597
+  - sku: DTD-47505738039466
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 597
+  - sku: DTD-47505738072234
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Polished Brass
+    price: 597
+  - sku: DTD-47433659941034
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 597
+  - sku: DTD-47505738105002
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Satin Nickel
+    price: 597
+  - sku: DTD-47505738137770
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 597
+  - sku: DTD-47505738170538
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Satin Nickel
+    price: 597
+  - sku: DTD-47433659973802
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Left Hand Inswing
+      Hinge Finish: Matte Black
+    price: 597
+  - sku: DTD-47505738203306
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Right Hand Inswing
+      Hinge Finish: Matte Black
+    price: 597
+  - sku: DTD-47505738236074
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Left Hand Outswing
+      Hinge Finish: Matte Black
+    price: 597
+  - sku: DTD-47505738268842
+    options:
+      Door Size: 36" X 80"
+      Handing & Swing: Right Hand Outswing
+      Hinge Finish: Matte Black
+    price: 597

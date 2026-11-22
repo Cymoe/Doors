@@ -1,0 +1,95 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/single-panel-knotty-pine-barn-door
+type: standard
+handle: single-panel-knotty-pine-barn-door
+title: Single Panel V-Groove Knotty Pine Wood Interior Barn Door
+status: active
+category: barn
+description: |-
+  Doors are not grooved at the bottom. Our doors are sold as slabs made for suspension with Barn Door Hardware.
+
+  Images 2,3,4 and 5: 36"W x 100"H x 1-3/8"D with 72" Matte Black Bent Strap Hardware
+tags:
+  - Barn Door
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_84" (7')
+  - interior
+  - Knotty Pine
+  - Species_Knotty Pine
+  - Width_36"
+  - Width_40"
+images:
+  - src: /images/products/single-panel-knotty-pine-barn-door/1.jpg
+    alt: Single Panel V-Groove Knotty Pine Wood Interior Barn Door
+  - src: /images/products/single-panel-knotty-pine-barn-door/2.jpg
+    alt: Single Panel V-Groove Knotty Pine Wood Interior Barn Door
+  - src: /images/products/single-panel-knotty-pine-barn-door/3.jpg
+    alt: Single Panel V-Groove Knotty Pine Wood Interior Barn Door
+  - src: /images/products/single-panel-knotty-pine-barn-door/4.jpg
+    alt: Single Panel V-Groove Knotty Pine Wood Interior Barn Door
+optionNames:
+  - Width
+  - Height
+  - Dressing Board Style
+variants:
+  - sku: Barn Door Knotty Pine-1PNL-30
+    options:
+      Width: 36"
+      Height: 7' (84")
+      Dressing Board Style: Single Side
+    price: 282
+  - sku: Barn Door Knotty 8/0-1 PNL-30-SINGLE
+    options:
+      Width: 36"
+      Height: 8'4" (100")
+      Dressing Board Style: Single Side
+    price: 556
+  - sku: DTD-21772728467540
+    options:
+      Width: 36"
+      Height: 7' (84")
+      Dressing Board Style: Both Sides
+    price: 359
+  - sku: Barn Door Knotty 8/0-1 PNL-30-BOTH
+    options:
+      Width: 36"
+      Height: 8'4" (100")
+      Dressing Board Style: Both Sides
+    price: 633
+  - sku: Barn Door Knotty Pine-1PNL-34
+    options:
+      Width: 40"
+      Height: 7' (84")
+      Dressing Board Style: Single Side
+    price: 310
+  - sku: DTD-21772728533076
+    options:
+      Width: 40"
+      Height: 7' (84")
+      Dressing Board Style: Both Sides
+    price: 387
+  - sku: Barn Door Knotty Pine-1PNL-28
+    options:
+      Width: 32"
+      Height: 7' (84")
+      Dressing Board Style: Single Side
+    price: 241
+  - sku: Barn Door Knotty Pine-1PNL-26
+    options:
+      Width: 30"
+      Height: 7' (84")
+      Dressing Board Style: Single Side
+    price: 227
+  - sku: Barn Door Knotty Pine-1PNL-24
+    options:
+      Width: 28"
+      Height: 7' (84")
+      Dressing Board Style: Single Side
+    price: 215
+  - sku: Barn Door Knotty Pine-1PNL-20
+    options:
+      Width: 24"
+      Height: 7' (84")
+      Dressing Board Style: Single Side
+    price: 211

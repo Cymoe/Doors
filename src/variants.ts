@@ -18,7 +18,20 @@ export interface BuiltProduct {
 const round2 = (n: number) => Math.round(n * 100) / 100;
 
 export function buildVariants(p: Product): BuiltProduct {
-  return p.type === "door" ? buildDoorVariants(p) : buildBoxVariants(p);
+  if (p.type === "door") return buildDoorVariants(p);
+  if (p.type === "standard") {
+    return {
+      optionNames: p.optionNames,
+      variants: p.variants.map((v) => ({
+        sku: v.sku,
+        options: p.optionNames.map((n) => [n, v.options[n]!] as [string, string]),
+        price: v.price,
+        compareAtPrice: v.compareAtPrice,
+        meta: {},
+      })),
+    };
+  }
+  return buildBoxVariants(p);
 }
 
 function buildDoorVariants(p: DoorProduct): BuiltProduct {

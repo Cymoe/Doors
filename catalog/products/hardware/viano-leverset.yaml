@@ -1,0 +1,170 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/viano-leverset
+type: standard
+handle: viano-leverset
+title: Viano Leverset
+status: active
+category: hardware
+description: |-
+  Lifetime mechanical warranty | Five years finish warranty
+
+  General Specifications ﻿(for full product specs download the forms below)
+
+  • ANSI/BHMA A156.39 Grade 3
+
+  • Reversible leverset
+
+  • Door Prep.: 2-⅛” Cross Bore; 1” Edge
+
+  • 5-pin KW keyway; solid brass cylinder
+
+  • Latch: 1” face, ¼” radius corner, 2-⅜” backset
+
+  • Strike: 2-¼” x 1-¾” full-lip, ¼” radius corner
+
+  • ADA compliant leverset available
+
+  All locks include an adjustable latch for 2-3/8" and 2-3/4" backsets.
+
+  Download Specification Sheet | Download Installation Sheet
+tags:
+  - Doors
+  - Finish_Antique Nickel
+  - Finish_Oil Rubbed Bronze
+  - Finish_Polished Brass
+  - Finish_Satin Nickel
+  - Leverset
+  - pamex
+images:
+  - src: /images/products/viano-leverset/1.jpg
+    alt: Viano Leverset
+  - src: /images/products/viano-leverset/2.jpg
+    alt: Viano Leverset
+  - src: /images/products/viano-leverset/3.jpg
+    alt: Viano Leverset
+  - src: /images/products/viano-leverset/4.jpg
+    alt: Viano Leverset
+optionNames:
+  - Finish
+  - Lock Style
+variants:
+  - sku: FLV00 (F109)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Entry
+    price: 91.52
+  - sku: FLV01 (F76)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Privacy
+    price: 75.92
+  - sku: FLV03 (F75)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Passage
+    price: 75.92
+  - sku: L-FLV04-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Left
+    price: 45.76
+  - sku: R-FLV04-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Right
+    price: 45.76
+  - sku: FLV00 (F109)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Entry
+    price: 96.72
+  - sku: FLV01 (F76)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Privacy
+    price: 82.16
+  - sku: FLV03 (F75)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Passage
+    price: 82.16
+  - sku: L-FLV04-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Left
+    price: 48.88
+  - sku: R-FLV04-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Right
+    price: 48.88
+  - sku: FLV07C (F109)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Entry with ADA
+    price: 109.2
+  - sku: FLV08C (F76)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Privacy with ADA
+    price: 93.6
+  - sku: FLV00 (F109)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry
+    price: 91.52
+  - sku: FLV01 (F76)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy
+    price: 75.92
+  - sku: FLV03 (F75)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Passage
+    price: 75.92
+  - sku: L-FLV04-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Left
+    price: 45.76
+  - sku: R-FLV04-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Right
+    price: 45.76
+  - sku: FLV07C (F109)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry with ADA
+    price: 101.92
+  - sku: FLV08C (F76)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy with ADA
+    price: 86.32
+  - sku: FLV00 (F109)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Entry
+    price: 86.32
+  - sku: FLV01 (F76)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Privacy
+    price: 73.84
+  - sku: FLV03 (F75)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Passage
+    price: 66.56
+  - sku: L-FLV04-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Left
+    price: 45.76
+  - sku: R-FLV04-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Right
+    price: 45.76

@@ -1,0 +1,90 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/single-panel-barn-door
+type: standard
+handle: single-panel-barn-door
+title: Single Panel Pine Wood Interior Barn Door
+status: active
+category: barn
+description: |-
+  For any doors less than 30" wide, please contact for any designs made with the dressing boards.
+
+  Doors are not grooved at the bottom. Our doors are sold as slabs made for suspension with Barn Door Hardware.
+tags:
+  - Barn Door
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_100" (8' 4")
+  - Height_84" (7')
+  - Species_Pine
+  - Width_15"
+  - Width_18"
+  - Width_24"
+  - Width_28"
+  - Width_30"
+  - Width_32"
+  - Width_36"
+  - Width_40"
+images:
+  - src: /images/products/single-panel-barn-door/1.jpg
+    alt: Single Panel Pine Wood Interior Barn Door
+  - src: /images/products/single-panel-barn-door/2.jpg
+    alt: Single Panel Pine Wood Interior Barn Door
+optionNames:
+  - Width
+  - Height
+  - Dressing Board Style
+variants:
+  - sku: Barn Door Clear Pine-1 PNL-13
+    options:
+      Width: 15"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 256
+  - sku: Barn Door Clear Pine-1 PNL-16
+    options:
+      Width: 18"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 239
+  - sku: Barn Door Clear Pine-1 PNL-20
+    options:
+      Width: 24"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 253
+  - sku: Barn Door Clear Pine-1 PNL-24
+    options:
+      Width: 28"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 257
+  - sku: Barn Door Clear Pine-1 PNL-26
+    options:
+      Width: 30"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 269
+  - sku: "20006279"
+    options:
+      Width: 32"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 283
+  - sku: Barn Door Clear Pine-1 PNL-30
+    options:
+      Width: 36"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 324
+  - sku: Barn Door Clear Pine-1 PNL-34
+    options:
+      Width: 40"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 356
+  - sku: Barn Door Clear 1PNL-8/0-3/0
+    options:
+      Width: 36"
+      Height: 100"
+      Dressing Board Style: Single Side
+    price: 572

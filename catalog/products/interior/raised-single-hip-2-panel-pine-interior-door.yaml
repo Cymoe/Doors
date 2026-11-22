@@ -1,0 +1,114 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/raised-single-hip-2-panel-pine-interior-door
+type: standard
+handle: raised-single-hip-2-panel-pine-interior-door
+title: 2 Panel Raised Single Hip Square Top Pine Wood Interior Door
+status: active
+category: interior
+description: |-
+  Nothing is more traditional than a paneled door. If you're looking to add a little design interest to your door style, why not try a square design. Squared raised panels add intrigue to any door while maintaining the traditional look and feel.
+
+  This door features a 2-panel design on 1 3/8" thick pine. The bottom panel is square while the top features a gentle squared look to match. The door comes in a variety of heights and widths to suit most any space in your home. The clear pine material is perfect for either a rich stain or paint finish.
+tags:
+  - 6' 8"
+  - 8' 0"
+  - accordions
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_80" (6' 8")
+  - interior
+  - interior-only
+  - new arrivals
+  - prehung
+  - Raised Panel
+  - retail
+  - Species_Pine
+  - Width_16"
+  - Width_18"
+  - Width_24"
+  - Width_28"
+  - Width_30"
+  - Width_32"
+  - Width_36"
+images:
+  - src: /images/products/raised-single-hip-2-panel-pine-interior-door/1.jpg
+    alt: 2 Panel Raised Single Hip Square Top Pine Wood Interior Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20006223"
+    options:
+      Width: 16"
+      Height: 80" (6' 8")
+    price: 195
+  - sku: "20006225"
+    options:
+      Width: 18"
+      Height: 80" (6' 8")
+    price: 172
+    compareAtPrice: 201
+  - sku: "20006226"
+    options:
+      Width: 24"
+      Height: 80" (6' 8")
+    price: 181
+    compareAtPrice: 212
+  - sku: "20006227"
+    options:
+      Width: 28"
+      Height: 80" (6' 8")
+    price: 229
+  - sku: "20006228"
+    options:
+      Width: 30"
+      Height: 80" (6' 8")
+    price: 199
+    compareAtPrice: 233
+  - sku: "20006229"
+    options:
+      Width: 32"
+      Height: 80" (6' 8")
+    price: 205
+    compareAtPrice: 240
+  - sku: "20006230"
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 211
+    compareAtPrice: 247
+  - sku: "20006231"
+    options:
+      Width: 18"
+      Height: 96" (8')
+    price: 457
+    compareAtPrice: 535
+  - sku: "20006232"
+    options:
+      Width: 24"
+      Height: 96" (8')
+    price: 464
+    compareAtPrice: 543
+  - sku: "20006233"
+    options:
+      Width: 28"
+      Height: 96" (8')
+    price: 546
+  - sku: "20006234"
+    options:
+      Width: 30"
+      Height: 96" (8')
+    price: 470
+    compareAtPrice: 550
+  - sku: "20006235"
+    options:
+      Width: 32"
+      Height: 96" (8')
+    price: 473
+    compareAtPrice: 553
+  - sku: "20006236"
+    options:
+      Width: 36"
+      Height: 96" (8')
+    price: 475
+    compareAtPrice: 556

@@ -1,0 +1,426 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/naples-leverset
+type: standard
+handle: naples-leverset
+title: Naples Leverset
+status: active
+category: hardware
+description: |-
+  Lifetime mechanical warranty | Five years finish warranty
+
+  General Specifications ﻿(for full product specs download the forms below)
+
+  • ANSI/BHMA A156.39 Grade 3
+
+  • Reversible leverset
+
+  • Door Prep.: 2-⅛” Cross Bore; 1” Edge
+
+  • 5-pin KW keyway; solid brass cylinder
+
+  • Latch: 1” face, ¼” radius corner, 2-⅜” backset
+
+  • Strike: 2-¼” x 1-¾” full-lip, ¼” radius corner
+
+  • ADA compliant leverset available
+
+  All locks include an adjustable latch for 2-3/8" and 2-3/4" backsets.
+
+  Download Specification Sheet | Download Installation Sheet
+tags:
+  - Doors
+  - Finish_Antique Nickel
+  - Finish_Matte Black
+  - Finish_Oil Rubbed Bronze
+  - Finish_Polished Brass
+  - Finish_Polished Chrome
+  - Finish_Satin Nickel
+  - Finish_Venetian Bronze
+  - Leverset
+  - pamex
+images:
+  - src: /images/products/naples-leverset/1.jpg
+    alt: Naples Leverset
+  - src: /images/products/naples-leverset/2.jpg
+    alt: Naples Leverset
+  - src: /images/products/naples-leverset/3.jpg
+    alt: Naples Leverset
+  - src: /images/products/naples-leverset/4.jpg
+    alt: Naples Leverset
+optionNames:
+  - Finish
+  - Lock Style
+  - Handle
+variants:
+  - sku: FLYE00 (F109)-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Entry
+      Handle: Left
+    price: 101.92
+  - sku: DTD-38361844103
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Entry
+      Handle: Right
+    price: 101.92
+  - sku: FLYE01 (F76)-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Privacy
+      Handle: Left
+    price: 82.16
+  - sku: DTD-38361844167
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Privacy
+      Handle: Right
+    price: 82.16
+  - sku: FLYE03 (F75)-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Passage
+      Handle: Left
+    price: 82.16
+  - sku: DTD-38361844231
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Passage
+      Handle: Right
+    price: 82.16
+  - sku: FLYE07C (F109)-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Entry with ADA
+      Handle: Left
+    price: 109.2
+  - sku: DTD-38361844423
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Entry with ADA
+      Handle: Right
+    price: 109.2
+  - sku: FLYE08C (F76)-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Privacy with ADA
+      Handle: Left
+    price: 93.6
+  - sku: DTD-38361844487
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Privacy with ADA
+      Handle: Right
+    price: 93.6
+  - sku: FLYE00 (F109)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Entry
+      Handle: Left
+    price: 101.92
+  - sku: DTD-38361844551
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Entry
+      Handle: Right
+    price: 101.92
+  - sku: FLYE01 (F76)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Privacy
+      Handle: Left
+    price: 82.16
+  - sku: DTD-38361844615
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Privacy
+      Handle: Right
+    price: 82.16
+  - sku: FLYE03 (F75)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Passage
+      Handle: Left
+    price: 82.16
+  - sku: DTD-38361844743
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Passage
+      Handle: Right
+    price: 82.16
+  - sku: FLYE07C (F109)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Entry with ADA
+      Handle: Left
+    price: 109.2
+  - sku: DTD-38361844999
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Entry with ADA
+      Handle: Right
+    price: 109.2
+  - sku: FLYE08C (F76)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Privacy with ADA
+      Handle: Left
+    price: 93.6
+  - sku: DTD-38361845063
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Privacy with ADA
+      Handle: Right
+    price: 93.6
+  - sku: FLYE00 (F109)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry
+      Handle: Left
+    price: 93.6
+  - sku: DTD-38361845127
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry
+      Handle: Right
+    price: 93.6
+  - sku: FLYE01 (F76)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy
+      Handle: Left
+    price: 75.92
+  - sku: DTD-38361845191
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy
+      Handle: Right
+    price: 75.92
+  - sku: FLYE03 (F75)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Passage
+      Handle: Left
+    price: 75.92
+  - sku: DTD-38361845255
+    options:
+      Finish: Satin Nickel
+      Lock Style: Passage
+      Handle: Right
+    price: 75.92
+  - sku: FLYE07C (F109)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry with ADA
+      Handle: Left
+    price: 96.72
+  - sku: DTD-38361845895
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry with ADA
+      Handle: Right
+    price: 96.72
+  - sku: FLYE08C (F76)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy with ADA
+      Handle: Left
+    price: 86.32
+  - sku: DTD-38361846215
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy with ADA
+      Handle: Right
+    price: 86.32
+  - sku: FLYE07 (F109)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry with Quick Release
+      Handle: Left
+    price: 96.72
+  - sku: DTD-38361846599
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry with Quick Release
+      Handle: Right
+    price: 96.72
+  - sku: FLYE08 (F76)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy with Quick Release
+      Handle: Left
+    price: 79.04
+  - sku: DTD-38361846919
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy with Quick Release
+      Handle: Right
+    price: 79.04
+  - sku: FLYE00 (F109)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Entry
+      Handle: Left
+    price: 93.6
+  - sku: DTD-38361847431
+    options:
+      Finish: Antique Nickel
+      Lock Style: Entry
+      Handle: Right
+    price: 93.6
+  - sku: FLYE01 (F76)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Privacy
+      Handle: Left
+    price: 75.92
+  - sku: DTD-38361847943
+    options:
+      Finish: Antique Nickel
+      Lock Style: Privacy
+      Handle: Right
+    price: 75.92
+  - sku: FLYE03 (F75)-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Passage
+      Handle: Left
+    price: 75.92
+  - sku: DTD-38361848071
+    options:
+      Finish: Antique Nickel
+      Lock Style: Passage
+      Handle: Right
+    price: 75.92
+  - sku: FLYE00 (F109)-US19-622
+    options:
+      Finish: Matte Black
+      Lock Style: Entry
+      Handle: Left
+    price: 101.92
+  - sku: DTD-38361849223
+    options:
+      Finish: Matte Black
+      Lock Style: Entry
+      Handle: Right
+    price: 101.92
+  - sku: FLYE01 (F76)-US19-622
+    options:
+      Finish: Matte Black
+      Lock Style: Privacy
+      Handle: Left
+    price: 82.16
+  - sku: DTD-38361849479
+    options:
+      Finish: Matte Black
+      Lock Style: Privacy
+      Handle: Right
+    price: 82.16
+  - sku: FLYE03 (F75)-US19-622
+    options:
+      Finish: Matte Black
+      Lock Style: Passage
+      Handle: Left
+    price: 82.16
+  - sku: DTD-38361849799
+    options:
+      Finish: Matte Black
+      Lock Style: Passage
+      Handle: Right
+    price: 82.16
+  - sku: FLYE00 (F109)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Entry
+      Handle: Left
+    price: 93.6
+  - sku: DTD-38361850823
+    options:
+      Finish: Polished Chrome
+      Lock Style: Entry
+      Handle: Right
+    price: 93.6
+  - sku: FLYE01 (F76)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Privacy
+      Handle: Left
+    price: 75.92
+  - sku: DTD-38361851143
+    options:
+      Finish: Polished Chrome
+      Lock Style: Privacy
+      Handle: Right
+    price: 75.92
+  - sku: FLYE03 (F75)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Passage
+      Handle: Left
+    price: 75.92
+  - sku: DTD-38361851463
+    options:
+      Finish: Polished Chrome
+      Lock Style: Passage
+      Handle: Right
+    price: 75.92
+  - sku: FLYE07C (F109)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Entry with ADA
+      Handle: Left
+    price: 96.72
+  - sku: DTD-38361851783
+    options:
+      Finish: Polished Chrome
+      Lock Style: Entry with ADA
+      Handle: Right
+    price: 96.72
+  - sku: FLYE08C (F76)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Privacy with ADA
+      Handle: Left
+    price: 86.32
+  - sku: DTD-38361851847
+    options:
+      Finish: Polished Chrome
+      Lock Style: Privacy with ADA
+      Handle: Right
+    price: 86.32
+  - sku: FLYE00 (F109)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Entry
+      Handle: Left
+    price: 91.52
+  - sku: DTD-38361851911
+    options:
+      Finish: Polished Brass
+      Lock Style: Entry
+      Handle: Right
+    price: 91.52
+  - sku: FLYE01 (F76)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Privacy
+      Handle: Left
+    price: 73.84
+  - sku: DTD-38361851975
+    options:
+      Finish: Polished Brass
+      Lock Style: Privacy
+      Handle: Right
+    price: 73.84
+  - sku: FLYE03 (F75)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Passage
+      Handle: Left
+    price: 66.56
+  - sku: DTD-38361852039
+    options:
+      Finish: Polished Brass
+      Lock Style: Passage
+      Handle: Right
+    price: 66.56

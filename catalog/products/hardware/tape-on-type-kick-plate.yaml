@@ -1,0 +1,35 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/tape-on-type-kick-plate
+type: standard
+handle: tape-on-type-kick-plate
+title: Tape-On Type Kick Plate
+status: active
+category: hardware
+description: |-
+  8" x 34" Tape-On Type Kick Plate
+
+  • Material: Aluminum
+
+  • Type-on type recommended for steel door
+
+  • Overall Size: 0.05” x 8” x 34”
+
+  * Please note: actual finish colors may vary. Computer monitors display colors differently. We try extremely hard to ensure our photos are as life-like as possible, but please understand the actual color may vary slightly from your monitor.
+tags:
+  - Doors
+images:
+  - src: /images/products/tape-on-type-kick-plate/1.jpg
+    alt: Tape-On Type Kick Plate
+  - src: /images/products/tape-on-type-kick-plate/2.jpg
+    alt: Tape-On Type Kick Plate
+optionNames:
+  - Finish
+variants:
+  - sku: 8"x34" TAPE-ON KICKPLATE SN
+    options:
+      Finish: Satin Nickel
+    price: 57
+  - sku: 8"x34" TAPE-ON KICKPLATE OB
+    options:
+      Finish: Oil Rubbed Bronze
+    price: 60

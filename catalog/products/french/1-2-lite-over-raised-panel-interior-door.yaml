@@ -1,0 +1,56 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/1-2-lite-over-raised-panel-interior-door
+type: standard
+handle: 1-2-lite-over-raised-panel-interior-door
+title: 1/2 Lite Frosted Glass Over Raised Panel Pine Wood Interior French Door
+status: active
+category: french
+description: |-
+  Embrace tradition with a paneled door. If you're looking to add visual interest to your door style, why not try a raised paneled design. Squared raised panels add intrigue to any door while maintaining the traditional look and feel. The frosted half lite, or glass pane, on this door allows natural light to flow into the room and make for a timeless and elegant look.
+
+  This custom interior door features a 2-panel design on 1 3/8" thick pine. The bottom panel is square while the top features a frosted glass pane. The French door comes in a variety of heights and widths to suit most any space in your home. The clear pine material is perfect for either a rich stain or paint finish.
+tags:
+  - 6' 8"
+  - 8' 0"
+  - accordions
+  - Doors
+  - French
+  - Glass Specialty
+  - Height_80" (6' 8")
+  - Height_96" (8')
+  - interior
+  - interior-only
+  - new arrivals
+  - Raised Panel
+  - retail
+  - Species_Pine
+  - Width_18"
+  - Width_24"
+  - Width_28"
+  - Width_30"
+  - Width_32"
+  - Width_36"
+images:
+  - src: /images/products/1-2-lite-over-raised-panel-interior-door/1.jpg
+    alt: 1/2 Lite Frosted Glass Over Raised Panel Pine Wood Interior French Door
+  - src: /images/products/1-2-lite-over-raised-panel-interior-door/2.jpg
+    alt: 1/2 Lite Frosted Glass Over Raised Panel Pine Wood Interior French Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20006535"
+    options:
+      Width: 24"
+      Height: 96" (8')
+    price: 537
+  - sku: "20006533"
+    options:
+      Width: 24"
+      Height: 80" (6' 8")
+    price: 291
+  - sku: "20006534"
+    options:
+      Width: 28"
+      Height: 80" (6' 8")
+    price: 301

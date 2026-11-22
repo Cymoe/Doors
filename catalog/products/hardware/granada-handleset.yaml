@@ -1,0 +1,103 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/granada-handleset
+type: standard
+handle: granada-handleset
+title: Granada Handleset
+status: active
+category: hardware
+description: |-
+  Lifetime mechanical warranty | Five years finish warranty
+
+  General Specifications (for full product specs download the forms below)
+
+  • ANSI A156.2 Grade 2
+
+  • Door Prep.: 2-⅛” Cross Bore; 5-½” C-T-C; 1” Edge
+
+  • 5-pin KW keyway; solid brass cylinder
+
+  • Latch: 1” face, ¼” radius corner, adjustable
+
+  • Baron knob interior trim
+
+  Strike:
+
+  • Deadbolt: 2-¼” x 1-⅛”, square corner
+
+  • Handle: 2-¼” x 1-¾” full-lip, ¼” radius corner
+
+  Single Cylinder:
+  Deadbolt operated by key outside and turn-piece
+  inside. Latchbolt operated by thumb-piece outside and knob or lever inside.
+  Double Cylinder:
+  Deadbolt operated by key on both sides. Latchbolt operated by thumb-piece outside and knob or lever inside.
+  Dummy:
+  Handle and knob or lever act as pull only. No
+  operation.
+
+  All locks include an adjustable latch for 2-3/8" and 2-3/4" backsets.
+
+  Download Specification Sheet | Download Installation Sheet
+tags:
+  - Doors
+  - Finish_Lifetime Polished Brass
+  - Finish_Satin Nickel
+  - Finish_Venetian Bronze
+  - Handleset
+  - pamex
+images:
+  - src: /images/products/granada-handleset/1.jpg
+    alt: Granada Handleset
+  - src: /images/products/granada-handleset/2.jpg
+    alt: Granada Handleset
+  - src: /images/products/granada-handleset/3.jpg
+    alt: Granada Handleset
+optionNames:
+  - Finish
+  - Lock Style
+variants:
+  - sku: R-FSK1-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Single Cylinder
+    price: 288.08
+  - sku: R-FSK2-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Double Cylinder
+    price: 304.72
+  - sku: R-FSK4-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Dummy
+    price: 258.96
+  - sku: R-FSK1-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Single Cylinder
+    price: 316.16
+  - sku: R-FSK2-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Double Cylinder
+    price: 334.88
+  - sku: R-FSK4-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Dummy
+    price: 288.08
+  - sku: R-FSK1-USL03-505
+    options:
+      Finish: Lifetime Polished Brass
+      Lock Style: Single Cylinder
+    price: 316.16
+  - sku: R-FSK2-USL03-505
+    options:
+      Finish: Lifetime Polished Brass
+      Lock Style: Double Cylinder
+    price: 334.88
+  - sku: R-FSK4-USL03-505
+    options:
+      Finish: Lifetime Polished Brass
+      Lock Style: Dummy
+    price: 288.08

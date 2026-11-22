@@ -1,0 +1,30 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/johnson-1560-pocket-door-kit
+type: standard
+handle: johnson-1560-pocket-door-kit
+title: Johnson 1560 Pocket Door Kit
+status: active
+category: hardware
+description: The Johnson 1560 Door Kit is made to carry solid, heavier doors at up to 200 pounds each. The kit comes in standard 2 x 6 timber or steel framed stud walls.The 1560 frame kit is shipped ready for quick installation for both single and converging door needs. The versatile frame can be adjusted for use in non standard wall thicknesses, block masonry walls and can be cut down to accept any smaller size door size.
+tags:
+  - 6' 8"
+  - 8' 0"
+  - Doors
+  - retail
+images:
+  - src: /images/products/johnson-1560-pocket-door-kit/1.jpg
+    alt: Johnson 1560 Pocket Door Kit
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: DTD-4147126829067
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 254
+  - sku: DTD-4147126861835
+    options:
+      Width: 36"
+      Height: 96" (8')
+    price: 328

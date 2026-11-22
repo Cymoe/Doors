@@ -6,7 +6,8 @@
 # estimated from them (see comments). Set status: draft to hide it from the site.
 type: door
 handle: solid-pine-interior-door
-title: Solid Pine Interior Door, Custom Built
+title: Custom Solid Pine Interior Door
+cardNote: Built to your exact opening
 status: active
 skuPrefix: PINE
 description: |

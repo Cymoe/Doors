@@ -1,0 +1,205 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/raised-double-hip-4-panel-pine-door
+type: standard
+handle: raised-double-hip-4-panel-pine-door
+title: 4 Panel Raised Double Hip Solid Core Pine Wood Interior Door
+status: active
+category: interior
+description: |-
+  Description
+
+  Bring timeless craftsmanship and natural warmth to your home with our 4 panel raised double hip pine wood door. Designed with a classic raised panel profile, this 4 panel door adds depth, character, and traditional style to bedrooms, bathrooms, closets, offices, hallways, and other interior spaces.
+
+  The traditional raised panel design has been a staple of home design for hundreds of years. The frame and panel construction was initially developed to combat moisture damage, but the style quickly became a favorite for those looking to add a grand statement to their home.
+
+  Crafted from pine with an engineered solid core construction, this 4 panel interior door is beautiful and durable for everyday residential use. These unfinished doors can be painted or stained as needed to match your home project, giving you the flexibility to coordinate with existing trim, flooring, cabinetry, or your overall interior design.
+
+  The raised double hip panel design creates a more decorative appearance than flat panel doors, making it a strong choice for homeowners who want a classic, high-quality upgrade. Whether you are replacing a single slab or updating multiple rooms throughout your home, this 4 panel wood door provides a versatile look that works well in traditional, colonial, farmhouse, and transitional interiors.
+
+  This raised double hip 4 panel wood door features a beautiful design on 1 3/8" thick pine. This custom interior door comes in a variety of heights and widths to suit any space in your home.
+
+  This pine interior slab door can also be paired with Door to Door’s RapidHang™ jamb kit system for a more complete installation solution. Its solid core construction, paintable and stainable finish, and timeless 4-panel layout make it a dependable option for interior renovation projects of all sizes.
+
+  * Widths 20" and under include only two panels but follow the four panel design and layout
+
+  Product Specifications:
+
+  Door Type: Interior slab door
+
+  Door Style: Raised panel door
+
+  Panel Design: 4 panel raised double hip
+
+  Material: Pine wood
+
+  Construction: Veneered engineered solid core pine wood
+
+  Core Type: Engineered solid core
+
+  Finish: Unfinished
+
+  Finish Options: Paintable or stainable
+
+  Door Thickness: 1-3/8"
+
+  Available Heights: 80" and 96"
+
+  Available Widths: 12", 16", 18", 20", 24", 28", 30", 32", and 36"
+
+  Installation Type: Slab door installation
+
+  Jamb Kit Compatibility: Compatible with Door to Door RapidHang™ jamb kit options
+
+  Recommended Use: Bedrooms, bathrooms, closets, offices, hallways, and other interior spaces
+
+  Design Style: Traditional, colonial, farmhouse, and transitional interiors
+
+  Hardware Prep: Available with select jamb kit options
+
+  Special Note: Widths 20" and under include two panels while maintaining the overall 4-panel design style.
+
+  Key Features:
+
+  • Classic 4 panel door design with raised double hip detailing
+
+  • Ideal as a 4 panel interior door for bedrooms, bathrooms, closets, offices, and hallways
+
+  • Pine wood surface that can be painted or stained
+
+  • Engineered solid core construction for added stability
+
+  • Traditional raised panel profile for a decorative interior look
+
+  • Available in multiple widths and heights
+
+  • Compatible with Door to Door RapidHang™ jamb kit options
+
+  • Great fit for traditional, farmhouse, colonial, and transitional home styles
+tags:
+  - 6' 8"
+  - 8' 0"
+  - accordions
+  - bestsellers
+  - Doors
+  - Double
+  - Finish_Clear/Unfinished
+  - Height_80" (6' 8")
+  - interior
+  - interior-only
+  - prehung
+  - Raised Panel
+  - retail
+  - Species_Pine
+  - Width_12"
+  - Width_16"
+  - Width_18"
+  - Width_20"
+  - Width_24"
+  - Width_28"
+  - Width_30"
+  - Width_32"
+  - Width_36"
+images:
+  - src: /images/products/raised-double-hip-4-panel-pine-door/1.jpg
+    alt: 4 Panel Raised Double Hip Solid Core Pine Wood Interior Door
+  - src: /images/products/raised-double-hip-4-panel-pine-door/2.jpg
+    alt: 4 Panel Raised Double Hip Solid Core Pine Wood Interior Door
+  - src: /images/products/raised-double-hip-4-panel-pine-door/3.jpg
+    alt: 4 Panel Raised Double Hip Solid Core Pine Wood Interior Door
+  - src: /images/products/raised-double-hip-4-panel-pine-door/4.jpg
+    alt: 4 Panel Raised Double Hip Solid Core Pine Wood Interior Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20006351"
+    options:
+      Width: 12"
+      Height: 80" (6' 8")
+    price: 222
+  - sku: "20006353"
+    options:
+      Width: 16"
+      Height: 80" (6' 8")
+    price: 219
+    compareAtPrice: 256
+  - sku: DTD-39439555068074
+    options:
+      Width: 16"
+      Height: 96" (8')
+    price: 424
+  - sku: "20006354"
+    options:
+      Width: 18"
+      Height: 80" (6' 8")
+    price: 241
+    compareAtPrice: 254
+  - sku: "20006362"
+    options:
+      Width: 18"
+      Height: 96" (8')
+    price: 480
+  - sku: "20006355"
+    options:
+      Width: 20"
+      Height: 80" (6' 8")
+    price: 268
+  - sku: DTD-39439557394602
+    options:
+      Width: 20"
+      Height: 96" (8')
+    price: 489
+  - sku: "20006356"
+    options:
+      Width: 24"
+      Height: 80" (6' 8")
+    price: 212
+    compareAtPrice: 235
+  - sku: "20006364"
+    options:
+      Width: 24"
+      Height: 96" (8')
+    price: 507
+  - sku: "20006357"
+    options:
+      Width: 28"
+      Height: 80" (6' 8")
+    price: 248
+  - sku: "20006365"
+    options:
+      Width: 28"
+      Height: 96" (8')
+    price: 514
+  - sku: "20006358"
+    options:
+      Width: 30"
+      Height: 80" (6' 8")
+    price: 228
+    compareAtPrice: 253
+  - sku: "20006366"
+    options:
+      Width: 30"
+      Height: 96" (8')
+    price: 517
+  - sku: "20006359"
+    options:
+      Width: 32"
+      Height: 80" (6' 8")
+    price: 233
+    compareAtPrice: 259
+  - sku: "20006367"
+    options:
+      Width: 32"
+      Height: 96" (8')
+    price: 527
+  - sku: "20006360"
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 250
+    compareAtPrice: 278
+  - sku: "20006368"
+    options:
+      Width: 36"
+      Height: 96" (8')
+    price: 557

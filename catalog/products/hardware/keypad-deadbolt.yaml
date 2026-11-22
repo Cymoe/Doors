@@ -1,0 +1,51 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/keypad-deadbolt
+type: standard
+handle: keypad-deadbolt
+title: Keypad Deadbolt
+status: active
+category: hardware
+description: |-
+  Lifetime mechanical warranty | Five years finish warranty
+
+  General Specifications ﻿(for full product specs download the forms below)
+
+  • Fits standard door prep.
+
+  • Easy installation, no wiring needed
+
+  • Automatic bolt direction determination
+
+  • Easy programing, 4-6 digit user code, up to 10 user codes
+
+  • Optional auto-relock time
+
+  • Illuminated keypad
+
+  • Backup key cylinder override
+
+  All locks include an adjustable latch for 2-3/8" and 2-3/4" backsets.
+
+  Download Specification Sheet | Download Installation Sheet
+tags:
+  - Doors
+  - Electronic Keypad Locks
+  - Finish_Dark Bronze
+  - Finish_Satin Nickel
+  - pamex
+images:
+  - src: /images/products/keypad-deadbolt/1.jpg
+    alt: Keypad Deadbolt
+  - src: /images/products/keypad-deadbolt/2.jpg
+    alt: Keypad Deadbolt
+optionNames:
+  - Finish
+variants:
+  - sku: FKD-US15-619
+    options:
+      Finish: Satin Nickel
+    price: 350.48
+  - sku: FKD-US12P-716
+    options:
+      Finish: Dark Bronze
+    price: 350.48

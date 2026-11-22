@@ -57,11 +57,41 @@ describe("POST /api/checkout", () => {
 
   it("refuses unknown products and bad bodies", async () => {
     expect((await POST(req({ ...order, handle: "nope" }))).status).toBe(404);
-    expect((await POST(req({ nope: true }))).status).toBe(400);
+    expect((await POST(req({ nope: true }))).status).toBe(404);
+    expect((await POST(req({ handle: order.handle, nope: true }))).status).toBe(400);
   });
 
   it("says checkout isn't set up when there's no Stripe key", async () => {
     delete process.env.STRIPE_SECRET_KEY;
     expect((await POST(req(order))).status).toBe(503);
+  });
+});
+
+describe("POST /api/checkout (catalog products)", () => {
+  beforeEach(() => {
+    create.mockClear();
+    process.env.STRIPE_SECRET_KEY = "sk_test_dummy";
+  });
+  afterEach(() => {
+    delete process.env.STRIPE_SECRET_KEY;
+  });
+
+  it("charges the full catalog price for the chosen variant", async () => {
+    const { getProduct } = await import("../src/catalog");
+    const p = getProduct("privacy-latch");
+    if (p?.type !== "standard") throw new Error("expected the imported privacy latch");
+    const v = p.variants[0]!;
+    const res = await POST(req({ handle: p.handle, sku: v.sku, quantity: 2, fulfillment: "pickup", price: 1 }));
+    expect(res.status).toBe(200);
+    const params = create.mock.calls[0]![0] as any;
+    expect(params.line_items[0].price_data.unit_amount).toBe(Math.round(v.price * 2 * 100));
+    expect(params.metadata).toMatchObject({ sku: v.sku, quantity: "2", balance_due: "0.00" });
+    expect(params.custom_text).toBeUndefined();
+  });
+
+  it("refuses unknown SKUs and bad quantities", async () => {
+    expect((await POST(req({ handle: "privacy-latch", sku: "NOPE", quantity: 1, fulfillment: "pickup" }))).status).toBe(400);
+    expect((await POST(req({ handle: "privacy-latch", sku: "x", quantity: 0, fulfillment: "pickup" }))).status).toBe(400);
+    expect(create).not.toHaveBeenCalled();
   });
 });

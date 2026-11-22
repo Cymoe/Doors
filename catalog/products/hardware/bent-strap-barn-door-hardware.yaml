@@ -1,0 +1,48 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/bent-strap-barn-door-hardware
+type: standard
+handle: bent-strap-barn-door-hardware
+title: Bent Strap Barn Door Hardware Kit with Track and Rollers
+status: active
+category: hardware
+description: |-
+  This hardware kit and the included barn door straps support up to 250 lbs. The product is available in a matte black finish.
+
+  *Each barn door track comes with (1) set or two rollers. If using more than one door on the rail, you will need to purchase an extra set of rollers.
+
+  **Please allow up to 4 weeks for delivery of Stainless Steel or Antique Bronze finishes**
+
+  5 Year Limited Lifetime
+
+  SPECS: 3/8" Thick x 1-11/16" Wide x 71-1/2" Long (for 6' Bar)
+
+  Or 3/8" Thick x 1-11/16" Wide x 94-1/2" Long (for 8' Bar)
+tags:
+  - Barn Door
+  - Doors
+  - Finish_Matte Black
+  - Finish_Stainless Steel
+  - retail
+images:
+  - src: /images/products/bent-strap-barn-door-hardware/1.jpg
+    alt: Bent Strap Barn Door Hardware Kit with Track and Rollers
+  - src: /images/products/bent-strap-barn-door-hardware/2.jpg
+    alt: Bent Strap Barn Door Hardware Kit with Track and Rollers
+  - src: /images/products/bent-strap-barn-door-hardware/3.jpg
+    alt: Bent Strap Barn Door Hardware Kit with Track and Rollers
+  - src: /images/products/bent-strap-barn-door-hardware/4.jpg
+    alt: Bent Strap Barn Door Hardware Kit with Track and Rollers
+optionNames:
+  - Width
+  - Finish
+variants:
+  - sku: Barn Hdwr 6FT- Bent Strap MB
+    options:
+      Width: 72"
+      Finish: Matte Black
+    price: 265
+  - sku: Barn Hdwr 8FT- Bent Strap MB
+    options:
+      Width: 96"
+      Finish: Matte Black
+    price: 318

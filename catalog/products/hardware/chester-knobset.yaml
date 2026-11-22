@@ -1,0 +1,126 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/chester-knobset
+type: standard
+handle: chester-knobset
+title: Chester Knobset
+status: active
+category: hardware
+description: |-
+  Lifetime mechanical warranty | Five years finish warranty
+
+  General Specifications ﻿(for full product specs download the forms below)
+
+  • ANSI/BHMA A156.39 Grade 3
+
+  • Door Prep.: 2-⅛” Cross Bore; 1” Edge
+
+  • 5-pin KW keyway; solid brass cylinder
+
+  • Latch: 1” face, ¼” radius corner, 2-⅜” backset
+
+  • Strike: 2-¼” x 1-¾” full-lip, ¼” radius corner
+
+  All locks include an adjustable latch for 2-3/8" and 2-3/4" backsets.
+
+  Download Specification Sheet | Download Installation Sheet
+tags:
+  - Doors
+  - Finish_Oil Rubbed Bronze
+  - Finish_Polished Brass
+  - Finish_Satin Nickel
+  - Finish_Venetian Bronze
+  - Knobset
+  - pamex
+images:
+  - src: /images/products/chester-knobset/1.jpg
+    alt: Chester Knobset
+  - src: /images/products/chester-knobset/2.jpg
+    alt: Chester Knobset
+  - src: /images/products/chester-knobset/3.jpg
+    alt: Chester Knobset
+  - src: /images/products/chester-knobset/4.jpg
+    alt: Chester Knobset
+optionNames:
+  - Finish
+  - Lock Style
+variants:
+  - sku: F109 (FTYL00)-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Entry
+    price: 79.04
+  - sku: F76 (FTYL10)-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Privacy
+    price: 64.48
+  - sku: F75 (FTYL30)-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Passage
+    price: 64.48
+  - sku: (FTYL40)-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Half Dummy
+    price: 43.68
+  - sku: F109 (FTYL00)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Entry
+    price: 79.04
+  - sku: F76 (FTYL10)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Privacy
+    price: 64.48
+  - sku: F75 (FTYL30)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Passage
+    price: 64.48
+  - sku: (FTYL40)-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Half Dummy
+    price: 43.68
+  - sku: F109 (FTYL00)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry
+    price: 73.84
+  - sku: F76 (FTYL10)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy
+    price: 61.36
+  - sku: F75 (FTYL30)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Passage
+    price: 58.24
+  - sku: (FTYL40)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Half Dummy
+    price: 43.68
+  - sku: F109 (FTYL00)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Entry
+    price: 66.56
+  - sku: F76 (FTYL10)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Privacy
+    price: 58.24
+  - sku: F75 (FTYL30)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Passage
+    price: 54.08
+  - sku: (FTYL40)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Half Dummy
+    price: 40.56

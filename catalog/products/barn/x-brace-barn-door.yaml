@@ -1,0 +1,48 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/x-brace-barn-door
+type: standard
+handle: x-brace-barn-door
+title: X-Brace Pine Wood Barn Door
+status: active
+category: barn
+description: Doors are not grooved at the bottom. Our x-brace pine wood barn doors are sold as slabs made for suspension with barn door hardware.
+tags:
+  - Barn Door
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_84" (7')
+  - Species_Pine
+  - Width_36"
+  - Width_40"
+images:
+  - src: /images/products/x-brace-barn-door/1.jpg
+    alt: X-Brace Pine Wood Barn Door
+optionNames:
+  - Width
+  - Height
+  - Dressing Board Style
+variants:
+  - sku: "20008586"
+    options:
+      Width: 36"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 317
+  - sku: DTD-21772728762452
+    options:
+      Width: 36"
+      Height: 84"
+      Dressing Board Style: Both Sides
+    price: 394
+  - sku: DTD-21772728795220
+    options:
+      Width: 40"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 343
+  - sku: DTD-21772728827988
+    options:
+      Width: 40"
+      Height: 84"
+      Dressing Board Style: Both Sides
+    price: 420

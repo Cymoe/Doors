@@ -1,0 +1,180 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/olympic-leverset
+type: standard
+handle: olympic-leverset
+title: Olympic Leverset
+status: active
+category: hardware
+description: |-
+  Lifetime mechanical warranty | Five years finish warranty
+
+  General Specifications ﻿(for full product specs download the forms below)
+
+  • ANSI/BHMA A156.39 Grade 3
+
+  • Reversible leverset
+
+  • Door Prep.: 2-⅛” Cross Bore; 1” Edge
+
+  • 5-pin KW keyway; solid brass cylinder
+
+  • Latch: 1” face, ¼” radius corner, 2-⅜” backset
+
+  • Strike: 2-¼” x 1-¾” full-lip, ¼” radius corner
+
+  • ADA compliant leverset available
+
+  All locks include an adjustable latch for 2-3/8" and 2-3/4" backsets.
+
+  Download Specification Sheet | Download Installation Sheet
+tags:
+  - Doors
+  - Finish_Antique Brass
+  - Finish_Polished Brass
+  - Finish_Polished Chrome
+  - Finish_Satin Nickel
+  - Leverset
+  - pamex
+images:
+  - src: /images/products/olympic-leverset/1.jpg
+    alt: Olympic Leverset
+  - src: /images/products/olympic-leverset/2.jpg
+    alt: Olympic Leverset
+  - src: /images/products/olympic-leverset/3.jpg
+    alt: Olympic Leverset
+  - src: /images/products/olympic-leverset/4.jpg
+    alt: Olympic Leverset
+optionNames:
+  - Finish
+  - Lock Style
+variants:
+  - sku: FLG00 (F109)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry
+    price: 79.04
+  - sku: FLG01 (F76)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy
+    price: 61.36
+  - sku: FLG03 (F75)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Passage
+    price: 58.24
+  - sku: FLG04-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Half Dummy
+    price: 43.68
+  - sku: FLG07 (F109)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry with Quick Release
+    price: 82.16
+  - sku: FLG08 (F76)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy with Quick Release
+    price: 64.48
+  - sku: FLG07C (F109)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Entry with ADA
+    price: 91.52
+  - sku: FLG08C (F76)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Privacy with ADA
+    price: 66.56
+  - sku: FLG00 (F109)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Entry
+    price: 79.04
+  - sku: FLG01 (F76)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Privacy
+    price: 61.36
+  - sku: FLG03 (F75)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Passage
+    price: 58.24
+  - sku: FLG04-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Half Dummy
+    price: 43.68
+  - sku: FLG07C (F109)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Entry with ADA
+    price: 91.52
+  - sku: FLG08C (F76)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Privacy with ADA
+    price: 66.56
+  - sku: FLG00 (F109)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Entry
+    price: 79.04
+  - sku: FLG01 (F76)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Privacy
+    price: 58.24
+  - sku: FLG03 (F75)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Passage
+    price: 58.24
+  - sku: FLG04-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Half Dummy
+    price: 40.56
+  - sku: FLG07 (F109)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Entry with Quick Release
+    price: 79.04
+  - sku: FLG08 (F76)-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Privacy with Quick Release
+    price: 61.36
+  - sku: FLG00 (F109)-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Entry
+    price: 79.04
+  - sku: FLG01 (F76)-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Privacy
+    price: 61.36
+  - sku: FLG03 (F75)-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Passage
+    price: 58.24
+  - sku: FLG04-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Half Dummy
+    price: 43.68
+  - sku: FLG07 (F109)-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Entry with Quick Release
+    price: 82.16
+  - sku: FLG08 (F76)-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Privacy with Quick Release
+    price: 64.48

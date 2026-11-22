@@ -1,0 +1,19 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/johnson-pocket-door-hardware
+type: standard
+handle: johnson-pocket-door-hardware
+title: Johnson Pocket Door Hardware
+status: active
+category: hardware
+description: Johnson Pocket Door Frames can be assembled and installed into a rough opening in as little as 15 minutes with professional results. Pocket Door Frames can be easily configured for both single door operation or converging door operation and accept doors up to 5' wide x 9' tall in each direction. This hardware is designed for installers that would like to build their own pocket structure or replace old pocket door track and hardware in an existing pocket door installation.
+tags:
+  - Doors
+  - retail
+images:
+  - src: /images/products/johnson-pocket-door-hardware/1.jpg
+    alt: Johnson Pocket Door Hardware
+optionNames: []
+variants:
+  - sku: Johnson-Pocket D Hardware
+    options: {}
+    price: 64

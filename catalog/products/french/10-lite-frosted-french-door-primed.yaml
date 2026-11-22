@@ -1,0 +1,38 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/10-lite-frosted-french-door-primed
+type: standard
+handle: 10-lite-frosted-french-door-primed
+title: 10 Lite Frosted Glass French Primed Wood Interior Door
+status: active
+category: french
+description: |-
+  French doors are a beautiful and stylish option for an interior door. The lites, or glass panes, allow natural light to flow into the room and make for a timeless and elegant look. Our French doors come in a variety of grid options, from single lite all the way up to 18-lite.
+
+  This French door features a 10-lite design on 1 3/8" thick pine. The 10-lite door works perfectly for either a single or double door opening. The frosted glass provides privacy while still allowing light to flow through the panes. The primed clear pine material can be finished with a light sanding using a fine-grit sandpaper and the water-based color of your choice.
+
+  *All glass in our French Door line is tempered. Doors are shipped with a layer of plastic covering the glass. We recommend removing after you've completed finishing with an oil-based product only with a straight edge razor.
+tags:
+  - 6' 8"
+  - accordions
+  - Clear
+  - Doors
+  - Finish_Clear/Unfinished
+  - French
+  - Height_80" (6' 8")
+  - interior
+  - interior-only
+  - Species_Pine
+  - Width_24"
+images:
+  - src: /images/products/10-lite-frosted-french-door-primed/1.jpg
+    alt: 10 Lite Frosted Glass French Primed Wood Interior Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20006572"
+    options:
+      Width: 24"
+      Height: 80" (6' 8")
+    price: 359
+    compareAtPrice: 467

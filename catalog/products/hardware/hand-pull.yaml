@@ -1,0 +1,37 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/hand-pull
+type: standard
+handle: hand-pull
+title: Hand Pull
+status: active
+category: hardware
+description: |-
+  • Pull Handle for Barn Doors
+
+  • Overall Length: 9-5/8”
+
+  • Center-To-Center: 8-1/2”
+
+  • Projection: 1-15/16”
+
+  • Fabricated with Steel
+
+  * Please note: actual finish colors may vary. Computer monitors display colors differently. We try extremely hard to ensure our photos are as life-like as possible, but please understand the actual color may vary slightly from your monitor.
+tags:
+  - Doors
+images:
+  - src: /images/products/hand-pull/1.jpg
+    alt: Hand Pull
+  - src: /images/products/hand-pull/2.jpg
+    alt: Hand Pull
+optionNames:
+  - Finish
+variants:
+  - sku: HAND PULL SN
+    options:
+      Finish: Satin Nickel
+    price: 32
+  - sku: HAND PULL BL
+    options:
+      Finish: Matte Black
+    price: 30

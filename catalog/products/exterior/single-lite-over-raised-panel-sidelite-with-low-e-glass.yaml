@@ -1,0 +1,58 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/single-lite-over-raised-panel-sidelite-with-low-e-glass
+type: standard
+handle: single-lite-over-raised-panel-sidelite-with-low-e-glass
+title: Single Lite Over Raised Panel Front Door Sidelite with Low E Glass
+status: active
+category: exterior
+description: |-
+  Please allow 2-3 weeks lead time.
+
+  Our exterior sidelites are a beautiful and stylish option for replacement or addition to a new home. The lites, or glass panes, allow natural light to flow into the room and make for a timeless and elegant look. Our exterior sidelites come in a variety of grid options, from single lite to a raised panel and lite combination. The clear pine material can be finished using a rich stain or a clear top coat for a natural look.
+
+  Glass is double-paned, tempered glass. You can choose to have Clear glass or Low E. Low E is energy efficient, has built-in tint, and falls under the Energy Star Rating. The grids in our 3 and 5-Lite Sidelites are made of flat, painted aluminum material.
+
+  *Stiles (sides) are 1-7/8" wide.
+tags:
+  - 6' 8"
+  - Doors
+  - Finish_Almond
+  - Finish_Champagne Gold
+  - Finish_Clear/Unfinished
+  - Finish_White
+  - Height_80" (6' 8")
+  - retail
+  - sidelite
+  - Species_Pine
+  - Width_10"
+  - Width_12"
+  - Width_14"
+  - Width_16"
+  - Width_18"
+images:
+  - src: /images/products/single-lite-over-raised-panel-sidelite-with-low-e-glass/1.jpg
+    alt: Single Lite Over Raised Panel Front Door Sidelite with Low E Glass
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20008651"
+    options:
+      Width: 10"
+      Height: 80" (6' 8")
+    price: 561.25
+  - sku: DTD-4147123126283
+    options:
+      Width: 12"
+      Height: 80" (6' 8")
+    price: 611.25
+  - sku: DTD-4147123191819
+    options:
+      Width: 14"
+      Height: 80" (6' 8")
+    price: 851.25
+  - sku: DTD-4147123224587
+    options:
+      Width: 18"
+      Height: 80" (6' 8")
+    price: 1032.5

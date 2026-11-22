@@ -1,5 +1,5 @@
 import data from "./generated/catalog.json";
-import type { DoorProduct, Product, StoreConfig } from "./schema";
+import { CATEGORIES, productCategory, type Category, type Product, type StoreConfig } from "./schema";
 
 /**
  * The catalog as the site sees it. src/generated/catalog.json is written by
@@ -16,7 +16,63 @@ export function liveProducts(): Product[] {
   return catalog.products.filter((p) => p.status === "active" || (showDrafts && p.status === "draft"));
 }
 
-export function getDoor(handle: string): DoorProduct | undefined {
-  const p = liveProducts().find((x) => x.handle === handle);
-  return p?.type === "door" ? p : undefined;
+export function getProduct(handle: string): Product | undefined {
+  return liveProducts().find((p) => p.handle === handle);
+}
+
+/** Categories that have at least one live product, in display order. */
+export function liveCategories(): { key: Category; name: string; count: number }[] {
+  const counts = new Map<Category, number>();
+  for (const p of liveProducts()) counts.set(productCategory(p), (counts.get(productCategory(p)) ?? 0) + 1);
+  return (Object.keys(CATEGORIES) as Category[])
+    .filter((k) => counts.has(k))
+    .map((k) => ({ key: k, name: CATEGORIES[k], count: counts.get(k)! }));
+}
+
+/** What a catalog card needs: photo, title, lowest price and the biggest discount. */
+export interface CardInfo {
+  handle: string;
+  title: string;
+  note?: string;
+  image?: { src: string; alt: string };
+  fromPrice: number;
+  /** Compare-at price for the cheapest variant, when it's on sale. */
+  fromCompareAt?: number;
+  /** Largest percent off across variants, rounded down. */
+  maxPercentOff?: number;
+}
+
+export function cardInfo(p: Product): CardInfo {
+  let prices: { price: number; compareAt?: number }[];
+  if (p.type === "door") prices = p.configurations.map((c) => ({ price: c.basePrice }));
+  else if (p.type === "standard") prices = p.variants.map((v) => ({ price: v.price, compareAt: v.compareAtPrice }));
+  else prices = p.variants.map((v) => ({ price: v.pricePerSqFt * v.sqFtPerBox }));
+
+  const cheapest = prices.reduce((a, b) => (b.price < a.price ? b : a));
+  const offs = prices.filter((x) => x.compareAt).map((x) => Math.floor((1 - x.price / x.compareAt!) * 100));
+  const maxOff = offs.length ? Math.max(...offs) : 0;
+  return {
+    handle: p.handle,
+    title: p.title,
+    note: p.cardNote,
+    image: p.images[0],
+    fromPrice: cheapest.price,
+    fromCompareAt: cheapest.compareAt,
+    maxPercentOff: maxOff >= 5 ? maxOff : undefined,
+  };
+}
+
+export function productsIn(category?: Category): Product[] {
+  const list = liveProducts().filter((p) => !category || productCategory(p) === category);
+  // Custom-built products first, then by category order, keeping file order within a category.
+  const order = Object.keys(CATEGORIES);
+  return list
+    .map((p, i) => ({ p, i }))
+    .sort(
+      (a, b) =>
+        Number(b.p.type === "door") - Number(a.p.type === "door") ||
+        order.indexOf(productCategory(a.p)) - order.indexOf(productCategory(b.p)) ||
+        a.i - b.i,
+    )
+    .map((x) => x.p);
 }

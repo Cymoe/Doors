@@ -9,7 +9,7 @@ import { z } from "zod";
 
 const handle = z
   .string()
-  .regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, "lowercase letters, numbers and single dashes only");
+  .regex(/^[a-z0-9][a-z0-9_-]*$/, "lowercase letters, numbers, dashes and underscores only");
 
 const money = z.number().nonnegative().multipleOf(0.01);
 /** A price change relative to a base price; may be negative (e.g. a cheaper wood grade). */
@@ -24,11 +24,30 @@ const image = z.object({
 
 const specValue = z.union([z.string(), z.number(), z.boolean()]);
 
+/** Store sections, in the order they're shown in the catalog. */
+export const CATEGORIES = {
+  interior: "Interior Doors",
+  french: "French & Glass Doors",
+  barn: "Barn Doors",
+  bifold: "Bifold & Closet Doors",
+  prehung: "Prehung Doors",
+  exterior: "Exterior Doors",
+  hardware: "Hardware",
+  flooring: "Flooring",
+  tile: "Tile",
+} as const;
+export type Category = keyof typeof CATEGORIES;
+const category = z.enum(Object.keys(CATEGORIES) as [Category, ...Category[]]);
+
 const baseProduct = z.object({
   handle,
   title: z.string().min(1),
   /** Only active products are shown on the site. */
   status: z.enum(["active", "draft", "archived"]).default("draft"),
+  /** Store section. Defaults by type: doors → interior, flooring → flooring, tile → tile. */
+  category: category.optional(),
+  /** Short line under the title on catalog cards, e.g. "Built to your opening". */
+  cardNote: z.string().optional(),
   /** Paragraphs separated by blank lines. Plain text. */
   description: z.string().min(1),
   /** Bullet points shown under the description. */
@@ -118,8 +137,29 @@ const boxProduct = baseProduct.extend({
 export const flooringProduct = boxProduct.extend({ type: z.literal("flooring") });
 export const tileProduct = boxProduct.extend({ type: z.literal("tile") });
 
+/**
+ * A product with fixed variants and prices (e.g. a stock door in set sizes,
+ * a hinge in several finishes). Each variant lists its option values.
+ * optionNames may be empty for a product with a single variant.
+ */
+export const standardProduct = baseProduct.extend({
+  type: z.literal("standard"),
+  optionNames: z.array(z.string().min(1)).max(3),
+  variants: z
+    .array(
+      z.object({
+        sku: z.string().min(1),
+        options: z.record(z.string(), z.string()),
+        price: money,
+        compareAtPrice: money.optional(),
+        available: z.boolean().default(true),
+      }),
+    )
+    .min(1),
+});
+
 export const product = z
-  .discriminatedUnion("type", [doorProduct, flooringProduct, tileProduct])
+  .discriminatedUnion("type", [doorProduct, flooringProduct, tileProduct, standardProduct])
   .superRefine((p, ctx) => {
     if (p.type === "door") {
       const { min, standard, oversize } = p.sizing;
@@ -128,6 +168,9 @@ export const product = z
         ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["sizing"], message: "sizes must grow: min ≤ standard ≤ oversize" });
       }
       return;
+    }
+    if (p.type === "standard" && p.optionNames.length === 0 && p.variants.length > 1) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["optionNames"], message: "more than one variant needs option names" });
     }
     p.variants.forEach((v, i) => {
       const keys = Object.keys(v.options).sort().join("|");
@@ -160,5 +203,10 @@ export const storeConfig = z.object({
 export type DoorProduct = z.infer<typeof doorProduct>;
 export type FlooringProduct = z.infer<typeof flooringProduct>;
 export type TileProduct = z.infer<typeof tileProduct>;
+export type StandardProduct = z.infer<typeof standardProduct>;
 export type Product = z.infer<typeof product>;
+
+export function productCategory(p: Product): Category {
+  return p.category ?? (p.type === "flooring" ? "flooring" : p.type === "tile" ? "tile" : "interior");
+}
 export type StoreConfig = z.infer<typeof storeConfig>;

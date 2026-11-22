@@ -50,7 +50,7 @@ export default function Measure() {
       </p>
       {door && (
         <p>
-          <Link className="btn" href={`/doors/${door.handle}`}>Back to the door builder</Link>
+          <Link className="btn" href={`/products/${door.handle}`}>Back to the door builder</Link>
         </p>
       )}
     </div>

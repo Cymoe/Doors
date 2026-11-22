@@ -1,0 +1,63 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/half-z-brace-barn-door
+type: standard
+handle: half-z-brace-barn-door
+title: Half Z-Brace Pine Wood Interior Barn Door
+status: active
+category: barn
+description: |-
+  Doors are not grooved at the bottom.
+
+  The half-z brace pine wood barn door is sold as a slab made for suspension with door hardware.
+
+  Product Specifications:
+
+  Width: 36" and 40"
+
+  Height: 84"
+
+  Dressing Board Style: Single Side and Both Sides
+
+  Species: Pine Wood
+
+  Finish: Clear
+tags:
+  - Barn Door
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_84" (7')
+  - Species_Pine
+  - Width_36"
+  - Width_40"
+images:
+  - src: /images/products/half-z-brace-barn-door/1.jpg
+    alt: Half Z-Brace Pine Wood Interior Barn Door
+optionNames:
+  - Width
+  - Height
+  - Dressing Board Style
+variants:
+  - sku: "20008586"
+    options:
+      Width: 36"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 317
+  - sku: DTD-21772728991828
+    options:
+      Width: 36"
+      Height: 84"
+      Dressing Board Style: Both Sides
+    price: 394
+  - sku: DTD-21772729024596
+    options:
+      Width: 40"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 343
+  - sku: DTD-21772729057364
+    options:
+      Width: 40"
+      Height: 84"
+      Dressing Board Style: Both Sides
+    price: 420

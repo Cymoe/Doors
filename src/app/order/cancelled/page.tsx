@@ -5,12 +5,12 @@ export const metadata: Metadata = { title: "Checkout cancelled", robots: { index
 
 export default async function Cancelled({ searchParams }: { searchParams: Promise<{ product?: string }> }) {
   const handle = (await searchParams).product;
-  const back = handle && /^[a-z0-9-]+$/.test(handle) ? `/doors/${handle}` : "/";
+  const back = handle && /^[a-z0-9_-]+$/.test(handle) ? `/products/${handle}` : "/";
   return (
     <div className="wrap prose" style={{ padding: "48px 16px" }}>
       <h1>Checkout cancelled</h1>
-      <p>No payment was taken. Your door is still waiting for you.</p>
-      <p><Link className="btn" href={back}>Back to your door</Link></p>
+      <p>No payment was taken.</p>
+      <p><Link className="btn" href={back}>Back to the product</Link></p>
     </div>
   );
 }

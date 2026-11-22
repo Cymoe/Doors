@@ -1,0 +1,42 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/exterior-4-lite-over-raised-panel-pine-door
+type: standard
+handle: exterior-4-lite-over-raised-panel-pine-door
+title: 4-Lite Glass Over Raised Panel Exterior Pine Front Door
+status: active
+category: exterior
+description: |-
+  Our pine exterior doors feature a 1-3/4" thick pine construction. The 4-lite over Raised Panel design includes 4 clear glass panes of a decorative raised panel.
+
+  • Shown priced with Clear Insulated Glass
+
+  • Doors are 1-3/4" thick
+
+  • Sold as slabs only
+
+  • Currently not available with casing or jamb kit
+
+  • Must be finished in an oil-based product only
+
+  • Please click the "Pine" tab for description of door material
+tags:
+  - 8' 0"
+  - Doors
+  - Exterior
+  - Finish_Clear/Unfinished
+  - Height_80" (6' 8")
+  - Species_Pine
+  - Width_36"
+images:
+  - src: /images/products/exterior-4-lite-over-raised-panel-pine-door/1.jpg
+    alt: 4-Lite Glass Over Raised Panel Exterior Pine Front Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: EX-Pine-4-Lite over 1 pnl
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 997
+    compareAtPrice: 1166

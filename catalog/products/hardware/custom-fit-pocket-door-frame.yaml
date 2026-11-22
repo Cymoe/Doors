@@ -1,0 +1,247 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/custom-fit-pocket-door-frame
+type: standard
+handle: custom-fit-pocket-door-frame
+title: Custom Fit Pocket Door Frame
+status: active
+category: hardware
+description: |-
+  Processing lead time can be approximately 2-3 weeks.
+
+  Our set up pocket door frame that we make in house, all the wood that is used in the pocket door frame is pine. To give it the strength and to make it more rigid, there are 2 galvanized steel extrusions that are applied in the frame construction. On the bottom of the pocket door frame, there is a metal plate that is applied when assembled that the customer will use to nail down the pocket frame to their finished floor. There is also one rubber bumper so when the door is shut in the opening, to give it a soft, quiet sound.
+
+  The track that runs the door is made of galvanized steel on a standard pocket door frame. On a heavy-duty pocket door frame, it is aluminum. In a standard pocket door frame of hardware (150 lb), it contains 2 non-ball-bearing rollers and 2 plates that attach to the top of the doors and a set of aligners that are put on the lower edge to guide the door in and out of the opening. On a heavy-duty bag (225 lb), everything is the same except that the rollers are ball-bearing.
+
+  Select your jamb size, closure options, and track capacity.
+
+  View Installation Steps Here
+tags:
+  - accordions
+  - Doors
+  - interior
+  - new arrivals
+  - retail
+images:
+  - src: /images/products/custom-fit-pocket-door-frame/1.jpg
+    alt: Custom Fit Pocket Door Frame
+optionNames:
+  - Width
+  - Height
+  - Jamb Kit Width
+variants:
+  - sku: DTD-46060257575082
+    options:
+      Width: 18"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 4-9/16"
+    price: 131
+  - sku: DTD-46057911124138
+    options:
+      Width: 18"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 6-9/16"
+    price: 190
+  - sku: DTD-46057911156906
+    options:
+      Width: 18"
+      Height: 84" (7')
+      Jamb Kit Width: 4-9/16"
+    price: 171
+  - sku: DTD-46057911189674
+    options:
+      Width: 18"
+      Height: 84" (7')
+      Jamb Kit Width: 6-9/16"
+    price: 197
+  - sku: DTD-46057911222442
+    options:
+      Width: 18"
+      Height: 96" (8')
+      Jamb Kit Width: 4-9/16"
+    price: 199
+  - sku: DTD-46057911255210
+    options:
+      Width: 18"
+      Height: 96" (8')
+      Jamb Kit Width: 6-9/16"
+    price: 201
+  - sku: DTD-46060261146794
+    options:
+      Width: 24"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 4-9/16"
+    price: 149
+  - sku: DTD-46057911287978
+    options:
+      Width: 24"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 6-9/16"
+    price: 207
+  - sku: DTD-46057911320746
+    options:
+      Width: 24"
+      Height: 84" (7')
+      Jamb Kit Width: 4-9/16"
+    price: 186
+  - sku: DTD-46057911353514
+    options:
+      Width: 24"
+      Height: 84" (7')
+      Jamb Kit Width: 6-9/16"
+    price: 214
+  - sku: DTD-46057911386282
+    options:
+      Width: 24"
+      Height: 96" (8')
+      Jamb Kit Width: 4-9/16"
+    price: 216
+  - sku: DTD-46057911419050
+    options:
+      Width: 24"
+      Height: 96" (8')
+      Jamb Kit Width: 6-9/16"
+    price: 219
+  - sku: O-POCA2/4C
+    options:
+      Width: 28"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 4-9/16"
+    price: 158
+  - sku: DTD-46057911451818
+    options:
+      Width: 28"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 6-9/16"
+    price: 216
+  - sku: DTD-46057911484586
+    options:
+      Width: 28"
+      Height: 84" (7')
+      Jamb Kit Width: 4-9/16"
+    price: 198
+  - sku: DTD-46057911517354
+    options:
+      Width: 28"
+      Height: 84" (7')
+      Jamb Kit Width: 6-9/16"
+    price: 223
+  - sku: DTD-46057911550122
+    options:
+      Width: 28"
+      Height: 96" (8')
+      Jamb Kit Width: 4-9/16"
+    price: 226
+  - sku: DTD-46057911582890
+    options:
+      Width: 28"
+      Height: 96" (8')
+      Jamb Kit Width: 6-9/16"
+    price: 228
+  - sku: DTD-46060263440554
+    options:
+      Width: 30"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 4-9/16"
+    price: 172
+  - sku: DTD-46057911615658
+    options:
+      Width: 30"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 6-9/16"
+    price: 347
+  - sku: DTD-46057911648426
+    options:
+      Width: 30"
+      Height: 84" (7')
+      Jamb Kit Width: 4-9/16"
+    price: 212
+  - sku: DTD-46057911681194
+    options:
+      Width: 30"
+      Height: 84" (7')
+      Jamb Kit Width: 6-9/16"
+    price: 238
+  - sku: DTD-46057911713962
+    options:
+      Width: 30"
+      Height: 96" (8')
+      Jamb Kit Width: 4-9/16"
+    price: 240
+  - sku: DTD-46057911746730
+    options:
+      Width: 30"
+      Height: 96" (8')
+      Jamb Kit Width: 6-9/16"
+    price: 242
+  - sku: DTD-46060263899306
+    options:
+      Width: 32"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 4-9/16"
+    price: 184
+  - sku: DTD-46057911779498
+    options:
+      Width: 32"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 6-9/16"
+    price: 242
+  - sku: DTD-46057911812266
+    options:
+      Width: 32"
+      Height: 84" (7')
+      Jamb Kit Width: 4-9/16"
+    price: 223
+  - sku: DTD-46057911845034
+    options:
+      Width: 32"
+      Height: 84" (7')
+      Jamb Kit Width: 6-9/16"
+    price: 249
+  - sku: "20008283"
+    options:
+      Width: 32"
+      Height: 96" (8')
+      Jamb Kit Width: 4-9/16"
+    price: 252
+  - sku: DTD-46057911910570
+    options:
+      Width: 32"
+      Height: 96" (8')
+      Jamb Kit Width: 6-9/16"
+    price: 254
+  - sku: Custom
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 4-9/16"
+    price: 198
+  - sku: DTD-46057911943338
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+      Jamb Kit Width: 6-9/16"
+    price: 256
+  - sku: DTD-46057911976106
+    options:
+      Width: 36"
+      Height: 84" (7')
+      Jamb Kit Width: 4-9/16"
+    price: 238
+  - sku: DTD-46057912008874
+    options:
+      Width: 36"
+      Height: 84" (7')
+      Jamb Kit Width: 6-9/16"
+    price: 263
+  - sku: DTD-46057912041642
+    options:
+      Width: 36"
+      Height: 96" (8')
+      Jamb Kit Width: 4-9/16"
+    price: 266
+  - sku: DTD-46057912074410
+    options:
+      Width: 36"
+      Height: 96" (8')
+      Jamb Kit Width: 6-9/16"
+    price: 268

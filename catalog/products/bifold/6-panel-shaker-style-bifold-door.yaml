@@ -1,0 +1,54 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/6-panel-shaker-style-bifold-door
+type: standard
+handle: 6-panel-shaker-style-bifold-door
+title: 6 Panel Shaker Style Pine Wood Interior Bifold Closet Door
+status: active
+category: bifold
+description: |-
+  Shaker style is known for its impeccable craftsmanship, careful attention to detail and simplicity of design. The minimalism characteristic of this style is evident in our line of Shaker doors. These Shaker doors are ideal for anyone looking to add traditional or craftsman style to their home. This versatile bifold closet door is ideal for bedroom closets, walk-in closets, laundry rooms, kitchen pantries, hallway linen closets, and other storage areas.
+
+  The interior bifold door features a 6-panel design. The panels are stacked in a traditional Shaker style. The door comes in a variety of heights and widths to suit most any space in your home. The clear pine material is perfect for either a stain or paint finish. Bifold is sold with silver hinge finish only.
+
+  Single unit bifolds with widths of 48”, 60”, and 72” are on the same track. Actual width of bifold doors are slightly less than indicated to allow for proper installation – i.e. 24” wide by 80” high actually measures 11-13/16” wide per panel by 79” high. 24” wide by 96” high actually measures 11-13/16” wide per panel by 95” high.
+
+  To determine the size of bifold needed, you will want to measure your Finished Opening (please measure from side to side, then top to bottom after Sheetrock has been installed). For example, if you have an exact dimension of 60”W x 80”H, then you can order our standard (2) 30”W x 80”H size bifold units.
+
+  Bifolds include overhead track and hardware for each unit.
+tags:
+  - 8' 0"
+  - Bifold
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_96" (8')
+  - retail
+  - Species_Pine
+  - Width_24"
+  - Width_30"
+  - Width_36"
+  - Wood
+images:
+  - src: /images/products/6-panel-shaker-style-bifold-door/1.jpg
+    alt: 6 Panel Shaker Style Pine Wood Interior Bifold Closet Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20007444"
+    options:
+      Width: 24"
+      Height: 96" (8')
+    price: 348
+    compareAtPrice: 407
+  - sku: "20007445"
+    options:
+      Width: 30"
+      Height: 96" (8')
+    price: 348
+    compareAtPrice: 407
+  - sku: "20007446"
+    options:
+      Width: 36"
+      Height: 96" (8')
+    price: 367
+    compareAtPrice: 429

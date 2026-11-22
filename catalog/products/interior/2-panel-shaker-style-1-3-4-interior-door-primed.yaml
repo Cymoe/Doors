@@ -1,0 +1,57 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/2-panel-shaker-style-1-3-4-interior-door-primed
+type: standard
+handle: 2-panel-shaker-style-1-3-4-interior-door-primed
+title: 2 Panel Shaker Style 1-3/4" Pine Wood Interior Door (Primed)
+status: active
+category: interior
+description: |-
+  This 2 panel door features a beautiful Shaker style, making it the perfect addition for any home. This interior door is popular with homeowners because of its craftsmanship, careful attention to detail, and simplicity of design. The minimalism characteristic of this style is evident in our line of Shaker doors. These Shaker doors are ideal for anyone looking to add traditional or craftsman style to their home.
+
+  This door features a 2-panel design on 1 3/4" thick pine. The panels are stacked in a traditional Shaker style. The door comes in a variety of heights and widths to suit most any space in your home. The primed finish is ready for a paint finish.
+
+  Door stiles (sides) and rails (horizontal portion) are made of engineered solid core pine. The inlaid portion of the Shaker style is made with solid MDF.
+tags:
+  - accordions
+  - bestsellers
+  - Doors
+  - Finish_Primed
+  - Height_80" (6' 8")
+  - Height_96" (8')
+  - interior
+  - Shaker Style
+  - Width_32"
+  - Width_36"
+images:
+  - src: /images/products/2-panel-shaker-style-1-3-4-interior-door-primed/1.jpg
+    alt: 2 Panel Shaker Style 1-3/4" Pine Wood Interior Door (Primed)
+  - src: /images/products/2-panel-shaker-style-1-3-4-interior-door-primed/2.jpg
+    alt: 2 Panel Shaker Style 1-3/4" Pine Wood Interior Door (Primed)
+  - src: /images/products/2-panel-shaker-style-1-3-4-interior-door-primed/3.jpg
+    alt: 2 Panel Shaker Style 1-3/4" Pine Wood Interior Door (Primed)
+  - src: /images/products/2-panel-shaker-style-1-3-4-interior-door-primed/4.jpg
+    alt: 2 Panel Shaker Style 1-3/4" Pine Wood Interior Door (Primed)
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20007374"
+    options:
+      Width: 32"
+      Height: 80" (6' 8")
+    price: 291
+  - sku: "20007375"
+    options:
+      Width: 32"
+      Height: 96" (8')
+    price: 525
+  - sku: "20007388"
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 314
+  - sku: "20007389"
+    options:
+      Width: 36"
+      Height: 96" (8')
+    price: 534

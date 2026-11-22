@@ -1,0 +1,47 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/kick-down-door-holder
+type: standard
+handle: kick-down-door-holder
+title: Kick Down Door Holder
+status: active
+category: hardware
+description: |-
+  5" Kick Down Door Holder
+
+  • Surface mount application
+
+  • Non-marring tip provides positive stopping action
+
+  • Overall Size: 5” x 1-5/8”
+
+  * Please note: actual finish colors may vary. Computer monitors display colors differently. We try extremely hard to ensure our photos are as life-like as possible, but please understand the actual color may vary slightly from your monitor.
+tags:
+  - Doors
+images:
+  - src: /images/products/kick-down-door-holder/1.jpg
+    alt: Kick Down Door Holder
+  - src: /images/products/kick-down-door-holder/2.jpg
+    alt: Kick Down Door Holder
+  - src: /images/products/kick-down-door-holder/3.jpg
+    alt: Kick Down Door Holder
+  - src: /images/products/kick-down-door-holder/4.jpg
+    alt: Kick Down Door Holder
+optionNames:
+  - Finish
+variants:
+  - sku: 5" SB KICK DOWN DOOR HOLDER SN
+    options:
+      Finish: Satin Nickel
+    price: 47
+  - sku: 5" SB KICK DOWN DOOR HOLDER CP
+    options:
+      Finish: Polished Chrome
+    price: 44
+  - sku: 5" SB KICK DOWN DOOR HOLDER OB
+    options:
+      Finish: Oil Rubbed Bronze
+    price: 50
+  - sku: 5" SB KICK DOWN DOOR HOLDER PB
+    options:
+      Finish: Polished Brass
+    price: 44

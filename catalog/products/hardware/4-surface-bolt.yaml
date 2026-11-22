@@ -1,0 +1,57 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/4-surface-bolt
+type: standard
+handle: 4-surface-bolt
+title: 4" Surface Bolt
+status: active
+category: hardware
+description: |-
+  Features
+
+  • Surface screws application
+
+  • Complete w/ 2 receptacle plates & wooden screws
+
+  • Overall Size: 4” x ⅝”
+
+  Download Specification Sheet
+tags:
+  - Doors
+  - Finish_Antique Brass
+  - Finish_Oil Rubbed Bronze
+  - Finish_Polished Brass
+  - Finish_Polished Chrome
+  - Finish_Satin Nickel
+  - pamex
+images:
+  - src: /images/products/4-surface-bolt/1.jpg
+    alt: 4" Surface Bolt
+  - src: /images/products/4-surface-bolt/2.jpg
+    alt: 4" Surface Bolt
+  - src: /images/products/4-surface-bolt/3.jpg
+    alt: 4" Surface Bolt
+  - src: /images/products/4-surface-bolt/4.jpg
+    alt: 4" Surface Bolt
+optionNames:
+  - Finish
+variants:
+  - sku: DD05-704-US15-619
+    options:
+      Finish: Satin Nickel
+    price: 17.68
+  - sku: DD05-704-US26 -625
+    options:
+      Finish: Polished Chrome
+    price: 16.64
+  - sku: DD05-704-US3-605
+    options:
+      Finish: Polished Brass
+    price: 16.64
+  - sku: DD05-704-US5-609
+    options:
+      Finish: Antique Brass
+    price: 16.64
+  - sku: DD05-704-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+    price: 18.72

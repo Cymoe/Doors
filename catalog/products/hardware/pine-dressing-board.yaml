@@ -1,0 +1,36 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/pine-dressing-board
+type: standard
+handle: pine-dressing-board
+title: Pine Dressing Board
+status: active
+category: hardware
+description: Pine Dressing Board
+tags:
+  - Barn Door
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_84" (7')
+images:
+  - src: /images/products/pine-dressing-board/1.jpg
+    alt: Pine Dressing Board
+  - src: /images/products/pine-dressing-board/2.jpg
+    alt: Pine Dressing Board
+  - src: /images/products/pine-dressing-board/3.jpg
+    alt: Pine Dressing Board
+  - src: /images/products/pine-dressing-board/4.jpg
+    alt: Pine Dressing Board
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: Barn Door CLEAR Dressing Bd
+    options:
+      Width: 4-1/2"
+      Height: 84"
+    price: 23
+  - sku: Barn Door Clr 7 3-8 x 84"
+    options:
+      Width: 7-5/8"
+      Height: 84"
+    price: 28

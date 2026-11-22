@@ -1,0 +1,51 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/flush-bolt-round-corner
+type: standard
+handle: flush-bolt-round-corner
+title: Flush Bolt - Round Corner
+status: active
+category: hardware
+description: |-
+  6" Flush Bolt - Round Corner
+
+  • Door Prep: ¾” W x 11/16” D x 5-5/16” H
+
+  • Door Thickness: 1-¼” ~ 1-¾”
+
+  • Overall Size: 6” x ¾”
+
+  * Please note: actual finish colors may vary. Computer monitors display colors differently. We try extremely hard to ensure our photos are as life-like as possible, but please understand the actual color may vary slightly from your monitor.
+tags:
+  - Doors
+images:
+  - src: /images/products/flush-bolt-round-corner/1.jpg
+    alt: Flush Bolt - Round Corner
+  - src: /images/products/flush-bolt-round-corner/2.jpg
+    alt: Flush Bolt - Round Corner
+  - src: /images/products/flush-bolt-round-corner/3.jpg
+    alt: Flush Bolt - Round Corner
+  - src: /images/products/flush-bolt-round-corner/4.jpg
+    alt: Flush Bolt - Round Corner
+optionNames:
+  - Finish
+variants:
+  - sku: 6" SB FLUSH BOLT RD BL
+    options:
+      Finish: Matte Black
+    price: 23
+  - sku: 6" SB FLUSH BOLT RD SN
+    options:
+      Finish: Satin Nickel
+    price: 21
+  - sku: 6" SB FLUSH BOLT RD OB
+    options:
+      Finish: Oil Rubbed Bronze
+    price: 22
+  - sku: 6" SB FLUSH BOLT RD CP
+    options:
+      Finish: Polished Chrome
+    price: 21
+  - sku: 6" SB FLUSH BOLT RD PB
+    options:
+      Finish: Polished Brass
+    price: 14

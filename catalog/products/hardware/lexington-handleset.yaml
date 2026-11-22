@@ -1,0 +1,201 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/lexington-handleset
+type: standard
+handle: lexington-handleset
+title: Lexington Handleset
+status: active
+category: hardware
+description: |-
+  Lifetime mechanical warranty | Five years finish warranty
+
+  General Specifications (for full product specs download the forms below)
+
+  • ANSI A156.2 Grade 3
+
+  • Door Prep.: 2-⅛” Cross Bore; 5-½” C-T-C; 1” Edge
+
+  • 5-pin KW keyway; solid brass cylinder
+
+  • Latch: 1” face, ¼” radius corner, adjustable
+
+  • Saturn knob interior trim; Baron for Venetian Bronze and Matte Black finish
+
+  Strike:
+
+  • Deadbolt: 2-¼” x 1-¾” full-lip, ¼” radius corner
+
+  • Handle: 2-¼” x 1-¾” full-lip, ¼” radius corner
+
+  Single Cylinder:
+  Deadbolt operated by key outside and turn-piece
+  inside. Latchbolt operated by thumb-piece outside and knob or lever inside.
+  Double Cylinder:
+  Deadbolt operated by key on both sides. Latchbolt operated by thumb-piece outside and knob or lever inside.
+  Dummy:
+  Handle and knob or lever act as pull only. No
+  operation.
+
+  All locks include an adjustable latch for 2-3/8" and 2-3/4" backsets.
+
+  Download Specification Sheet | Download Installation Sheet
+tags:
+  - Doors
+  - Finish_Antique Brass
+  - Finish_Antique Nickel
+  - Finish_Lifetime Polished Brass
+  - Finish_Matte Black
+  - Finish_Oil Rubbed Bronze
+  - Finish_Polished Brass
+  - Finish_Polished Chrome
+  - Finish_Satin Nickel
+  - Finish_Venetian Bronze
+  - Handleset
+  - pamex
+images:
+  - src: /images/products/lexington-handleset/1.jpg
+    alt: Lexington Handleset
+  - src: /images/products/lexington-handleset/2.jpg
+    alt: Lexington Handleset
+  - src: /images/products/lexington-handleset/3.jpg
+    alt: Lexington Handleset
+  - src: /images/products/lexington-handleset/4.jpg
+    alt: Lexington Handleset
+optionNames:
+  - Finish
+  - Lock Style
+variants:
+  - sku: L-FS74-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Single Cylinder
+    price: 186.16
+  - sku: DTD-38274061255
+    options:
+      Finish: Satin Nickel
+      Lock Style: Double Cylinder
+    price: 186.16
+  - sku: DTD-38216061191
+    options:
+      Finish: Satin Nickel
+      Lock Style: Dummy
+    price: 186.16
+  - sku: L-FS74-US10B-613
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Single Cylinder
+    price: 204.88
+  - sku: DTD-38274072519
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Double Cylinder
+    price: 204.88
+  - sku: DTD-37390780615
+    options:
+      Finish: Oil Rubbed Bronze
+      Lock Style: Dummy
+    price: 204.88
+  - sku: L-FS74-US11P
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Single Cylinder
+    price: 204.88
+  - sku: DTD-38274083143
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Double Cylinder
+    price: 204.88
+  - sku: DTD-37390781063
+    options:
+      Finish: Venetian Bronze
+      Lock Style: Dummy
+    price: 204.88
+  - sku: L-FS74-US15A-620
+    options:
+      Finish: Antique Nickel
+      Lock Style: Single Cylinder
+    price: 186.16
+  - sku: DTD-38274089479
+    options:
+      Finish: Antique Nickel
+      Lock Style: Double Cylinder
+    price: 186.16
+  - sku: DTD-37390781703
+    options:
+      Finish: Antique Nickel
+      Lock Style: Dummy
+    price: 186.16
+  - sku: L-FS74-US19-622
+    options:
+      Finish: Matte Black
+      Lock Style: Single Cylinder
+    price: 204.88
+  - sku: DTD-38274108743
+    options:
+      Finish: Matte Black
+      Lock Style: Double Cylinder
+    price: 204.88
+  - sku: DTD-37390782023
+    options:
+      Finish: Matte Black
+      Lock Style: Dummy
+    price: 204.88
+  - sku: L-FS74-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Single Cylinder
+    price: 186.16
+  - sku: DTD-38274115335
+    options:
+      Finish: Polished Chrome
+      Lock Style: Double Cylinder
+    price: 186.16
+  - sku: DTD-37390782343
+    options:
+      Finish: Polished Chrome
+      Lock Style: Dummy
+    price: 186.16
+  - sku: L-FS74-US3-605
+    options:
+      Finish: Polished Brass
+      Lock Style: Single Cylinder
+    price: 173.68
+  - sku: DTD-38274129671
+    options:
+      Finish: Polished Brass
+      Lock Style: Double Cylinder
+    price: 173.68
+  - sku: DTD-37390782599
+    options:
+      Finish: Polished Brass
+      Lock Style: Dummy
+    price: 173.68
+  - sku: L-FS74-US5-609
+    options:
+      Finish: Antique Brass
+      Lock Style: Single Cylinder
+    price: 186.16
+  - sku: DTD-38274131079
+    options:
+      Finish: Antique Brass
+      Lock Style: Double Cylinder
+    price: 186.16
+  - sku: DTD-37390782919
+    options:
+      Finish: Antique Brass
+      Lock Style: Dummy
+    price: 186.16
+  - sku: L-FS74-USL03-505
+    options:
+      Finish: Lifetime Polished Brass
+      Lock Style: Single Cylinder
+    price: 204.88
+  - sku: DTD-38274148487
+    options:
+      Finish: Lifetime Polished Brass
+      Lock Style: Double Cylinder
+    price: 204.88
+  - sku: DTD-37390783175
+    options:
+      Finish: Lifetime Polished Brass
+      Lock Style: Dummy
+    price: 204.88

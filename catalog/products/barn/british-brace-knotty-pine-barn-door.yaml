@@ -1,0 +1,48 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/british-brace-knotty-pine-barn-door
+type: standard
+handle: british-brace-knotty-pine-barn-door
+title: British Brace V-Groove Knotty Pine Barn Door
+status: active
+category: barn
+description: Doors are not grooved at the bottom. Our doors are sold as slabs made for suspension with Barn Door Hardware.
+tags:
+  - Barn Door
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_84" (7')
+  - Species_Knotty Pine
+  - Width_36"
+  - Width_40"
+images:
+  - src: /images/products/british-brace-knotty-pine-barn-door/1.jpg
+    alt: British Brace V-Groove Knotty Pine Barn Door
+optionNames:
+  - Width
+  - Height
+  - Dressing Board Style
+variants:
+  - sku: "20008586"
+    options:
+      Width: 36"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 310
+  - sku: DTD-21772730597460
+    options:
+      Width: 36"
+      Height: 84"
+      Dressing Board Style: Both Sides
+    price: 387
+  - sku: DTD-21772730630228
+    options:
+      Width: 40"
+      Height: 84"
+      Dressing Board Style: Single Side
+    price: 352
+  - sku: DTD-21772730662996
+    options:
+      Width: 40"
+      Height: 84"
+      Dressing Board Style: Both Sides
+    price: 429

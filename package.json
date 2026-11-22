@@ -16,7 +16,8 @@
     "list": "tsx src/cli.ts list",
     "typecheck": "npm run -s catalog && tsc --noEmit",
     "pretest": "npm run -s catalog",
-    "test": "vitest run"
+    "test": "vitest run",
+    "import:shopify": "tsx src/import-shopify.ts"
   },
   "dependencies": {
     "next": "^16.4.5",
@@ -30,6 +31,7 @@
     "@types/node": "22.18.0",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "sharp": "0.35.5",
     "tsx": "4.20.5",
     "typescript": "5.9.3",
     "vitest": "3.2.4"

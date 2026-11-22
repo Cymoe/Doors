@@ -1,0 +1,73 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/onyx-passage-lever
+type: standard
+handle: onyx-passage-lever
+title: Onyx Leverset
+status: active
+category: hardware
+description: |-
+  Lifetime mechanical warranty | Five years finish warranty
+
+  General Specifications ﻿(for full product specs download the forms below)
+
+  • ANSI/BHMA A156.39 Grade 3
+
+  • Reversible leverset
+
+  • Door Prep.: 2-⅛” Cross Bore; 1” Edge
+
+  • Latch: 1” face, ¼” radius corner, adjustable
+
+  • Strike: 2-¼” x 1-¾” full-lip, ¼” radius corner
+
+  • ADA compliant
+
+  All locks include an adjustable latch for 2-3/8" and 2-3/4" backsets.
+
+  Download Specification Sheet | Download Installation Sheet
+tags:
+  - Doors
+  - Finish_Polished Chrome
+  - Finish_Satin Nickel
+  - Leverset
+  - pamex
+  - Passage Lever
+images:
+  - src: /images/products/onyx-passage-lever/1.jpg
+    alt: Onyx Leverset
+  - src: /images/products/onyx-passage-lever/2.jpg
+    alt: Onyx Leverset
+optionNames:
+  - Finish
+  - Lock Style
+variants:
+  - sku: FLS08C (F76)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: ADA Privacy
+    price: 105.04
+  - sku: FLS03 (F75)-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Passage
+    price: 96.72
+  - sku: FLS04-US26-625
+    options:
+      Finish: Polished Chrome
+      Lock Style: Half Dummy Trim
+    price: 61.36
+  - sku: FLS08C (F76)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: ADA Privacy
+    price: 105.04
+  - sku: FLS03 (F75)-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Passage
+    price: 96.72
+  - sku: FLS04-US15-619
+    options:
+      Finish: Satin Nickel
+      Lock Style: Half Dummy Trim
+    price: 61.36

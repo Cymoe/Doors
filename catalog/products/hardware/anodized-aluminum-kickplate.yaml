@@ -1,0 +1,66 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/anodized-aluminum-kickplate
+type: standard
+handle: anodized-aluminum-kickplate
+title: Anodized Aluminum Kickplate
+status: active
+category: hardware
+description: |-
+  Anodized Aluminum Kickplate
+
+  Material: Aluminum
+
+  Thickness: 0.05"
+
+  * Please note: actual finish colors may vary. Computer monitors display colors differently. We try extremely hard to ensure our photos are as life-like as possible, but please understand the actual color may vary slightly from your monitor.
+tags:
+  - Doors
+images:
+  - src: /images/products/anodized-aluminum-kickplate/1.jpg
+    alt: Anodized Aluminum Kickplate
+  - src: /images/products/anodized-aluminum-kickplate/2.jpg
+    alt: Anodized Aluminum Kickplate
+optionNames:
+  - Finish
+  - Size
+variants:
+  - sku: 10"x34" ALUM KICKPLATE SN
+    options:
+      Finish: Satin Nickel
+      Size: 10" x 34"
+    price: 68
+  - sku: 6"x30" ALUM KICKPLATE SN
+    options:
+      Finish: Satin Nickel
+      Size: 6" x 30"
+    price: 42
+  - sku: 6"x34" ALUM KICKPLATE SN
+    options:
+      Finish: Satin Nickel
+      Size: 6" x 34"
+    price: 45
+  - sku: 8"x34" ALUM KICKPLATE SN
+    options:
+      Finish: Satin Nickel
+      Size: 8" x 34"
+    price: 57
+  - sku: 10"x34" ALUM KICKPLATE OB
+    options:
+      Finish: Oil Rubbed Bronze
+      Size: 10" x 34"
+    price: 73
+  - sku: 6"x30" ALUM KICKPLATE OB
+    options:
+      Finish: Oil Rubbed Bronze
+      Size: 6" x 30"
+    price: 44
+  - sku: 6"x34" ALUM KICKPLATE OB
+    options:
+      Finish: Oil Rubbed Bronze
+      Size: 6" x 34"
+    price: 47
+  - sku: 8"x34" ALUM KICKPLATE OB
+    options:
+      Finish: Oil Rubbed Bronze
+      Size: 8" x 34"
+    price: 60

@@ -1,0 +1,23 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/hanger-roller-bent-strap-set-of-2
+type: standard
+handle: hanger-roller-bent-strap-set-of-2
+title: Hanger Roller Bent Strap - Set of 2
+status: active
+category: hardware
+description: Hanger Roller Bent Strap in Matte Black with Mounting Screws - Set of 2
+tags:
+  - Barn Door
+  - Doors
+  - Finish_Matte Black
+  - retail
+images:
+  - src: /images/products/hanger-roller-bent-strap-set-of-2/1.jpg
+    alt: Hanger Roller Bent Strap - Set of 2
+optionNames:
+  - Finish
+variants:
+  - sku: Hanger Roller - Bent Strap MB
+    options:
+      Finish: Matte Black
+    price: 142

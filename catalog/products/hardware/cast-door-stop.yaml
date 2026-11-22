@@ -1,0 +1,47 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/cast-door-stop
+type: standard
+handle: cast-door-stop
+title: Cast Door Stop
+status: active
+category: hardware
+description: |-
+  3-1/8" Cast Door Stop
+
+  • Material: Zinc die-cast
+
+  • Fixed screw length: 9/16”
+
+  • Projection: 3-1/8” from Mounting Surface
+
+  • Base Diameter: 15/16”
+tags:
+  - Doors
+images:
+  - src: /images/products/cast-door-stop/1.jpg
+    alt: Cast Door Stop
+  - src: /images/products/cast-door-stop/2.jpg
+    alt: Cast Door Stop
+  - src: /images/products/cast-door-stop/3.jpg
+    alt: Cast Door Stop
+  - src: /images/products/cast-door-stop/4.jpg
+    alt: Cast Door Stop
+optionNames:
+  - Finish
+variants:
+  - sku: 3-1/8" CAST STOP CP
+    options:
+      Finish: Polished Chrome
+    price: 12
+  - sku: 3-1/8" CAST STOP SN
+    options:
+      Finish: Satin Nickel
+    price: 12
+  - sku: 3-1/8" CAST STOP OB
+    options:
+      Finish: Oil Rubbed Bronze
+    price: 12
+  - sku: 3-1/8" CAST STOP PB
+    options:
+      Finish: Polished Brass
+    price: 12

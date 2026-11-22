@@ -1,0 +1,33 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/adjustable-floor-roller-guide
+type: standard
+handle: adjustable-floor-roller-guide
+title: Adjustable Floor Roller Guide
+status: active
+category: hardware
+description: |-
+  • Adjustable Floor Roller Guide
+
+  • Door Thickness: 1-3/8” ~ 1-3/4”
+
+  • Overall Size: 2-1/2” (H) x 4-7/8” (L) x 1-31/32” (W)
+
+  • Material: Metal Construction
+tags:
+  - Doors
+images:
+  - src: /images/products/adjustable-floor-roller-guide/1.jpg
+    alt: Adjustable Floor Roller Guide
+  - src: /images/products/adjustable-floor-roller-guide/2.jpg
+    alt: Adjustable Floor Roller Guide
+optionNames:
+  - Finish
+variants:
+  - sku: ADJ. FLOOR ROLLER GUIDE BL
+    options:
+      Finish: Matte Black
+    price: 21
+  - sku: ADJ. FLOOR ROLLER GUIDE SN
+    options:
+      Finish: Satin Nickel
+    price: 29

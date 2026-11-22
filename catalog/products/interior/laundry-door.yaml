@@ -1,0 +1,37 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/laundry-door
+type: standard
+handle: laundry-door
+title: Single Lite Decorative Glass Clear Pine Wood Laundry Door
+status: active
+category: interior
+description: Single lite pine door with decorative etched glass that will instantly add character to any laundry or multi-purpose room.
+tags:
+  - 6' 8"
+  - accordions
+  - Doors
+  - Finish_Clear/Unfinished
+  - Glass
+  - Glass Specialty
+  - Height_80" (6' 8")
+  - retail
+  - Species_Pine
+  - Width_32"
+  - Width_36"
+images:
+  - src: /images/products/laundry-door/1.jpg
+    alt: Single Lite Decorative Glass Clear Pine Wood Laundry Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20006833"
+    options:
+      Width: 32"
+      Height: 80" (6' 8")
+    price: 422
+  - sku: "20006834"
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 440

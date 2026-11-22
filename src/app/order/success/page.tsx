@@ -35,7 +35,7 @@ export default async function Success({ searchParams }: { searchParams: Promise<
           <div className="summary">
             <table>
               <tbody>
-                <tr><td>Door</td><td>{m.details}</td></tr>
+                <tr><td>Item</td><td>{m.details}</td></tr>
                 <tr><td>Quantity</td><td>{m.quantity}</td></tr>
                 <tr><td>{m.fulfillment === "delivery" ? "Delivery" : "Pickup"}</td>
                   <td>{m.fulfillment === "delivery" ? store.localDelivery.area : store.pickup.location}</td></tr>
@@ -53,8 +53,14 @@ export default async function Success({ searchParams }: { searchParams: Promise<
       )}
       <h2 style={{ marginTop: 32 }}>What happens next</h2>
       <ol>
-        <li>We double-check your measurements and may call to confirm details.</li>
-        <li>We build your door.</li>
+        {m.opening_size ? (
+          <>
+            <li>We double-check your measurements and may call to confirm details.</li>
+            <li>We build your door.</li>
+          </>
+        ) : (
+          <li>We get your order ready.</li>
+        )}
         <li>We let you know when it&apos;s ready for {m.fulfillment === "delivery" ? "delivery" : "pickup"}.</li>
       </ol>
       <p>

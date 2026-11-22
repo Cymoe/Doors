@@ -1,16 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
-import { store } from "@/catalog";
+import { liveProducts, store } from "@/catalog";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: `${store.businessName}: Custom Solid Wood Doors`, template: `%s | ${store.businessName}` },
+  title: { default: `${store.businessName}: Solid Wood Doors`, template: `%s | ${store.businessName}` },
   description: store.tagline,
 };
 
 export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#ffffff" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const customDoor = liveProducts().find((p) => p.type === "door");
   return (
     <html lang="en">
       <body>
@@ -20,10 +21,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {store.logo ? <img src={store.logo} alt={store.businessName} height={36} /> : store.businessName}
             </Link>
             <nav className="nav" aria-label="Main">
-              <Link href="/#doors">Doors</Link>
-              <Link href="/measure">How to measure</Link>
+              <Link href="/">Shop</Link>
+              {customDoor && <Link href={`/products/${customDoor.handle}`}>Custom doors</Link>}
+              <Link href="/measure" className="hide-sm">How to measure</Link>
               {store.contact.phone ? (
-                <a href={`tel:${store.contact.phone.replace(/[^\d+]/g, "")}`}>{store.contact.phone}</a>
+                <a href={`tel:${store.contact.phone.replace(/[^\d+]/g, "")}`}>
+                  <span className="hide-sm">{store.contact.phone}</span>
+                  <span className="show-sm">Call</span>
+                </a>
               ) : (
                 <a href={`mailto:${store.contact.email}`}>Contact</a>
               )}

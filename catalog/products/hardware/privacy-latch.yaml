@@ -1,0 +1,37 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/privacy-latch
+type: standard
+handle: privacy-latch
+title: Privacy Latch
+status: active
+category: hardware
+description: |-
+  • Tear Drop Shape Privacy Lock For Barn Doors
+
+  • Lock Mounts To The Door Or The Jamb
+
+  • Fabricated With Steel
+
+  • Size: 1-3/8" W X 1-9/16" H X 11/16" D
+
+  • Door Thickness: 1-3/8” ~ 1-3/4”
+
+  * Please note: actual finish colors may vary. Computer monitors display colors differently. We try extremely hard to ensure our photos are as life-like as possible, but please understand the actual color may vary slightly from your monitor.
+tags:
+  - Doors
+images:
+  - src: /images/products/privacy-latch/1.jpg
+    alt: Privacy Latch
+  - src: /images/products/privacy-latch/2.jpg
+    alt: Privacy Latch
+optionNames:
+  - Finish
+variants:
+  - sku: PRIVACY LATCH FOR BARN DOOR BL
+    options:
+      Finish: Matte Black
+    price: 22
+  - sku: PRIVACY LATCH FOR BARN DOOR SN
+    options:
+      Finish: Satin Nickel
+    price: 25

@@ -1,0 +1,53 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/colonial-2-raised-panel-bifold-door
+type: standard
+handle: colonial-2-raised-panel-bifold-door
+title: 2 Raised Panel Colonial Pine Wood Interior Bifold Door
+status: active
+category: bifold
+description: |-
+  The traditional raised panel design has been a staple of home design for hundreds of years. The frame and panel construction was initially developed to combat moisture damage, but the style quickly became a favorite for those looking to add a grand statement to their home. Our bifold raised panel doors fit perfectly in those tight spaces without sacrificing design and quality.
+
+  This bifold door features a 4-panel single hip design on 1 1/8" thick bifold panels. The 1 1/8" thick panels are sturdier and more durable than standard Big Box 1" thick bifold panels. Each door face features 2 panels. When closed, the door resembles our Raised Single Hip 4 Panel Pine Door. The clear pine material is perfect for either a rich stain or paint finish.
+
+  Our pine bifold doors are made with solid stiles(sides) and rails, allowing some room for trimming; however, the tolerance is minimal as too much trimming may affect the integrity of the door. Please contact customer service to confirm cuts or receive a quote for special dimensions.
+
+  Single unit bifolds with widths of 48”, 60”, and 72” are on the same track. Actual width of bifold doors are slightly less than indicated to allow for proper installation – i.e. 24” wide by 80” high actually measures 11-13/16” wide per panel by 79” high. 24” wide by 96” high actually measures 11-13/16” wide per panel by 95” high.
+
+  To determine the size of bifold needed, you will want to measure your Finished Opening (please measure from side to side, then top to bottom after Sheetrock has been installed). For example, if you have an exact dimension of 60”W x 80”H, then you can order our standard (2) 30”W x 80”H size bifold units.
+
+  Bifolds include overhead track and hardware for each unit.
+tags:
+  - 6' 8"
+  - Bifold
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_80" (6' 8")
+  - retail
+  - Species_Pine
+  - Width_24"
+  - Width_30"
+  - Width_36"
+  - Wood
+images:
+  - src: /images/products/colonial-2-raised-panel-bifold-door/1.jpg
+    alt: 2 Raised Panel Colonial Pine Wood Interior Bifold Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20008333"
+    options:
+      Width: 24"
+      Height: 80" (6' 8")
+    price: 270
+  - sku: "20008334"
+    options:
+      Width: 30"
+      Height: 80" (6' 8")
+    price: 300
+  - sku: "20008335"
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 328

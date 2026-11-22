@@ -1,0 +1,33 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/handle-with-flush-pull
+type: standard
+handle: handle-with-flush-pull
+title: Handle with Flush Pull
+status: active
+category: hardware
+description: |-
+  • Pull and Flush Hardware Set for Barn Doors
+
+  • Sturdy and Heavy Duty Design
+
+  • Easy Installation w/ Two Screw Holes only
+
+  • Door Thickness: 1-3/8” ~ 1-3/4”
+tags:
+  - Doors
+images:
+  - src: /images/products/handle-with-flush-pull/1.jpg
+    alt: Handle with Flush Pull
+  - src: /images/products/handle-with-flush-pull/2.jpg
+    alt: Handle with Flush Pull
+optionNames:
+  - Finish
+variants:
+  - sku: HANDLE & FLUSH PULL BL
+    options:
+      Finish: Matte Black
+    price: 40
+  - sku: HANDLE & FLUSH PULL SN
+    options:
+      Finish: Satin Nickel
+    price: 60

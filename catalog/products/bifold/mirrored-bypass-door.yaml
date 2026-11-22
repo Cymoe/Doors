@@ -1,0 +1,63 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/mirrored-bypass-door
+type: standard
+handle: mirrored-bypass-door
+title: Mirrored Bypass Door
+status: active
+category: bifold
+description: |-
+  Our Mirrored Bypass Doors are perfectly suited to classic American architecture while the mirror opens up any space where a bifold may not be suitable. They are easy to maintain and come in a variety of styles. The bypass door style helps to maximize valuable space and is perfect for places where a swinging door is not suitable. The bypass allows for full access to the open side toward the edge and are perfect for closets and pantries.
+
+  Specs:
+
+  • 36" x 6/8 - panel size is 36"W x 78"H
+
+  • Door weight of door is 35lbs for each panel
+
+  *In stock 2-3 week lead time | Out of stock 5-6 weeks lead time.
+tags:
+  - 6' 8"
+  - Doors
+  - Finish_Champagne
+  - Finish_Silver
+  - Finish_White
+  - Height_80" (6' 8")
+  - Mirrored
+  - Mirrored Closet Doors
+  - retail
+  - Species_Mirrored
+  - Width_48"
+  - Width_60"
+  - Width_72"
+images:
+  - src: /images/products/mirrored-bypass-door/1.jpg
+    alt: Mirrored Bypass Door
+optionNames:
+  - Width
+  - Height
+  - Color
+variants:
+  - sku: DTD-4147132989451
+    options:
+      Width: 48"
+      Height: 80" (6' 8")
+      Color: White
+    price: 431
+  - sku: DTD-4147133022219
+    options:
+      Width: 48"
+      Height: 80" (6' 8")
+      Color: Silver
+    price: 431
+  - sku: DTD-4147133054987
+    options:
+      Width: 60"
+      Height: 80" (6' 8")
+      Color: White
+    price: 555
+  - sku: "20006933"
+    options:
+      Width: 72"
+      Height: 80" (6' 8")
+      Color: White
+    price: 592

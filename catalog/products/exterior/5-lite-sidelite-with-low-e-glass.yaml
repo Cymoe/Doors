@@ -1,0 +1,111 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/5-lite-sidelite-with-low-e-glass
+type: standard
+handle: 5-lite-sidelite-with-low-e-glass
+title: 5 Lite Front Door Sidelite with Low E Glass
+status: active
+category: exterior
+description: |-
+  Please allow 2-3 weeks lead time.
+
+  Our exterior sidelites are a beautiful and stylish option for replacement or addition to a new home. The lites, or glass panes, allow natural light to flow into the room and make for a timeless and elegant look. Our exterior sidelites come in a variety of grid options, from single lite to a raised panel and lite combination. The clear pine material can be finished using a rich stain or a clear top coat for a natural look.
+
+  Glass is double-paned, tempered glass. You can choose to have Clear glass or Low E. Low E is energy efficient, has built-in tint, and falls under the Energy Star Rating. The grids in our 3 and 5-Lite Sidelites are made of flat, painted aluminum material and are manufactured in between the panes of glass. The result allows you to clean easily over the smooth glass on both sides, while having the look of divided lites.
+
+  *Stiles (sides) are 1-7/8" wide.
+tags:
+  - 6' 8"
+  - Doors
+  - Finish_Almond
+  - Finish_Champagne Gold
+  - Finish_Clear/Unfinished
+  - Finish_White
+  - Height_80" (6' 8")
+  - retail
+  - sidelite
+  - Species_Pine
+  - Width_10"
+  - Width_12"
+  - Width_14"
+  - Width_16"
+  - Width_18"
+images:
+  - src: /images/products/5-lite-sidelite-with-low-e-glass/1.jpg
+    alt: 5 Lite Front Door Sidelite with Low E Glass
+optionNames:
+  - Width
+  - Height
+  - Transom Finish
+variants:
+  - sku: "20008651"
+    options:
+      Width: 10"
+      Height: 80" (6' 8")
+      Transom Finish: White
+    price: 595
+  - sku: DTD-4147123847179
+    options:
+      Width: 12"
+      Height: 80" (6' 8")
+      Transom Finish: White
+    price: 702.5
+  - sku: DTD-4147123879947
+    options:
+      Width: 14"
+      Height: 80" (6' 8")
+      Transom Finish: White
+    price: 846.25
+  - sku: DTD-4147123945483
+    options:
+      Width: 18"
+      Height: 80" (6' 8")
+      Transom Finish: White
+    price: 1130
+  - sku: DTD-4147123978251
+    options:
+      Width: 10"
+      Height: 80" (6' 8")
+      Transom Finish: Almond
+    price: 595
+  - sku: DTD-4147124011019
+    options:
+      Width: 12"
+      Height: 80" (6' 8")
+      Transom Finish: Almond
+    price: 702.5
+  - sku: DTD-4147124043787
+    options:
+      Width: 14"
+      Height: 80" (6' 8")
+      Transom Finish: Almond
+    price: 846.25
+  - sku: DTD-4147124109323
+    options:
+      Width: 18"
+      Height: 80" (6' 8")
+      Transom Finish: Almond
+    price: 1130
+  - sku: DTD-4147124142091
+    options:
+      Width: 10"
+      Height: 80" (6' 8")
+      Transom Finish: Champagne Gold
+    price: 595
+  - sku: DTD-4147124174859
+    options:
+      Width: 12"
+      Height: 80" (6' 8")
+      Transom Finish: Champagne Gold
+    price: 702.5
+  - sku: DTD-4147124207627
+    options:
+      Width: 14"
+      Height: 80" (6' 8")
+      Transom Finish: Champagne Gold
+    price: 846.25
+  - sku: DTD-4147124273163
+    options:
+      Width: 18"
+      Height: 80" (6' 8")
+      Transom Finish: Champagne Gold
+    price: 1130

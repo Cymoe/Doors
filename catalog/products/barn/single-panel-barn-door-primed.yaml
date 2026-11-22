@@ -1,0 +1,44 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/single-panel-barn-door-primed
+type: standard
+handle: single-panel-barn-door-primed
+title: Single Panel Wood Interior Barn Door (Primed)
+status: active
+category: barn
+description: Doors are not grooved at the bottom. Our doors are sold as slabs made for suspension with Barn Door Hardware.
+tags:
+  - Barn Door
+  - bestsellers
+  - Doors
+  - Finish_Primed
+  - Height_84" (7')
+  - Species_Pine
+  - Width_32"
+  - Width_36"
+  - Width_40"
+images:
+  - src: /images/products/single-panel-barn-door-primed/1.jpg
+    alt: Single Panel Wood Interior Barn Door (Primed)
+  - src: /images/products/single-panel-barn-door-primed/2.jpg
+    alt: Single Panel Wood Interior Barn Door (Primed)
+  - src: /images/products/single-panel-barn-door-primed/3.jpg
+    alt: Single Panel Wood Interior Barn Door (Primed)
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20006298"
+    options:
+      Width: 32"
+      Height: 84"
+    price: 394
+  - sku: "20006299"
+    options:
+      Width: 36"
+      Height: 84"
+    price: 397
+  - sku: "20006300"
+    options:
+      Width: 40"
+      Height: 84"
+    price: 429

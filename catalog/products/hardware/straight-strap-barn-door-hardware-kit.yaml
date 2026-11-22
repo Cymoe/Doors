@@ -1,0 +1,44 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/straight-strap-barn-door-hardware-kit
+type: standard
+handle: straight-strap-barn-door-hardware-kit
+title: Straight Strap Barn Door Hardware Kit with Track and Rollers
+status: active
+category: hardware
+description: |-
+  This stylish barn door hardware supports up to 250 lbs and is available in a variety of finishes to suit any home.
+
+  The hardened steel straight door strap design hanging hardware is available in three finishes to match your décor. The standard 78 3⁄4″ or 96” track is suitable for use with our standard 1 3⁄8” or 1 ¾” thick barn doors to complete your look. Wall mounting hardware provided with each kit includes screws and anchors for drywall application and options for carriage anchors and bolts for solid wall application for ease of installation.
+
+  *Each barn door track comes with (1) set or two rollers. If using more than one door on the rail, you will need to purchase an extra set of rollers.
+
+  5 Year Limited Lifetime
+
+  SPECS: 3/8" Thick x 1-11/16" Wide x 71-1/2" Long (for 6' Bar)
+
+  Or 3/8" Thick x 1-11/16" Wide x 94-1/2" Long (for 8' Bar)
+tags:
+  - Barn Door
+  - Doors
+  - Finish_Matte Black
+  - Finish_Stainless Steel
+  - retail
+images:
+  - src: /images/products/straight-strap-barn-door-hardware-kit/1.jpg
+    alt: Straight Strap Barn Door Hardware Kit with Track and Rollers
+  - src: /images/products/straight-strap-barn-door-hardware-kit/2.jpg
+    alt: Straight Strap Barn Door Hardware Kit with Track and Rollers
+optionNames:
+  - Width
+  - Finish
+variants:
+  - sku: Barn Hdwr 6FT - Straight MB
+    options:
+      Width: 72"
+      Finish: Matte Black
+    price: 333
+  - sku: Barn Hdwr 8FT - Straight MB
+    options:
+      Width: 96"
+      Finish: Matte Black
+    price: 385

@@ -1,0 +1,33 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/johnson-1500-pocket-door-kit
+type: standard
+handle: johnson-1500-pocket-door-kit
+title: Johnson 1500 Pocket Door Kit
+status: active
+category: hardware
+description: |-
+  The Johnson 1500 Door Kit is made to carry solid, heavier doors at up to 200 pounds each. The kit comes in standard 2 x 4 timber or steel framed stud walls. The 1500 frame kit is shipped ready for quick installation for both single and converging door needs. The versatile frame can be adjusted for use in non standard wall thicknesses, block masonry walls and can be cut down to accept any smaller size door size.
+
+  *Kit comes with rollers that attach to the door.
+tags:
+  - 6' 8"
+  - 8' 0"
+  - Doors
+  - retail
+images:
+  - src: /images/products/johnson-1500-pocket-door-kit/1.jpg
+    alt: Johnson 1500 Pocket Door Kit
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: Johnson-Pocket-Kit-1500-6/8
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 168
+  - sku: Johnson-Pocket-Kit-1500-8/0
+    options:
+      Width: 36"
+      Height: 96" (8')
+    price: 245

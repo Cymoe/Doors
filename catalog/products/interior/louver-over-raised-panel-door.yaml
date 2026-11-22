@@ -1,0 +1,53 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/louver-over-raised-panel-door
+type: standard
+handle: louver-over-raised-panel-door
+title: Louver Over Raised Panel Interior Door
+status: active
+category: interior
+description: |-
+  Louver doors are a great solution for small spaces. The louvers, or slats, on the doors allow for easy air ventilation, making them a popular choice for laundry rooms, utility closets, and more. For more traditional uses, louver doors are beautiful additions to any relaxed, contemporary home.
+
+  This door features a 2-panel design on 1 3/8" thick pine. Both the bottom includes a traditional raised panel while the top features the louvered panel. The door comes in a variety of heights and widths to suit most any space in your home. The clear pine material is perfect for a stain finish.
+
+  Stiles and rails are made of solid wood and can be trimmed down; however, the tolerance is minimal as too much trimming may affect the integrity of the door. Please contact customer service to confirm cuts or receive a quote for special dimensions. Standard louvers are 1-1/4" wide.
+tags:
+  - 6' 8"
+  - accordions
+  - Doors
+  - Finish_Clear/Unfinished
+  - Height_80" (6' 8")
+  - interior-only
+  - Louvered
+  - retail
+  - Species_Pine
+  - Width_24"
+  - Width_30"
+  - Width_36"
+images:
+  - src: /images/products/louver-over-raised-panel-door/1.jpg
+    alt: Louver Over Raised Panel Interior Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: "20006909"
+    options:
+      Width: 24"
+      Height: 80" (6' 8")
+    price: 371
+  - sku: "20006911"
+    options:
+      Width: 30"
+      Height: 80" (6' 8")
+    price: 440
+  - sku: "20006913"
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 483
+  - sku: "20006907"
+    options:
+      Width: 18"
+      Height: 80" (6' 8")
+    price: 382

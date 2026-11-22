@@ -1,0 +1,57 @@
+# Imported from Shopify. Delete this line to stop future imports from overwriting this file.
+# Source: https://www.doortodoorco.com/products/exterior-fir-6-raised-panel
+type: standard
+handle: exterior-fir-6-raised-panel
+title: 6 Raised Panel Fir Wood Exterior Front Door
+status: active
+category: exterior
+description: |-
+  This species has excellent strength properties and is well known for its workability. The wood dries rapidly with small dimensional movement and little tendency to check. It is relatively easy to work, with good machining qualities.
+
+  The 6 panel fir wood exterior front door is made from beautiful engineered hardwood, formed in a cross-grain pattern for added durability, then finished with a thin veneered layer of fir wood.
+
+  Lead times vary depending on specifications of door(s) wanted. Our Exterior doors are 1-3/4" thick.
+
+  Doors with Jamb Kit have an approximate 8-10 week Processing Lead Time. Doors with Jamb Kit are considered custom as they are cut and produced to your specifications. Custom orders are non-returnable, non-refundable, do not qualify for any discounts, and cannot be cancelled once order is placed.
+
+  If you want to purchase door as a unit, please contact to obtain pricing, lead time, and details needed for completing order.
+
+  Please find our finishing guide here.
+tags:
+  - Doors
+  - Exterior
+  - Height_80" (6' 8")
+  - Height_84" (7')
+  - retail
+  - Species_Fir
+  - Width_24"
+  - Width_30"
+  - Width_32"
+  - Width_36"
+images:
+  - src: /images/products/exterior-fir-6-raised-panel/1.jpg
+    alt: 6 Raised Panel Fir Wood Exterior Front Door
+optionNames:
+  - Width
+  - Height
+variants:
+  - sku: 2130-19322
+    options:
+      Width: 24"
+      Height: 84" (7' 0")
+    price: 1440
+  - sku: EX-FIR-6PNL 2130 3/4RP 26
+    options:
+      Width: 30"
+      Height: 80" (6' 8")
+    price: 1057
+  - sku: EX-FIR-6PNL 2130 3/4RP 28
+    options:
+      Width: 32"
+      Height: 80" (6' 8")
+    price: 1214
+  - sku: EX-FIR-6PNL 2130 3/4RP 30
+    options:
+      Width: 36"
+      Height: 80" (6' 8")
+    price: 1326
