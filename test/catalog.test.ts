@@ -20,12 +20,12 @@ describe("catalog files", () => {
 });
 
 describe("door variants (standard size)", () => {
-  it("prices singles from $495 and French pairs from $995", async () => {
+  it("prices singles from $495 and double doors from $995", async () => {
     const door = (await parseProductFile(DOOR)) as DoorProduct;
     const v = buildVariants(door).variants;
     const min = (cfg: string) => Math.min(...v.filter((x) => x.options[0]![1] === cfg).map((x) => x.price));
     expect(min("Single")).toBe(495);
-    expect(min("French Pair")).toBe(995);
+    expect(min("Double Door")).toBe(995);
   });
 
   it("applies adders and exclusions", async () => {
@@ -45,8 +45,8 @@ describe("door variants (standard size)", () => {
   it("charges grade and style adders per slab", async () => {
     const door = (await parseProductFile(DOOR)) as DoorProduct;
     const price = (sku: string) => buildVariants(door).variants.find((x) => x.sku === sku)!.price;
-    expect(price("PINE-SGL-CLR-LOUV")).toBe(495 + 175);
-    expect(price("PINE-FRP-CLR-LOUV")).toBe(995 + 2 * 175);
-    expect(price("PINE-FRP-KNT-GLS")).toBe(995 + 2 * 150);
+    expect(price("PINE-SGL-CLR-2PAR")).toBe(495 + 125);
+    expect(price("PINE-DBL-CLR-2PAR")).toBe(995 + 2 * 125);
+    expect(price("PINE-DBL-KNT-4P")).toBe(995 + 2 * 50);
   });
 });

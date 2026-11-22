@@ -27,7 +27,6 @@ const specValue = z.union([z.string(), z.number(), z.boolean()]);
 /** Store sections, in the order they're shown in the catalog. */
 export const CATEGORIES = {
   interior: "Interior Doors",
-  french: "French & Glass Doors",
   barn: "Barn Doors",
   bifold: "Bifold & Closet Doors",
   prehung: "Prehung Doors",
@@ -102,7 +101,7 @@ export const doorProduct = baseProduct.extend({
     )
     .default([]),
   /**
-   * Size rules in inches, per door slab (a French pair's opening width is
+   * Size rules in inches, per door slab (a double door's opening width is
    * split between its two slabs). Up to `standard` is the base price; up to
    * `oversize` adds `oversize.adderPerLeaf` per slab; anything larger, or
    * smaller than `min`, goes to "request a quote".
@@ -235,7 +234,7 @@ export const addonGroup = z.object({
   description: z.string().optional(),
   /** Shown with the add-on, e.g. extra processing time. */
   note: z.string().optional(),
-  /** The product for a single door and for a pair (French/double). Leave one out if not offered. */
+  /** The product for a single door and for a pair (double door). Leave one out if not offered. */
   single: addonSource.optional(),
   double: addonSource.optional(),
   /** Catalog categories whose products offer it (they're single doors). */

@@ -31,7 +31,7 @@ export default function Measure() {
         <li>Tell us the opening size. We size the door for the gaps around it, so don&apos;t subtract anything.</li>
       </ol>
 
-      <h2>French pairs and bifolds</h2>
+      <h2>Double doors and bifolds</h2>
       <p>Enter the full opening width. We split it between the two doors.</p>
 
       <h2>Barn doors</h2>

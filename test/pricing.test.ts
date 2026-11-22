@@ -43,14 +43,14 @@ describe("quoteDoor", () => {
 
   it("charges oversize per door", () => {
     expect(quoteDoor(door, { ...base, heightIn: 84 })).toMatchObject({ ok: true, unitPrice: 595, oversize: true });
-    // French pair, 80" wide = two 40" doors: oversize on both
-    expect(quoteDoor(door, { ...base, configuration: "FRP", widthIn: 80 })).toMatchObject({
+    // Double door, 80" wide = two 40" doors: oversize on both
+    expect(quoteDoor(door, { ...base, configuration: "DBL", widthIn: 80 })).toMatchObject({
       ok: true,
       unitPrice: 995 + 2 * 100,
       slabWidthIn: 40,
     });
-    // 74" French pair = two 37" doors: standard
-    expect(quoteDoor(door, { ...base, configuration: "FRP", widthIn: 74 })).toMatchObject({ unitPrice: 995 });
+    // 74" double = two 37" doors: standard
+    expect(quoteDoor(door, { ...base, configuration: "DBL", widthIn: 74 })).toMatchObject({ unitPrice: 995 });
   });
 
   it("sends sizes outside the limits to a quote", () => {
@@ -64,8 +64,8 @@ describe("quoteDoor", () => {
     expect(quoteDoor(door, { ...base, quantity: 0 })).toMatchObject({ ok: false, reason: "invalid" });
     expect(quoteDoor(door, { ...base, quantity: 1.5 })).toMatchObject({ ok: false, reason: "invalid" });
     expect(quoteDoor(door, { ...base, widthIn: NaN })).toMatchObject({ ok: false, reason: "invalid" });
-    const d = { ...door, exclude: [{ configuration: "POCKET", style: "LOUV" }] };
-    expect(quoteDoor(d, { ...base, configuration: "POCKET", style: "LOUV" })).toMatchObject({ ok: false, reason: "invalid" });
+    const d = { ...door, exclude: [{ configuration: "POCKET", style: "4P" }] };
+    expect(quoteDoor(d, { ...base, configuration: "POCKET", style: "4P" })).toMatchObject({ ok: false, reason: "invalid" });
   });
 });
 

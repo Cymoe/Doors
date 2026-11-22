@@ -38,8 +38,8 @@ cp .env.example .env.local   # then fill in the keys
   then optional add-ons, then review and **Add to cart**.
 - **Custom door builder** (`/products/solid-pine-interior-door`): door type, style, wood (all with photos),
   the opening size (`32`, `32.5` and `32 1/2` all work), add-ons, then add to cart.
-- **Add-ons** (`catalog/addons.yaml`): jamb kit and knob bore, offered on interior and French doors
-  and on the custom single and French pair. A pair automatically gets the double-door version.
+- **Add-ons** (`catalog/addons.yaml`): jamb kit and knob bore, offered on interior doors
+  and on the custom single and double door. A double door automatically gets the double version.
 - **Cart** (`/cart`): kept in the customer's browser. It holds choices only; `/api/cart` prices it.
 - **Checkout**: Stripe Checkout, paid in full. Each cart line is a Stripe line item whose description
   carries the options, opening size, add-ons and SKU. Shipping is added as a fixed rate.
@@ -49,7 +49,7 @@ cp .env.example .env.local   # then fill in the keys
   Hawaii need a quote.
 - **Pricing**: every price is worked out on the server from the catalog (`src/cart.ts`), never taken from the
   browser. Custom doors: `base price + doors × (wood + style + oversize)`.
-- **Sizes** are opening sizes per door; a French pair or bifold splits the width between its two doors.
+- **Sizes** are opening sizes per door; a double door or bifold splits the width between its two doors.
   Up to `standard` is the listed price. Up to `oversize` adds a set amount per door. Anything else
   goes to "request a quote".
 - **Quote requests** are emailed to you with the customer's selection already filled in.
@@ -79,7 +79,7 @@ npm run import:shopify                     # re-import from www.doortodoorco.com
 ```
 
 Reads the store's public product feed, sorts products into categories, skips internal items
-(fees, hidden options, tests), anything primed, and products without photos, imports the add-on products as unlisted, and saves
+(fees, hidden options, tests), anything primed, glass, mirrored or louvered, and products without photos, imports the add-on products as unlisted, and saves
 up to 4 photos per product as JPEGs. Imported files start with an "Imported from Shopify" line;
 delete that line from a file you've edited and future imports leave it alone.
 
@@ -114,7 +114,7 @@ above, and set `SITE_URL` to the real domain.
 
 - **Shipping rates**: the freight tiers ($175 / $150 / $100) and $15 parcel fee are estimates.
   Put your real rates in `catalog/store.yaml`.
-- Review the custom door's estimated prices (only Single $495 and French Pair $995 came from the
+- Review the custom door's estimated prices (only Single $495 and the $995 pair came from the
   listing) and the $100 oversize charge.
 - Alaska and Hawaii: Stripe can only limit checkout to the US, so the cart asks those customers to
   contact you. Watch for those orders until address checks are added.

@@ -54,6 +54,9 @@ const HIDDEN_HANDLES = /^(test|bold-test|custom-item|add-ons|adders|processing-f
 /** We don't sell primed doors or parts: skip primed products, and primed choices within a product. */
 export const isPrimed = (s: string) => /primed/i.test(s);
 
+/** We don't sell glass, mirrored or louvered doors (French doors, lites, sidelites, louvers). */
+export const isGlassOrLouver = (s: string) => /lite|glass|french|mirror|frosted|louver/i.test(s);
+
 /** Which section of the store a product belongs in, from its type and handle. Undefined = don't import. */
 export function categorize(p: Pick<ShopifyProduct, "handle" | "product_type">): Category | undefined {
   const h = p.handle;
@@ -68,7 +71,6 @@ export function categorize(p: Pick<ShopifyProduct, "handle" | "product_type">): 
   if (/exterior|sidelite/.test(h) || t === "Fir") return "exterior";
   if (h.includes("barn")) return "barn";
   if (/bifold|bypass/.test(h)) return "bifold";
-  if (/french|lite/.test(h)) return "french";
   return "interior";
 }
 
@@ -185,10 +187,11 @@ async function main() {
   }
   console.log(`${all.length} products in the store`);
 
-  let written = 0, skippedPrimed = 0, skippedHidden = 0, skippedNoPhoto = 0, keptEdited = 0;
+  let written = 0, skippedPrimed = 0, skippedGlass = 0, skippedHidden = 0, skippedNoPhoto = 0, keptEdited = 0;
   const problems: string[] = [];
   await pool(all, 6, async (p) => {
     if (isPrimed(p.handle) || isPrimed(p.title)) return void skippedPrimed++;
+    if (isGlassOrLouver(p.handle) || isGlassOrLouver(p.title)) return void skippedGlass++;
     const addon = ADDON_HANDLES.has(p.handle);
     const category = addon ? "hardware" : categorize(p);
     if (!category) return void skippedHidden++;
@@ -218,7 +221,7 @@ async function main() {
   });
 
   console.log(
-    `wrote ${written}; skipped ${skippedPrimed} primed, ${skippedHidden} internal/add-on items, ${skippedNoPhoto} without photos, ` +
+    `wrote ${written}; skipped ${skippedPrimed} primed, ${skippedGlass} glass/louver, ${skippedHidden} internal/add-on items, ${skippedNoPhoto} without photos, ` +
       `${keptEdited} hand-edited files`,
   );
   if (problems.length) {

@@ -5,7 +5,6 @@ import { product } from "../src/schema";
 describe("categorize", () => {
   it.each([
     ["single-panel-shaker-style-door", "Pine", "interior"],
-    ["15-lite-french-door", "Pine", "french"],
     ["z-brace-barn-door", "Pine", "barn"],
     ["2-louver-panel-bifold-door", "Pine", "bifold"],
     ["prehung-10-lite-french-interior-door", "", "prehung"],
@@ -84,11 +83,12 @@ describe("no primed products", () => {
     expect(out.variants.map((v) => v.sku)).toEqual(["C"]);
   });
 
-  it("has nothing primed in the catalog", async () => {
+  it("has nothing primed, glass, mirrored or louvered in the catalog", async () => {
     const { loadCatalog } = await import("../src/load");
     const { products } = await loadCatalog();
     for (const { product: p } of products) {
-      expect(p.title).not.toMatch(/primed/i);
+      expect(p.title).not.toMatch(/primed|lite|glass|french|mirror|frosted|louver/i);
+      if (p.type === "door") expect(p.styles.map((s) => s.name).join(" ")).not.toMatch(/glass|mirror|louver/i);
       if (p.type === "standard") {
         for (const v of p.variants) expect(Object.values(v.options).join(" ")).not.toMatch(/primed/i);
       }
