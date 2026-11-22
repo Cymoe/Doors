@@ -11,7 +11,7 @@ cardNote: Built to your exact opening
 status: active
 skuPrefix: PINE
 description: |
-  Custom solid pine interior doors, handbuilt locally in Midland/Odessa. They're
+  Custom solid pine interior doors, made in Texas. They're
   clear pine with tight, straight grain, sold raw and unfinished so you can stain
   or paint them to match your home. Solid wood is heavier and quieter than the
   hollow-core doors at the big box stores.
@@ -22,7 +22,7 @@ highlights:
   - Solid pine, not hollow core
   - Built to your exact opening size
   - Sold unfinished, ready to stain or paint
-  - Handbuilt in Midland/Odessa, Texas
+  - Made in Texas
 tags: [interior door, solid wood, pine, custom, unfinished]
 images:
   - { src: /images/doors/style-shaker.jpg, alt: Single panel shaker style solid pine door }
@@ -30,9 +30,9 @@ specs:
   species: Pine
   construction: Solid wood
   finish: Unfinished
-  built_in: Midland/Odessa, TX
+  made_in: Texas
 seo:
-  title: Custom Solid Pine Interior Doors | Built in Midland, TX
+  title: Custom Solid Pine Interior Doors | Made in Texas
   description: Solid pine interior doors built to your exact opening. Singles from $495, French pairs from $995. Sold unfinished, ready to stain or paint.
 
 configurations:
