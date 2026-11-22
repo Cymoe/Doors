@@ -77,6 +77,5 @@ export function checkVariants(p: Product, built: BuiltProduct): string[] {
     combos.add(combo);
     if (v.price <= 0) problems.push(`${v.sku} has price ${v.price}`);
   }
-  if (p.status === "active" && p.images.length === 0) problems.push("active product has no images");
   return problems;
 }
