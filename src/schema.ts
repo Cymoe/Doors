@@ -14,53 +14,56 @@ const handle = z
 const money = z.number().nonnegative().multipleOf(0.01);
 /** A price change relative to a base price; may be negative (e.g. a cheaper wood grade). */
 const adder = z.number().multipleOf(0.01).default(0);
+const code = z.string().regex(/^[A-Z0-9]+$/, "capital letters and numbers only");
 
 const image = z.object({
-  src: z.string().url(),
+  /** A full URL, or a path under public/ such as /images/doors/pine-shaker.jpg */
+  src: z.string().regex(/^(https?:\/\/|\/)/, "full URL or a path starting with /"),
   alt: z.string().default(""),
 });
 
-/** A spec shown on the product page; becomes a Shopify metafield. */
 const specValue = z.union([z.string(), z.number(), z.boolean()]);
 
 const baseProduct = z.object({
   handle,
   title: z.string().min(1),
-  /** draft products are created in Shopify but are not visible on the store. */
+  /** Only active products are shown on the site. */
   status: z.enum(["active", "draft", "archived"]).default("draft"),
-  vendor: z.string().optional(),
-  /** Paragraphs separated by blank lines. Plain text; it is HTML-escaped. */
+  /** Paragraphs separated by blank lines. Plain text. */
   description: z.string().min(1),
-  /** Bullet points rendered under the description. */
+  /** Bullet points shown under the description. */
   highlights: z.array(z.string()).default([]),
   tags: z.array(z.string()).default([]),
   images: z.array(image).default([]),
+  /** Shown as a spec table on the product page. Keys are snake_case labels. */
   specs: z.record(z.string().regex(/^[a-z0-9_]+$/), specValue).default({}),
   seo: z
     .object({ title: z.string().max(70).optional(), description: z.string().max(320).optional() })
     .optional(),
 });
 
-const namedAdder = z.object({ name: z.string().min(1), code: z.string().regex(/^[A-Z0-9]+$/), adder });
+const namedAdder = z.object({ name: z.string().min(1), code, adder, note: z.string().optional() });
+const dims = z.object({ width: z.number().positive(), height: z.number().positive() });
 
 /**
- * Made-to-order doors. Variants are generated from every combination of
+ * Made-to-order doors. Variants are every combination of
  * configuration × wood grade × style, priced as
- * configuration base price + leaves × (grade adder + style adder),
- * where `leaves` is how many door slabs the configuration has (a French pair is 2).
- * Exact opening size is captured at checkout / in the quote, not as a variant.
+ * configuration base price + leaves × (grade adder + style adder [+ oversize adder]).
  */
 export const doorProduct = baseProduct.extend({
   type: z.literal("door"),
-  skuPrefix: z.string().regex(/^[A-Z0-9]+$/),
+  skuPrefix: code,
   configurations: z
-    .array(z.object({
+    .array(
+      z.object({
         name: z.string().min(1),
-        code: z.string().regex(/^[A-Z0-9]+$/),
+        code,
         basePrice: money,
-        /** Number of door slabs; grade and style adders are charged per slab. */
+        /** Number of door slabs; grade, style and oversize adders are charged per slab. */
         leaves: z.number().int().positive().default(1),
-      }))
+        note: z.string().optional(),
+      }),
+    )
     .min(1),
   grades: z.array(namedAdder).min(1),
   styles: z.array(namedAdder).min(1),
@@ -74,18 +77,23 @@ export const doorProduct = baseProduct.extend({
       }),
     )
     .default([]),
-  madeToOrder: z
-    .object({
-      customSize: z.boolean().default(true),
-      leadTimeWeeks: z.number().int().positive().optional(),
-    })
-    .default({}),
+  /**
+   * Size rules in inches, per door slab (a French pair's opening width is
+   * split between its two slabs). Up to `standard` is the base price; up to
+   * `oversize` adds `oversize.adderPerLeaf` per slab; anything larger, or
+   * smaller than `min`, goes to "request a quote".
+   */
+  sizing: z.object({
+    min: dims,
+    standard: dims,
+    oversize: dims.extend({ adderPerLeaf: money }),
+  }),
+  leadTimeWeeks: z.object({ min: z.number().int().positive(), max: z.number().int().positive() }).optional(),
 });
 
 /**
  * Products sold by the box with a square-foot coverage (flooring, tile).
- * Each listed variant is a box. The store shows price per sq ft from the
- * metafields; Shopify charges per box.
+ * Each variant is a box; the box price is price per sq ft × sq ft per box.
  */
 const boxVariant = z.object({
   sku: z.string().min(1),
@@ -97,7 +105,7 @@ const boxVariant = z.object({
 });
 
 const boxProduct = baseProduct.extend({
-  /** Option names in display order, max 3 (Shopify limit). */
+  /** Option names in display order. */
   optionNames: z.array(z.string()).min(1).max(3),
   variants: z.array(boxVariant).min(1),
   /** Suggested overage for cuts and waste, as a percent. */
@@ -110,7 +118,14 @@ export const tileProduct = boxProduct.extend({ type: z.literal("tile") });
 export const product = z
   .discriminatedUnion("type", [doorProduct, flooringProduct, tileProduct])
   .superRefine((p, ctx) => {
-    if (p.type === "door") return;
+    if (p.type === "door") {
+      const { min, standard, oversize } = p.sizing;
+      if (!(min.width <= standard.width && standard.width <= oversize.width) ||
+          !(min.height <= standard.height && standard.height <= oversize.height)) {
+        ctx.addIssue({ code: z.ZodIssueCode.custom, path: ["sizing"], message: "sizes must grow: min ≤ standard ≤ oversize" });
+      }
+      return;
+    }
     p.variants.forEach((v, i) => {
       const keys = Object.keys(v.options).sort().join("|");
       if (keys !== [...p.optionNames].sort().join("|")) {
@@ -124,9 +139,17 @@ export const product = z
   });
 
 export const storeConfig = z.object({
-  vendor: z.string().min(1),
-  /** Namespace for product metafields in Shopify. */
-  metafieldNamespace: z.string().regex(/^[a-z0-9_]+$/).default("catalog"),
+  businessName: z.string().min(1),
+  tagline: z.string().default(""),
+  contact: z.object({
+    /** Where quote requests are sent. */
+    email: z.string().email(),
+    phone: z.string().optional(),
+  }),
+  /** Percent of the order total charged at checkout; the rest is due at pickup/delivery. 100 = pay in full. */
+  depositPercent: z.number().int().min(1).max(100),
+  pickup: z.object({ enabled: z.boolean(), location: z.string() }),
+  localDelivery: z.object({ enabled: z.boolean(), fee: money, area: z.string() }),
 });
 
 export type DoorProduct = z.infer<typeof doorProduct>;

@@ -1,7 +1,7 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { parse } from "yaml";
-import { product, storeConfig, type Product, type StoreConfig } from "./schema.js";
+import { product, storeConfig, type Product, type StoreConfig } from "./schema";
 
 export interface LoadedProduct {
   file: string;

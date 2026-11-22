@@ -1,6 +1,6 @@
 # Custom solid pine interior door, built to the customer's opening.
 # Variants = configuration x wood x style.
-# price = basePrice + leaves x (wood adder + style adder)
+# price = basePrice + leaves x (wood adder + style adder [+ oversize adder])
 #   leaves = number of door slabs, so a French pair pays style/wood extras twice.
 # Single ($495) and French Pair ($995) come from the listing; the rest are
 # estimated from them (see comments).
@@ -58,6 +58,13 @@ styles:
 exclude: []
   # - { configuration: POCKET, style: LOUV }
 
-madeToOrder:
-  customSize: true
-  # leadTimeWeeks: 3   # TODO
+# Sizes are OPENING sizes in inches (inside the frame), per door. A French
+# pair or bifold splits the opening width between its 2 doors (a 60" French
+# opening = two 30" doors). A standard 36" x 80" door fits an opening of about
+# 36 1/2" x 80 1/2", so the standard limits leave a little room.
+sizing:
+  min:      { width: 10, height: 60 }               # smaller -> request a quote
+  standard: { width: 37, height: 81 }               # up to this: listed price
+  oversize: { width: 43, height: 97, adderPerLeaf: 100 }  # up to this: +$100 per door; larger -> quote
+
+# leadTimeWeeks: { min: 2, max: 4 }   # TODO: shown on the product page

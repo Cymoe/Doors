@@ -1,4 +1,4 @@
-import type { DoorProduct, Product } from "./schema.js";
+import type { DoorProduct, Product } from "./schema";
 
 export interface Variant {
   sku: string;
@@ -6,7 +6,7 @@ export interface Variant {
   options: [name: string, value: string][];
   price: number;
   compareAtPrice?: number;
-  /** Extra per-variant facts stored as variant metafields. */
+  /** Extra per-variant facts, e.g. price_per_sqft. */
   meta: Record<string, number>;
 }
 
@@ -67,7 +67,6 @@ function buildBoxVariants(p: Extract<Product, { type: "flooring" | "tile" }>): B
 export function checkVariants(p: Product, built: BuiltProduct): string[] {
   const problems: string[] = [];
   if (built.variants.length === 0) problems.push("no variants (everything excluded?)");
-  if (built.variants.length > 2048) problems.push(`${built.variants.length} variants; Shopify allows 2048`);
   const skus = new Set<string>();
   const combos = new Set<string>();
   for (const v of built.variants) {

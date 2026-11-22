@@ -1,93 +1,93 @@
-# Doors catalog
+# Doors
 
-The product catalog for our direct-to-consumer door business (with room for flooring
-and tile), stored as YAML in this repo and pushed to Shopify through the Admin GraphQL API.
+Website for our made-to-order door business: a door builder with live pricing,
+Stripe checkout with a deposit, and quote requests. The product catalog (doors now,
+flooring and tile later) lives as YAML files in this repo.
 
-The YAML files are the source of truth. Edit a file, run `npm run sync -- --apply`, and
-Shopify's products, variants, prices, specs and images are created or updated to match.
+No Shopify: the site, the pricing and the checkout flow are ours to change.
 
 ## Quick start
 
 ```bash
 npm install
-npm run validate          # check every catalog file
-npm run list              # see every variant, SKU and price
-npm run sync              # dry run: writes the Shopify payloads to out/, sends nothing
-cp .env.example .env      # add store domain + credentials
-npm run sync -- --apply   # push to Shopify
-npm run sync -- --apply --only solid-pine-interior-door
-npm test
+npm run dev               # http://localhost:3000 (drafts are shown in dev)
+npm test                  # pricing, catalog and checkout tests
+npm run list              # every door combination and its standard-size price
 ```
 
-## Layout
+Without keys the site works, but checkout says it isn't set up yet, and quote
+requests are printed to the terminal in dev. To turn them on:
+
+```bash
+cp .env.example .env.local   # then fill in the keys
+```
+
+| Variable | What it's for |
+|---|---|
+| `STRIPE_SECRET_KEY` | Checkout. Use the `sk_test_...` key until you're ready; test cards like 4242 4242 4242 4242 work. |
+| `STRIPE_AUTOMATIC_TAX` | `true` to charge Texas sales tax with Stripe Tax (set it up in the Stripe dashboard first). |
+| `SITE_URL` | The public site address, for Stripe's return links. |
+| `RESEND_API_KEY`, `RESEND_FROM` | Emails quote requests to `contact.email` in `catalog/store.yaml`. |
+| `SHOW_DRAFTS` | `true` to show draft products on a deployed preview site. |
+
+## How it works
+
+- **Door builder** (`/doors/<handle>`): the customer picks the door type, style and wood, and enters the
+  opening size (`32`, `32.5` and `32 1/2` all work). The drawing and the price update as they go.
+- **Pricing** (`src/pricing.ts`): `base price + doors × (wood + style + oversize)`. The checkout API
+  recomputes the price on the server, so a price sent from the browser is never trusted.
+- **Sizes** are opening sizes per door; a French pair or bifold splits the width between its two doors.
+  Up to `standard` is the listed price. Up to `oversize` adds a set amount per door. Anything else
+  goes to "request a quote".
+- **Checkout**: Stripe Checkout charges `depositPercent` of the total (doors + delivery). The order
+  details are stored on the payment in the Stripe dashboard: door, SKU, opening size, quantity,
+  pickup/delivery, total and balance due. Stripe emails the receipt. Turn on "Successful payments"
+  emails in your Stripe notification settings to hear about each order.
+- **Quote requests** are emailed to you with the customer's selection already filled in.
+
+## Editing the catalog
+
+Everything a non-developer should need to change is in `catalog/`:
 
 ```
 catalog/
-  store.yaml                 vendor name, metafield namespace
-  products/doors/*.yaml      live products (one file per product)
-  _templates/                flooring.yaml, tile.yaml: copy these to start a new line
-src/
-  schema.ts                  what a valid product file looks like (door / flooring / tile)
-  variants.ts                turns a product into Shopify variants with prices and SKUs
-  shopify/mapProduct.ts      product → Shopify ProductSetInput (no network)
-  shopify/sync.ts            find by handle, then productSet (create or update)
-  shopify/client.ts          GraphQL client with auth and retry on rate limits
+  store.yaml                     business name, contact, deposit %, pickup, delivery fee
+  products/doors/*.yaml          one file per product: prices, styles, size rules, specs
+  _templates/flooring.yaml       copy into products/flooring/ to start selling flooring
+  _templates/tile.yaml           same for tile
 ```
 
-## Product types
+Products only appear on the live site when `status: active`. Run `npm run validate` after editing;
+the build fails on a bad file rather than publishing it.
 
-**Doors** are made to order. You list the configurations (Single, French Pair, Bifold,
-Barn, Pocket) with a base price, wood grades and styles with price adders, and every
-combination becomes a Shopify variant:
+## Code
 
-`price = configuration basePrice + leaves × (grade adder + style adder)`, SKU `PINE-SGL-CLR-SHK`.
-`leaves` is the number of door slabs (French pair and bifold = 2), so extras cost twice on a pair.
+```
+src/
+  schema.ts                  what a valid catalog file looks like
+  pricing.ts                 door prices, sizes, deposit/balance, inch parsing
+  variants.ts                every combination with SKU and price (used by `npm run list`)
+  catalog.ts                 the catalog as the site sees it
+  app/                       pages and API routes (Next.js)
+    doors/[handle]/          door builder page
+    api/checkout/            creates the Stripe Checkout session
+    api/quote/               emails a quote request
+    order/success|cancelled  after checkout
+    measure/                 how-to-measure guide
+  components/                DoorBuilder, DoorPreview (the drawing), QuoteForm
+```
 
-Use `exclude` for combinations you don't build. Door variants never sell out
-(`inventoryPolicy: CONTINUE`, not tracked). The exact opening size isn't a variant;
-see "Still to do".
+## Deploying
 
-**Flooring and tile** are sold by the box. Each variant lists `pricePerSqFt` and
-`sqFtPerBox`; the box price is calculated, and both numbers are saved as variant
-metafields so the theme can show "$/sq ft" and a coverage calculator. Inventory is tracked.
-
-To add another line (trim, hardware, ...), add a schema in `src/schema.ts` and a builder in
-`src/variants.ts`.
-
-## What gets written to Shopify
-
-- Title, description (paragraphs + highlights list), vendor, product type, status, tags, SEO
-- Options and variants with price, SKU, inventory policy
-- `specs` → product metafields in the `catalog` namespace (e.g. `catalog.species`)
-- Images from public URLs (only re-uploaded when the image list changes)
-
-Re-syncing matches variants by SKU, so variant IDs stay stable. **Don't rename SKU codes
-on live products**: a renamed SKU is a new variant, and the old one is deleted.
-Variants removed from the YAML are deleted in Shopify. Edits made directly in Shopify
-to synced fields are overwritten on the next sync.
-
-## Shopify setup
-
-1. Create an app for your store with the Admin API scopes `read_products`, `write_products`
-   (add `write_files` if you add images).
-2. Put credentials in `.env`: either `SHOPIFY_ADMIN_TOKEN` (an `shpat_...` token), or
-   `SHOPIFY_CLIENT_ID` + `SHOPIFY_CLIENT_SECRET` for an app from the Shopify Dev Dashboard
-   installed on your own store. Never commit `.env`.
-3. Optional: in Shopify admin, add metafield definitions for the `catalog.*` keys so they
-   show up nicely in the admin and can be used in the theme editor.
-4. Use automated collections by product type or tag (e.g. product type = Doors).
-
-API version defaults to `2025-10` (`SHOPIFY_API_VERSION` to change it).
+Any Next.js host works; Vercel is the simplest: import the repo, add the environment variables
+above, and set `SITE_URL` to the real domain.
 
 ## Still to do
 
-- **Review estimated prices.** Only Single $495 and French Pair $995 came from the listing;
-  the other configurations and style adders are estimates (reasons are in the
-  door file's comments). The door stays `status: draft` until you switch it to `active`.
-- **Opening size at checkout.** Add width/height fields on the product page (line item
-  properties in the theme, or a product-options app) so each order carries its size.
-  Decide whether oversized openings cost more.
-- **Photos** for the door file.
-- Lead time (`madeToOrder.leadTimeWeeks`).
-- Not yet tested against a live store: run the dry run, then `--apply --only <handle>` on a
-  development store first.
+- Business name, email and phone in `catalog/store.yaml`.
+- Review the estimated prices (only Single $495 and French Pair $995 came from the listing),
+  the $100 oversize charge, the $75 delivery fee and the 50% deposit.
+- Photos of real doors, and lead time (`leadTimeWeeks`).
+- Switch the door to `status: active` when it's ready.
+- Flooring and tile pages: the catalog supports them; the site doesn't show them yet.
+- Talk to your accountant about sales tax on deposits before turning on Stripe Tax.

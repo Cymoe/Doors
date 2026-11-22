@@ -2,22 +2,34 @@
   "name": "doors-catalog",
   "version": "0.1.0",
   "private": true,
-  "description": "Product catalog (doors, flooring, tile) kept as YAML and synced to Shopify via the Admin GraphQL API.",
+  "description": "Website, door builder and checkout for a made-to-order door company. Catalog (doors, flooring, tile) kept as YAML.",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20.12"
+  },
   "scripts": {
+    "catalog": "tsx src/cli.ts export",
+    "dev": "npm run -s catalog && next dev",
+    "build": "npm run -s catalog && next build",
+    "start": "next start",
     "validate": "tsx src/cli.ts validate",
     "list": "tsx src/cli.ts list",
-    "sync": "tsx src/cli.ts sync",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "npm run -s catalog && tsc --noEmit",
+    "pretest": "npm run -s catalog",
     "test": "vitest run"
   },
   "dependencies": {
+    "next": "^16.4.5",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "stripe": "^23.1.0",
     "yaml": "2.8.1",
     "zod": "3.25.76"
   },
   "devDependencies": {
     "@types/node": "22.18.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "tsx": "4.20.5",
     "typescript": "5.9.3",
     "vitest": "3.2.4"
