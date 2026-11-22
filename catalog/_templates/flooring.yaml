@@ -1,0 +1,23 @@
+# TEMPLATE: copy into catalog/products/flooring/ and edit. Folders starting
+# with "_" are not synced. Flooring is sold by the box; enter price per sq ft
+# and coverage per box, and the box price is calculated.
+type: flooring
+handle: example-white-oak-engineered-flooring
+title: Example White Oak Engineered Hardwood
+status: draft
+description: |
+  Describe the product here. Blank lines separate paragraphs.
+highlights:
+  - 7-1/2" wide planks
+tags: [hardwood, engineered, white oak]
+specs:
+  species: White Oak
+  construction: Engineered
+  thickness_in: 0.5
+  wear_layer_mm: 2
+  plank_width_in: 7.5
+optionNames: [Color]
+wastePercent: 10
+variants:
+  - { sku: FLR-WO-NAT, options: { Color: Natural }, pricePerSqFt: 5.49, sqFtPerBox: 23.31 }
+  - { sku: FLR-WO-SMK, options: { Color: Smoked },  pricePerSqFt: 5.99, sqFtPerBox: 23.31 }

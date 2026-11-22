@@ -1,0 +1,18 @@
+# TEMPLATE: copy into catalog/products/tile/ and edit. Up to 3 option names.
+type: tile
+handle: example-porcelain-wood-look-tile
+title: Example Porcelain Wood-Look Tile
+status: draft
+description: |
+  Describe the product here.
+tags: [porcelain, wood look]
+specs:
+  material: Porcelain
+  pei_rating: 4
+  indoor_outdoor: Indoor
+optionNames: [Size, Finish]
+wastePercent: 12
+variants:
+  - { sku: TIL-WL-848-MAT, options: { Size: 8x48, Finish: Matte }, pricePerSqFt: 2.89, sqFtPerBox: 15.5 }
+  - { sku: TIL-WL-848-TXT, options: { Size: 8x48, Finish: Textured }, pricePerSqFt: 3.09, sqFtPerBox: 15.5 }
+  - { sku: TIL-WL-636-MAT, options: { Size: 6x36, Finish: Matte }, pricePerSqFt: 2.49, sqFtPerBox: 14.53 }

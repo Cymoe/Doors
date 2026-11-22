@@ -1,0 +1,25 @@
+{
+  "name": "doors-catalog",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Product catalog (doors, flooring, tile) kept as YAML and synced to Shopify via the Admin GraphQL API.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "validate": "tsx src/cli.ts validate",
+    "list": "tsx src/cli.ts list",
+    "sync": "tsx src/cli.ts sync",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "yaml": "2.8.1",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.0",
+    "tsx": "4.20.5",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  }
+}

@@ -1,0 +1,59 @@
+# Custom solid pine interior door, built to the customer's opening.
+# Variants = configuration x wood x style; price = basePrice + wood adder + style adder.
+# Prices marked TODO are placeholders. Keep status: draft until they're confirmed.
+type: door
+handle: solid-pine-interior-door
+title: Solid Pine Interior Door, Custom Built
+status: draft
+skuPrefix: PINE
+description: |
+  Custom solid pine interior doors, handbuilt locally in Midland/Odessa. They're
+  clear pine with tight, straight grain, sold raw and unfinished so you can stain
+  or paint them to match your home. Solid wood is heavier and quieter than the
+  hollow-core doors at the big box stores.
+
+  Every door is built to your exact opening. Choose a single, a French pair, a
+  bifold, a barn door, or a pocket door, in clear or knotty pine.
+highlights:
+  - Solid pine, not hollow core
+  - Built to your exact opening size
+  - Sold unfinished, ready to stain or paint
+  - Handbuilt in Midland/Odessa, Texas
+tags: [interior door, solid wood, pine, custom, unfinished]
+images: []   # add {src, alt} entries; image URLs must be publicly reachable
+specs:
+  species: Pine
+  construction: Solid wood
+  finish: Unfinished
+  built_in: Midland/Odessa, TX
+seo:
+  title: Custom Solid Pine Interior Doors | Built in Midland, TX
+  description: Solid pine interior doors built to your exact opening. Singles from $495, French pairs from $995. Sold unfinished, ready to stain or paint.
+
+configurations:
+  - { name: Single,      code: SGL,    basePrice: 495 }
+  - { name: French Pair, code: FRP,    basePrice: 995 }
+  - { name: Bifold,      code: BIF,    basePrice: 495 }  # TODO price
+  - { name: Barn Door,   code: BARN,   basePrice: 495 }  # TODO price
+  - { name: Pocket Door, code: POCKET, basePrice: 495 }  # TODO price
+
+grades:
+  - { name: Clear Pine,  code: CLR, adder: 0 }
+  - { name: Knotty Pine, code: KNT, adder: 0 }  # TODO price difference, if any
+
+styles:
+  - { name: 2-Panel Square Top, code: 2PSQ, adder: 0 }
+  - { name: 2-Panel Arch Top,   code: 2PAR, adder: 0 }  # TODO
+  - { name: Shaker,             code: SHK,  adder: 0 }  # TODO
+  - { name: 4-Panel,            code: 4P,   adder: 0 }  # TODO
+  - { name: Louvered,           code: LOUV, adder: 0 }  # TODO
+  - { name: French Glass,       code: GLS,  adder: 0 }  # TODO
+  - { name: Mirrored,           code: MIR,  adder: 0 }  # TODO
+
+# Combinations you don't build. Any field left out matches everything.
+exclude: []
+  # - { configuration: POCKET, style: LOUV }
+
+madeToOrder:
+  customSize: true
+  # leadTimeWeeks: 3   # TODO

@@ -1,0 +1,3 @@
+# Store-wide settings used when syncing to Shopify.
+vendor: "Your Door Company"   # TODO: your business name as it should appear on products
+metafieldNamespace: catalog
